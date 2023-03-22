@@ -1,6 +1,6 @@
 import React from 'react'
-import Title from './Title'
-import { gfToken } from '../data/getform'
+import Title from '/src/components/Title.jsx'
+import { gfToken } from '/src/data/getform.js'
 
 function Contact() {
   return (
@@ -12,11 +12,7 @@ function Contact() {
           className='flex flex-col w-full md:w-7/12'
         >
           <Title>Contato</Title>
-          <input
-            type='hidden'
-            name='_gotcha'
-            className='hidden !imporant'
-          />
+          <input type='hidden' name='_gotcha' className='hidden !imporant' />
           <input
             type='text'
             name='Name'

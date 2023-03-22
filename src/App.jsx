@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import Intro from './components/Intro'
-// import Portfolio from './components/Portfolio'
-import Timeline from './components/Timeline'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import Intro from '/src/components/Intro.jsx'
+import Timeline from '/src/components/Timeline.jsx'
+import Contact from '/src/components/Contact.jsx'
+import Footer from '/src/components/Footer.jsx'
 
-function App() {
+export default function App() {
   const redirect = () => {
-    let hostname = 'brunolpsousa.duckdns.org'
+    let hostname = 'https://brunolpsousa.duckdns.org'
     let currentHostname = location.hostname
     if (parseInt(currentHostname)) {
       window.location.replace(hostname)
@@ -82,7 +81,6 @@ function App() {
       <div className='bg-white dark:bg-stone-900 text-stone-900 dark:text-stone-300 min-h-screen font-inter'>
         <div className='max-w-5xl w-11/12 mx-auto'>
           <Intro />
-          {/*<Portfolio />*/}
           <Timeline />
           <Contact />
           <Footer />
@@ -91,5 +89,3 @@ function App() {
     </>
   )
 }
-
-export default App
