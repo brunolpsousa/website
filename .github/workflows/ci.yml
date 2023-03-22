@@ -27,11 +27,13 @@ jobs:
         env:
           SUPER_SECRET: ${{ secrets.gfToken }}
         run: |
-          echo "const gfToken = 'secret'\nexport { gfToken }" > ./src/data/getform.js
+          echo -e "const gfToken = 'secret'\nexport { gfToken }" > ./src/data/getform.js
           sed -i "s/secret/$SUPER_SECRET/" ./src/data/getform.js
 
       # Runs a set of commands using the runners shell
       - name: Install npm
         run: sudo apt install npm -y
+      - name: Prepare
+        run: npm install -D tailwindcss postcss autoprefixer
       - name: Build
         run: npm run build
