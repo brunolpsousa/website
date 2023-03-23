@@ -6,10 +6,10 @@ import Footer from '/src/components/Footer.jsx'
 
 export default function App() {
   const redirect = () => {
-    let hostname = 'https://brunolpsousa.duckdns.org'
-    let currentHostname = location.hostname
-    if (parseInt(currentHostname)) {
-      window.location.replace(hostname)
+    let url = 'https://brunolpsousa.duckdns.org'
+    let hostname = location.hostname
+    if (parseInt(hostname) || hostname.startsWith('www')) {
+      window.location.replace(url)
     }
   }
   redirect()
