@@ -27,7 +27,7 @@ function Contact() {
           />
           <textarea
             name='Message'
-            placeholder='Messagem'
+            placeholder='Mensagem'
             rows='10'
             className='p-2 mb-4 bg-transparent border-2 dark:border-stone-500 rounded-md focus:outline-none'
           />
