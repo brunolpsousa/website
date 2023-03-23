@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Title({ children, id }) {
+export default function Title({ children, id }) {
   return (
     <h1
       id={id && id}
@@ -10,5 +10,3 @@ function Title({ children, id }) {
     </h1>
   )
 }
-
-export default Title

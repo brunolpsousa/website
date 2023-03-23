@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Footer() {
+export default function Footer() {
   return (
     <div className='py-5 text-center'>
       <div className='container max-w-screen-lg mx-auto'>
@@ -55,5 +55,3 @@ function Footer() {
     </div>
   )
 }
-
-export default Footer
