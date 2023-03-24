@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className='py-5 text-center'>
+    <div className='py-5 text-center fixed inset-x-0 bottom-0'>
       <div className='container max-w-screen-lg mx-auto'>
         <div>
           <div className='flex flex-wrap justify-center gap-2'>
