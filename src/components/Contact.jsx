@@ -1,11 +1,12 @@
 import Title from '/src/components/Title.jsx'
+import { gfToken } from '/src/data/getform.js'
 
 export default function Contact() {
   return (
     <div className='flex flex-col mb-10 mx-auto'>
       <div className='flex justify-center items-center'>
         <form
-          action='null'
+          action={gfToken}
           method='POST'
           className='flex flex-col w-full md:w-7/12'
         >
@@ -26,12 +27,12 @@ export default function Contact() {
           <textarea
             name='Message'
             placeholder='Mensagem'
-            rows='10'
+            rows='6'
             className='p-2 mb-4 bg-transparent border-2 dark:border-stone-500 rounded-md focus:outline-none'
           />
           <button
             type='submit'
-            className='text-center inline-block px-8 py-3 w-max text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
+            className='text-center place-self-end inline-block px-8 py-3 w-max text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
           >
             Enviar
           </button>
