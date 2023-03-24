@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className='py-5 text-center fixed inset-x-0 bottom-0'>
+    <div className='flex flex-col py-5 text-center relative mb-auto justify-between inset-x-0 bottom-0'>
       <div className='container max-w-screen-lg mx-auto'>
         <div>
           <div className='flex flex-wrap justify-center gap-2'>
@@ -46,10 +46,10 @@ export default function Footer() {
             </a>
           </div>
         </div>
+        <p className='text-sm mt-2 opacity-50'>
+          &copy; {new Date().getFullYear()} Bruno Sousa
+        </p>
       </div>
-      <p className='text-sm mt-2 opacity-50'>
-        &copy; {new Date().getFullYear()} Bruno Sousa
-      </p>
     </div>
   )
 }

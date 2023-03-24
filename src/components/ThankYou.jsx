@@ -14,13 +14,13 @@ export default function ThankYou() {
 
   return (
     <div
-      className='flex items-center justify-center flex-col text-center my-40 pb-6 absolute inset-0'
+      className='flex flex-col items-center justify-center h-screen m-auto'
       onLoad={returnToIndex()}
     >
-      <p className='text-base md:text-4xl text-stone-600 dark:text-stone-100 mb-3 font-medium'>
+      <h1 className='text-base md:text-4xl text-stone-600 dark:text-stone-100 mb-3 font-medium'>
         Mensagem enviada com sucesso
-      </p>
-      <p className='text-base md:text-xl text-stone-500 dark:text-stone-200 mb-3'>
+      </h1>
+      <p className='text-sm md:text-xl text-stone-500 dark:text-stone-200 mb-3'>
         Obrigado!
       </p>
       <Link to={'/'}>
