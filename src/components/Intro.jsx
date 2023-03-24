@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Intro() {
+export default function Intro() {
   return (
     <div className='flex items-center justify-center flex-col text-center pt-20 pb-6'>
       <h1 className='text-4xl md:text-7xl text-stone-800 dark:text-stone-50 mb-1 md:mb-3 font-bold'>
@@ -16,5 +16,3 @@ function Intro() {
     </div>
   )
 }
-
-export default Intro

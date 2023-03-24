@@ -4,7 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import '/src/style/tailwind.css'
 
 import Index from '/src/components/Index.jsx'
-import ButtomTheme from './components/ButtonTheme'
+import ButtomTheme from './components/ButtonTheme.jsx'
+import Footer from './components/Footer.jsx'
 import ThankYou from '/src/components/ThankYou.jsx'
 import ErrorPage from '/src/components/ErrorPage.jsx'
 
@@ -31,7 +32,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <>
-    <ButtomTheme/>
+    <ButtomTheme />
     <RouterProvider router={router} />
+    <Footer />
   </>
 )

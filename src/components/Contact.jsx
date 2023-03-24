@@ -1,13 +1,13 @@
 import React from 'react'
 import Title from '/src/components/Title.jsx'
-import { gfToken } from '/src/data/getform.js'
+// import { gfToken } from '/src/data/getform.js'
 
 function Contact() {
   return (
     <div className='flex flex-col mb-10 mx-auto'>
       <div className='flex justify-center items-center'>
         <form
-          action={gfToken}
+          action='null'
           method='POST'
           className='flex flex-col w-full md:w-7/12'
         >

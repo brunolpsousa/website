@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <p className='text-sm mt-2  opacity-50'>
+      <p className='text-sm mt-2 opacity-50 dark:text-stone-300'>
         &copy; {new Date().getFullYear()} Bruno Sousa
       </p>
     </div>

@@ -1,7 +1,27 @@
-import { useTheme } from '/src/components/Theme.jsx'
-
+import { useState, useEffect } from 'react'
 export default function ButtomTheme() {
-  let theme = useTheme()
+  const [theme, setTheme] = useState(null)
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setTheme('dark')
+    } else {
+      setTheme('light')
+    }
+  }, [])
+
+  const handleThemeSwitch = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark')
+  }
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [theme])
+
   const sun = (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -35,10 +55,11 @@ export default function ButtomTheme() {
       />
     </svg>
   )
+
   return (
     <button
       type='button'
-      onClick={theme}
+      onClick={handleThemeSwitch}
       className='fixed p-2 z-10 right-8 top-4 bg-violet-300 dark:bg-yellow-200 text-lg rounded-md'
     >
       {theme === 'dark' ? sun : moon}
