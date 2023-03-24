@@ -1,9 +1,8 @@
-import React from 'react'
 import timeline from '/src/data/timeline.js'
 import TimelineItem from '/src/components/TimelineItem.jsx'
 import Title from '/src/components/Title.jsx'
 
-function Timeline() {
+export default function Timeline() {
   return (
     <div className='flex flex-col md:flex-row justify-center my-16'>
       <div className='w-full md:w-7/12'>
@@ -20,5 +19,3 @@ function Timeline() {
     </div>
   )
 }
-
-export default Timeline

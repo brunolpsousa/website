@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function Footer() {
   return (
     <div className='py-5 text-center'>
@@ -49,7 +47,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <p className='text-sm mt-2 opacity-50 dark:text-stone-300'>
+      <p className='text-sm mt-2 opacity-50'>
         &copy; {new Date().getFullYear()} Bruno Sousa
       </p>
     </div>

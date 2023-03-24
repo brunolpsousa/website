@@ -33,7 +33,11 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <>
     <ButtomTheme />
-    <RouterProvider router={router} />
-    <Footer />
+    <div className='bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-300 min-h-screen font-inter'>
+      <div className='max-w-5xl w-11/12 mx-auto'>
+        <RouterProvider router={router} />
+        <Footer />
+      </div>
+    </div>
   </>
 )

@@ -1,8 +1,6 @@
-import React from 'react'
 import Title from '/src/components/Title.jsx'
-// import { gfToken } from '/src/data/getform.js'
 
-function Contact() {
+export default function Contact() {
   return (
     <div className='flex flex-col mb-10 mx-auto'>
       <div className='flex justify-center items-center'>
@@ -42,5 +40,3 @@ function Contact() {
     </div>
   )
 }
-
-export default Contact
