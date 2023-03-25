@@ -3,11 +3,11 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import '/src/style/tailwind.css'
 
-import Index from '/src/components/Index.jsx'
-import ButtomTheme from './components/ButtonTheme.jsx'
-import Footer from './components/Footer.jsx'
-import ThankYou from '/src/components/ThankYou.jsx'
-import ErrorPage from '/src/components/ErrorPage.jsx'
+import Index from '/src/components/Index'
+import ButtomTheme from './components/ButtonTheme'
+import Footer from './components/Footer'
+import ThankYou from '/src/components/ThankYou'
+import ErrorPage from '/src/components/ErrorPage'
 
 const redirect = () => {
   let url = 'brunolpsousa.duckdns.org'
@@ -34,7 +34,7 @@ createRoot(document.getElementById('root')).render(
   <>
     <ButtomTheme />
     <div className='bg-stone-50 dark:bg-stone-900 text-stone-800 dark:text-stone-200 font-inter'>
-      <div className='flex flex-col items-center h-screen justify-between max-w-5xl w-11/12 m-auto'>
+      <div className='flex flex-col items-center h-screen max-w-5xl w-11/12 m-auto'>
         <RouterProvider router={router} />
         <Footer />
       </div>

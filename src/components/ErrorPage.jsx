@@ -17,10 +17,10 @@ export default function ErrorPage() {
       className='flex flex-col items-center justify-center h-screen m-auto'
       onLoad={returnToIndex()}
     >
-      <h1 className='text-base md:text-4xl text-stone-600 dark:text-stone-100 mb-3 font-medium'>
+      <h1 className='text-3xl md:text-4xl text-stone-600 dark:text-stone-100 mb-3 font-medium'>
         Oops!
       </h1>
-      <p className='text-sm md:text-xl text-stone-500 dark:text-stone-200 mb-3'>
+      <p className='text-base md:text-xl text-stone-500 dark:text-stone-200 mb-3'>
         Não foi possível carregar esta página
       </p>
       <Link to={'/'}>

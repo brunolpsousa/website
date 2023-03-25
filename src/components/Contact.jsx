@@ -3,7 +3,7 @@ import { gfToken } from '/src/data/getform.js'
 
 export default function Contact() {
   return (
-    <div className='flex flex-col mb-10 mx-auto w-full'>
+    <div className='flex flex-col mb-10 mx-auto w-full h-screen'>
       <div className='flex justify-center items-center'>
         <form
           action={gfToken}
