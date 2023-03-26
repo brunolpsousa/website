@@ -7,10 +7,7 @@ export default function ErrorPage() {
       sec--
       if (sec <= 0) {
         clearInterval(timer)
-        let returnButton = document.getElementById(
-          'ReturnButton'
-        ) as HTMLElement
-        returnButton.click()
+        document.getElementById('ReturnButton')?.click()
       }
     }, 1000)
   }
