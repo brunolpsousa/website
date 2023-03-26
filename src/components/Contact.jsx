@@ -27,7 +27,7 @@ export default function Contact() {
           <textarea
             name='Message'
             placeholder='Mensagem'
-            rows='6'
+            rows='8'
             className='p-2 mb-4 bg-transparent border-2 dark:border-stone-500 rounded-md focus:outline-none'
           />
           <button

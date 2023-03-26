@@ -9,6 +9,7 @@ export default function Timeline() {
         <Title>Linha do tempo</Title>
         {timeline.map((item) => (
           <TimelineItem
+            key='TimelineItem'
             year={item.year}
             title={item.title}
             duration={item.duration}
