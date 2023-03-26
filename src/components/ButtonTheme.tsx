@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react'
 export default function ButtomTheme() {
-  const [theme, setTheme] = useState(null)
+  const [theme, setTheme] = useState(false)
 
   useEffect(() => {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark')
+      setTheme(true)
     } else {
-      setTheme('light')
+      setTheme(false)
     }
   }, [])
 
   const handleThemeSwitch = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark')
+    setTheme(theme === false ? true : false)
   }
 
   useEffect(() => {
-    if (theme === 'dark') {
+    if (theme === true) {
       document.documentElement.classList.add('dark')
     } else {
       document.documentElement.classList.remove('dark')
@@ -62,7 +62,7 @@ export default function ButtomTheme() {
       onClick={handleThemeSwitch}
       className='fixed p-2 z-10 right-8 top-4 bg-violet-300 dark:bg-yellow-200 text-lg rounded-md'
     >
-      {theme === 'dark' ? sun : moon}
+      {theme === true ? sun : moon}
     </button>
   )
 }

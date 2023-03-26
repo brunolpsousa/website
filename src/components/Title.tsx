@@ -1,4 +1,10 @@
-export default function Title({ children, id }) {
+export default function Title({
+  children,
+  id,
+}: {
+  children: string
+  id: string
+}) {
   return (
     <h1
       id={id && id}
