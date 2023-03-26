@@ -1,12 +1,12 @@
-import timeline from '/src/data/timeline.js'
-import TimelineItem from '/src/components/TimelineItem.jsx'
-import Title from '/src/components/Title.jsx'
+import timeline from '../data/timeline'
+import TimelineItem from './TimelineItem'
+import Title from './Title'
 
 export default function Timeline() {
   return (
     <div className='flex flex-col md:flex-row justify-center my-16'>
       <div className='w-full md:w-7/12'>
-        <Title>Linha do tempo</Title>
+        <Title id='Timeline'>Linha do tempo</Title>
         {timeline.map((item) => (
           <TimelineItem
             key='TimelineItem'

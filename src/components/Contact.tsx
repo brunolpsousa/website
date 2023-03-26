@@ -1,5 +1,5 @@
-import Title from '/src/components/Title.jsx'
-import { gfToken } from '/src/data/getform.js'
+import Title from './Title'
+import { gfToken } from '../data/getform'
 
 export default function Contact() {
   return (
@@ -10,7 +10,7 @@ export default function Contact() {
           method='POST'
           className='flex flex-col w-full md:w-7/12'
         >
-          <Title>Contato</Title>
+          <Title id='Contact'>Contato</Title>
           <input type='hidden' name='_gotcha' className='hidden !imporant' />
           <input
             type='text'
@@ -27,7 +27,7 @@ export default function Contact() {
           <textarea
             name='Message'
             placeholder='Mensagem'
-            rows='8'
+            rows={8}
             className='p-2 mb-4 bg-transparent border-2 dark:border-stone-500 rounded-md focus:outline-none'
           />
           <button

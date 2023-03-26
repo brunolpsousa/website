@@ -1,13 +1,12 @@
-import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import '/src/style/tailwind.css'
+import './style/tailwind.css'
 
-import Index from '/src/components/Index'
+import Index from './components/Index'
 import ButtomTheme from './components/ButtonTheme'
 import Footer from './components/Footer'
-import ThankYou from '/src/components/ThankYou'
-import ErrorPage from '/src/components/ErrorPage'
+import ThankYou from './components/ThankYou'
+import ErrorPage from './components/ErrorPage'
 
 const redirect = () => {
   let url = 'brunolpsousa.duckdns.org'
@@ -30,7 +29,7 @@ const router = createBrowserRouter([
   },
 ])
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('root') as HTMLElement).render(
   <>
     <ButtomTheme />
     <div className='bg-stone-50 dark:bg-stone-900 text-stone-800 dark:text-stone-200 font-inter'>

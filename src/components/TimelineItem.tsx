@@ -1,4 +1,14 @@
-export default function TimelineItem({ year, title, duration, details }) {
+export default function TimelineItem({
+  year,
+  title,
+  duration,
+  details,
+}: {
+  year: string
+  title: string
+  duration: string
+  details: string
+}) {
   return (
     <ol className='flex flex-col md:flex-row relative border-l border-stone-200 dark:border-stone-700'>
       <li className='mb-10 ml-4'>

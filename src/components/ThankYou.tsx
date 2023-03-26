@@ -1,13 +1,16 @@
 import { Link } from 'react-router-dom'
 
 export default function ThankYou() {
-  const returnToIndex = () => {
+  const returnToIndex: Function = () => {
     let sec = 5
     let timer = setInterval(function () {
       sec--
       if (sec <= 0) {
         clearInterval(timer)
-        document.getElementById('ReturnButton').click()
+        let returnButton = document.getElementById(
+          'ReturnButton'
+        ) as HTMLElement
+        returnButton.click()
       }
     }, 1000)
   }
