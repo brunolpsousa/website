@@ -24,7 +24,6 @@ dist-ssr
 *.sln
 *.sw?
 
-src/data/getform.ts
 src/data/portfolio.ts
 src/components/Portfolio.tsx
 src/components/PortfolioItem.tsx
