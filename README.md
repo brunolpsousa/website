@@ -1,2 +1,2 @@
 ## Website
-[brunolpsousa.duckdns.org](https://brunolpsousa.duckdns.org)
+[brunolpsousa.vercel.app](https://brunolpsousa.vercel.app)
