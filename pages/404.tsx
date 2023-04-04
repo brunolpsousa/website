@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
-export default function ThankYou() {
+export default function Custom404() {
   const returnToIndex: Function = () => {
-    let sec = 5
-    let timer = setInterval(function () {
+    let sec = 3
+    const timer = setInterval(function () {
       sec--
       if (sec <= 0) {
         clearInterval(timer)
@@ -17,13 +17,13 @@ export default function ThankYou() {
       className='flex flex-col items-center justify-center h-screen m-auto'
       onLoad={returnToIndex()}
     >
-      <h1 className='text-2xl md:text-4xl text-stone-600 dark:text-stone-100 mb-3 font-medium'>
-        Mensagem enviada com sucesso
+      <h1 className='text-3xl md:text-4xl text-stone-600 dark:text-stone-100 mb-3 font-medium'>
+        Oops!
       </h1>
       <p className='text-base md:text-xl text-stone-500 dark:text-stone-200 mb-3'>
-        Obrigado!
+        Não foi possível carregar esta página
       </p>
-      <Link to={'/'}>
+      <Link href={'/'}>
         <button
           id='ReturnButton'
           type='button'
