@@ -1,4 +1,20 @@
+import { localLang } from './localLang'
+
 export default function Intro() {
+  const p_en = (
+    <>
+      Programmer and Analysis and Systems Development student.
+      <br />
+      Looking for new challenges and continuous learning.
+    </>
+  )
+  const p_pt = (
+    <>
+      Programador e estudante de Análise e Desenvolvimento de Sistemas.
+      <br />
+      Em busca de novos desafios e aprendizado contínuo.
+    </>
+  )
   return (
     <div className='flex items-center justify-center flex-col text-center pt-20 pb-6'>
       <h1 className='text-5xl md:text-6xl text-stone-800 dark:text-stone-50 mb-1 md:mb-3 font-bold'>
@@ -8,8 +24,7 @@ export default function Intro() {
         Software Developer
       </p>
       <p className='text-sm max-w-xl mb-6 text-stone-500 dark:text-stone-300 font-semibold'>
-        Programador e estudante de Análise e Desenvolvimento de Sistemas.
-        <br /> Em busca de novos desafios e aprendizado contínuo.
+        {localLang() ? p_en : p_pt}
       </p>
     </div>
   )

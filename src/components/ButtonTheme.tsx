@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export default function ButtomTheme() {
+export default function ButtonTheme() {
   const [theme, setTheme] = useState(0)
 
   useEffect(() => {

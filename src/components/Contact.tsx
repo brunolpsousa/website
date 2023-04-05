@@ -1,5 +1,6 @@
 import Title from './Title'
 import { gfToken } from '../data/getform'
+import { localLang } from './localLang'
 
 export default function Contact() {
   return (
@@ -10,12 +11,12 @@ export default function Contact() {
           method='POST'
           className='flex flex-col w-full md:w-7/12'
         >
-          <Title id='Contact'>Contato</Title>
+          <Title id='Contact'>{localLang() ? 'Contact' : 'Contato'}</Title>
           <input type='hidden' name='_gotcha' className='hidden !imporant' />
           <input
             type='text'
             name='Name'
-            placeholder='Nome'
+            placeholder={localLang() ? 'Name' : 'Nome'}
             className='p-2 bg-transparent border-2 dark:border-stone-500 rounded-md focus:outline-none'
           />
           <input
@@ -26,7 +27,7 @@ export default function Contact() {
           />
           <textarea
             name='Message'
-            placeholder='Mensagem'
+            placeholder={localLang() ? 'Message' : 'Mensagem'}
             rows={8}
             className='p-2 mb-4 bg-transparent border-2 dark:border-stone-500 rounded-md focus:outline-none'
           />
@@ -34,7 +35,7 @@ export default function Contact() {
             type='submit'
             className='text-center place-self-end inline-block px-8 py-3 w-max text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
           >
-            Enviar
+            {localLang() ? 'Send' : 'Enviar'}
           </button>
         </form>
       </div>
