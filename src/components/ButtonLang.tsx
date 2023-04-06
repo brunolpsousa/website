@@ -147,7 +147,7 @@ export default function ButtonLang() {
       <button
         type='button'
         onClick={handleLangSwitch}
-        className='fixed left-8 top-4 rounded-md'
+        className='absolute left-8 top-4 rounded-md'
       >
         {lang === 'pt' ? bra : usa}
       </button>
