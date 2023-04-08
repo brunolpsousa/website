@@ -53,7 +53,7 @@ export default function App({ Component, pageProps }) {
         <meta property='og:description' content='Personal Website' />
         <meta
           property='og:image'
-          content='https://icon-library.com/images/dev-icon/dev-icon-6.jpg'
+          content='https://brunolpsousa.vercel.app/assets/share_link.png'
         />
         <meta name='twitter:card' content='summary_large_image' />
         <meta property='twitter:domain' content='brunolpsousa.vercel.app' />
@@ -65,7 +65,7 @@ export default function App({ Component, pageProps }) {
         <meta name='twitter:description' content='Personal Website' />
         <meta
           name='twitter:image'
-          content='https://icon-library.com/images/dev-icon/dev-icon-6.jpg'
+          content='https://brunolpsousa.vercel.app/assets/share_link.png'
         />
       </Head>
       <main>
