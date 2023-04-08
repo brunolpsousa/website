@@ -39,14 +39,34 @@ export default function App({ Component, pageProps }) {
         }
       `}</style>
       <Head>
+        <title>Bruno Sousa</title>
+        <meta name='author' content='Bruno Sousa' />
         <meta name='description' content='Personal Website' />
+        <link rel='icon' type='image/svg+xml' href={getIcon()} />
         <meta
           name='keywords'
           content='Portfolio, HTML, CSS, JavaScript, TypeScript, React, Next.js'
         />
-        <meta name='author' content='Bruno Sousa' />
-        <title>Bruno Sousa</title>
-        <link rel='icon' type='image/svg+xml' href={getIcon()} />
+        <meta property='og:url' content='https://brunolpsousa.vercel.app' />
+        <meta property='og:type' content='website' />
+        <meta property='og:title' content='Bruno Sousa' />
+        <meta property='og:description' content='Personal Website' />
+        <meta
+          property='og:image'
+          content='https://icon-library.com/images/dev-icon/dev-icon-6.jpg'
+        />
+        <meta name='twitter:card' content='summary_large_image' />
+        <meta property='twitter:domain' content='brunolpsousa.vercel.app' />
+        <meta
+          property='twitter:url'
+          content='https://brunolpsousa.vercel.app'
+        />
+        <meta name='twitter:title' content='Bruno Sousa' />
+        <meta name='twitter:description' content='Personal Website' />
+        <meta
+          name='twitter:image'
+          content='https://icon-library.com/images/dev-icon/dev-icon-6.jpg'
+        />
       </Head>
       <main>
         <ButtonLang />
