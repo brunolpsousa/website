@@ -63,7 +63,7 @@ export default function ButtonLang() {
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
     >
-      <g clip-path='url(#a)'>
+      <g clipPath='url(#a)'>
         <rect width='28' height='20' rx='2' fill='#ffffff' />
         <mask
           id='b'
@@ -80,16 +80,16 @@ export default function ButtonLang() {
         </mask>
         <g mask='url(#b)'>
           <path
-            fill-rule='evenodd'
-            clip-rule='evenodd'
+            fillRule='evenodd'
+            clipRule='evenodd'
             d='M28 0H0v1.333h28V0Zm0 2.667H0V4h28V2.667ZM0 5.333h28v1.334H0V5.333ZM28 8H0v1.333h28V8ZM0 10.667h28V12H0v-1.333Zm28 2.666H0v1.334h28v-1.334ZM0 16h28v1.333H0V16Zm28 2.667H0V20h28v-1.333Z'
             fill='#D02F44'
           />
           <path fill='#46467F' d='M0 0h12v9.333H0z' />
           <g filter='url(#c)'>
             <path
-              fill-rule='evenodd'
-              clip-rule='evenodd'
+              fillRule='evenodd'
+              clipRule='evenodd'
               d='M2.667 2a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0Zm2.666 0A.667.667 0 1 1 4 2a.667.667 0 0 1 1.333 0Zm2 .667a.667.667 0 1 0 0-1.334.667.667 0 0 0 0 1.334ZM10.667 2a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0ZM3.333 4a.667.667 0 1 0 0-1.333.667.667 0 0 0 0 1.333Zm3.334-.667a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0Zm2 .667a.667.667 0 1 0 0-1.333.667.667 0 0 0 0 1.333Zm2 .667a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0Zm-3.334.666a.667.667 0 1 0 0-1.333.667.667 0 0 0 0 1.333Zm-2-.666a.667.667 0 1 1-1.333 0 .667.667 0 0 1 1.333 0ZM2 5.333A.667.667 0 1 0 2 4a.667.667 0 0 0 0 1.333ZM4 6a.667.667 0 1 1-1.333 0A.667.667 0 0 1 4 6Zm2 .667a.667.667 0 1 0 0-1.334.667.667 0 0 0 0 1.334ZM9.333 6A.667.667 0 1 1 8 6a.667.667 0 0 1 1.333 0ZM10 8a.667.667 0 1 0 0-1.333A.667.667 0 0 0 10 8Zm-2-.667a.667.667 0 1 1-1.333 0 .667.667 0 0 1 1.333 0ZM4.667 8a.667.667 0 1 0 0-1.333.667.667 0 0 0 0 1.333Zm-2-.667a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0Z'
               fill='url(#d)'
             />
@@ -105,8 +105,8 @@ export default function ButtonLang() {
           y2='8'
           gradientUnits='userSpaceOnUse'
         >
-          <stop stop-color='#ffffff' />
-          <stop offset='1' stop-color='#F0F0F0' />
+          <stop stopColor='#ffffff' />
+          <stop offset='1' stopColor='#F0F0F0' />
         </linearGradient>
         <clipPath id='a'>
           <rect width='28' height='20' rx='2' fill='#ffffff' />
@@ -118,9 +118,9 @@ export default function ButtonLang() {
           width='9.333'
           height='7.667'
           filterUnits='userSpaceOnUse'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
-          <feFlood flood-opacity='0' result='BackgroundImageFix' />
+          <feFlood floodOpacity='0' result='BackgroundImageFix' />
           <feColorMatrix
             in='SourceAlpha'
             values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'

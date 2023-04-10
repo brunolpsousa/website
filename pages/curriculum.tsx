@@ -13,10 +13,10 @@ export default function Curriculum() {
         id='Curriculum'
         title='Curriculum'
         src={cv_link() + 'preview'}
-        style={{ maxWidth: '90%' }}
-        className='h-3/5 md:h-full w-full'
+        style={{ maxHeight: '100vw', maxWidth: '85%' }}
+        className='h-full w-full'
       />
-      <div className='relative w-4/5 md:w-1/2'>
+      <div className='relative w-4/6 md:w-1/2'>
         <Link href={'/'}>
           <button
             id='ReturnButton'
