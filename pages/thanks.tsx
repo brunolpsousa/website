@@ -3,14 +3,11 @@ import { localLang } from '../src/components/localLang'
 
 export default function ThankYou() {
   const returnToIndex: Function = () => {
-    let sec = 5
-    const timer = setInterval(function () {
-      sec--
-      if (sec <= 0) {
-        clearInterval(timer)
-        document.getElementById('ReturnButton')?.click()
-      }
-    }, 1000)
+    if (typeof document !== 'undefined') {
+      setInterval(function () {
+        document?.getElementById('ReturnButton')?.click()
+      }, 5000)
+    }
   }
 
   return (

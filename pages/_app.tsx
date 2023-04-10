@@ -20,8 +20,8 @@ export default function App({ Component, pageProps }) {
       )
     }
     setAutoSVG(document.documentElement.classList.contains('dark'))
-    document.querySelector('body').classList.add('bg-stone-50')
-    document.querySelector('body').classList.add('dark:bg-stone-900')
+    document.querySelector('body')?.classList.add('bg-stone-50')
+    document.querySelector('body')?.classList.add('dark:bg-stone-900')
   })
 
   const getIcon = () => {
