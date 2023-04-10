@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 export default function ButtonLang() {
-  const [lang, setLang] = useState('en')
+  const [lang, setLang] = useState('pt')
 
   useEffect(() => {
     if (!('lang' in localStorage)) {
