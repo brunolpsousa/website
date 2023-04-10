@@ -8,7 +8,7 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/cur*',
+        source: '/curriculo',
         destination: '/curriculum',
         permanent: true,
       },
