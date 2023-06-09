@@ -15,12 +15,13 @@ export default function Contact() {
           <input type='hidden' name='_gotcha' className='hidden !imporant' />
           <input
             type='text'
+            autoCapitalize='words'
             name='Name'
             placeholder={localLang() ? 'Name' : 'Nome'}
             className='p-2 bg-transparent border-2 dark:border-stone-500 rounded-md focus:outline-none'
           />
           <input
-            type='text'
+            type='email'
             name='Email'
             placeholder='Email'
             className='my-2 p-2 bg-transparent border-2 dark:border-stone-500 rounded-md focus:outline-none'
