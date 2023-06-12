@@ -13,7 +13,7 @@ export default function HangmanWord({
     <div className='flex justify-center gap-2 text-3xl md:text-6xl font-bold uppercase m-16'>
       {word.split('').map((letter, index) => (
         <span
-          className='text-center border-b-black dark:border-b-white border-b-4 w-6 md:w-11'
+          className='text-center border-b-black dark:border-b-white border-b-4 w-9 md:w-16'
           key={index}
         >
           <span
