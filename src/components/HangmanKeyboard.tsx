@@ -12,7 +12,7 @@ export default function HangmanKeyboard({ addGuess }: KeyboardProps) {
         <button
           className='mx-1 p-1 md:p-2 w-7 md:w-10 bg-stone-800 dark:bg-slate-100 text-2xl text-white dark:text-stone-700 rounded-md'
           key={key}
-          id={key}
+          id={key.toUpperCase()}
           onClick={() => addGuess(key)}
         >
           {key}

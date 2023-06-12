@@ -23,7 +23,7 @@ export default function Hangman() {
   const addGuess = useCallback(
     (letter: string) => {
       if (guessed.includes(letter) || lose || win) return
-      const button = document.getElementById(letter)
+      const button = document.getElementById(letter.toUpperCase())
       button?.classList.add('opacity-30')
       button?.setAttribute('disabled', 'true')
       setGuessed((guessed) => [...guessed, letter])
