@@ -37,6 +37,9 @@ export default function App({ Component, pageProps }) {
         html {
           font-family: ${inter.style.fontFamily};
         }
+        .hang-parts {
+          display: none;
+        }
       `}</style>
       <Head>
         <title>Bruno Sousa</title>
