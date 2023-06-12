@@ -60,32 +60,30 @@ export default function Hangman() {
   }
 
   return (
-    <>
-      <div className='flex flex-col items-center justify-center mt-20 mb-24 mx-auto w-full h-screen'>
-        <h1 className='text-4xl md:text-6xl mb-8'>{gameOver()}</h1>
-        <HangmanDraw mistakes={mistakes.length} />
-        <HangmanWord reveal={lose} word={wordToGuess} guessed={guessed} />
-        <HangmanKeyboard addGuess={addGuess} />
-        <div className='relative w-5/6 md:w-1/2'>
-          <Link href={'/'}>
-            <button
-              id='ReturnButton'
-              type='button'
-              className='text-center absolute left-0 inline-block my-12 px-5 py-3 text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
-            >
-              {localLang() ? 'Return' : 'Voltar'}
-            </button>
-          </Link>
+    <div className='flex flex-col items-center justify-center mt-20 mb-24 mx-auto w-full h-screen'>
+      <h1 className='text-4xl md:text-6xl mb-8'>{gameOver()}</h1>
+      <HangmanDraw mistakes={mistakes.length} />
+      <HangmanWord reveal={lose} word={wordToGuess} guessed={guessed} />
+      <HangmanKeyboard addGuess={addGuess} />
+      <div className='relative w-5/6 md:w-1/2'>
+        <Link href={'/'}>
           <button
-            id='Retry'
+            id='ReturnButton'
             type='button'
-            className='text-center absolute right-0 inline-block my-12 px-5 py-3 text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
-            onClick={() => window.location.reload()}
+            className='text-center absolute left-0 inline-block my-12 px-5 py-3 text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
           >
-            {localLang() ? 'Play again' : 'Jogar novamente'}
+            {localLang() ? 'Return' : 'Voltar'}
           </button>
-        </div>
+        </Link>
+        <button
+          id='Retry'
+          type='button'
+          className='text-center absolute right-0 inline-block my-12 px-5 py-3 text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
+          onClick={() => window.location.reload()}
+        >
+          {localLang() ? 'Play again' : 'Jogar novamente'}
+        </button>
       </div>
-    </>
+    </div>
   )
 }
