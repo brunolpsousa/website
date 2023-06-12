@@ -100,7 +100,7 @@ export default function ButtonTheme() {
     <button
       type='button'
       onClick={handleThemeSwitch}
-      className='absolute p-2 z-10 right-8 top-4 bg-violet-300 dark:bg-yellow-200 text-lg text-white dark:text-stone-700 rounded-md'
+      className='absolute p-2 z-10 left-8 top-4 bg-violet-300 dark:bg-yellow-200 text-lg text-white dark:text-stone-700 rounded-md'
     >
       {getIcon()}
     </button>
