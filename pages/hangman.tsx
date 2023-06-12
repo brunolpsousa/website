@@ -10,12 +10,14 @@ export default function Hangman() {
   const words = localLang() ? hangWords.en : hangWords.pt
   const secret = words[Math.floor(Math.random() * words.length)].toLowerCase()
   const [wordToGuess, setWordToGuess] = useState('')
+  const [wordToGuessNorm, setWordToGuessNorm] = useState('')
   const [guessed, setGuessed] = useState<string[]>([])
-  const mistakes = guessed.filter((letter) => !wordToGuess.includes(letter))
+  const mistakes = guessed.filter((letter) => !wordToGuessNorm.includes(letter))
 
   useEffect(() => {
     setGuessed([])
     setWordToGuess(secret)
+    setWordToGuessNorm(secret.normalize('NFD').replace(/\p{Diacritic}/gu, ''))
   }, [])
 
   const addGuess = useCallback(
@@ -41,7 +43,9 @@ export default function Hangman() {
   }, [guessed])
 
   const lose = mistakes.length >= 6
-  const win = wordToGuess.split('').every((letter) => guessed.includes(letter))
+  const win = wordToGuessNorm
+    .split('')
+    .every((letter) => guessed.includes(letter))
   function gameOver(): string {
     const loseSentence = localLang() ? 'You lose!' : 'Você perdeu!'
     const winSentence = localLang() ? 'Congratulations!' : 'Parabéns!'
@@ -58,7 +62,7 @@ export default function Hangman() {
   return (
     <>
       <div className='flex flex-col items-center justify-center mt-20 mb-24 mx-auto w-full h-screen'>
-        <h1 className='text-6xl mb-8'>{gameOver()}</h1>
+        <h1 className='text-4xl md:text-6xl mb-8'>{gameOver()}</h1>
         <HangmanDraw mistakes={mistakes.length} />
         <HangmanWord reveal={lose} word={wordToGuess} guessed={guessed} />
         <HangmanKeyboard addGuess={addGuess} />
@@ -67,7 +71,7 @@ export default function Hangman() {
             <button
               id='ReturnButton'
               type='button'
-              className='text-center absolute left-0 inline-block my-12 px-8 py-3 text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
+              className='text-center absolute left-0 inline-block my-12 px-5 py-3 text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
             >
               {localLang() ? 'Return' : 'Voltar'}
             </button>
@@ -75,7 +79,7 @@ export default function Hangman() {
           <button
             id='Retry'
             type='button'
-            className='text-center absolute right-0 inline-block my-12 px-8 py-3 text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
+            className='text-center absolute right-0 inline-block my-12 px-5 py-3 text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
             onClick={() => window.location.reload()}
           >
             {localLang() ? 'Play again' : 'Jogar novamente'}
