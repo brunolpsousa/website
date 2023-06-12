@@ -8,7 +8,7 @@ import { useCallback, useEffect, useState } from 'react'
 
 export default function Hangman() {
   const words = localLang() ? hangWords.en : hangWords.pt
-  const secret = words[Math.floor(Math.random() * words.length)]
+  const secret = words[Math.floor(Math.random() * words.length)].toLowerCase()
   const [wordToGuess, setWordToGuess] = useState('')
   const [guessed, setGuessed] = useState<string[]>([])
   const mistakes = guessed.filter((letter) => !wordToGuess.includes(letter))
