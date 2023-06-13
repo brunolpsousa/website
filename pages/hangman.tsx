@@ -91,7 +91,7 @@ export default function Hangman() {
       <HangmanWord reveal={lose} word={wordToGuess} guessed={guessed} />
       <HangmanKeyboard addGuess={addGuess} />
       <div className='relative w-5/6 md:w-1/2'>
-        <Link href={'/'}>
+        <Link href={'/projects'}>
           <button
             id='ReturnButton'
             type='button'

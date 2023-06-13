@@ -1,6 +1,8 @@
 import '../src/style/global.css'
 import Head from 'next/head'
 import ButtonLang from '../src/components/ButtonLang'
+import Curriculum from '../src/components/Curriculum'
+import Projects from '../src/components/Projects'
 import ButtonTheme from '../src/components/ButtonTheme'
 import Footer from '../src/components/Footer'
 import { Inter } from 'next/font/google'
@@ -76,6 +78,8 @@ export default function App({ Component, pageProps }) {
         <div className='bg-stone-50 dark:bg-stone-900 text-stone-800 dark:text-stone-200'>
           <div className='flex flex-col items-center h-screen max-w-5xl w-11/12 m-auto'>
             <ButtonLang />
+            <Curriculum />
+            <Projects />
             <Component {...pageProps} />
             <Footer />
           </div>
