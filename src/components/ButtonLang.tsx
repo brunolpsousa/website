@@ -32,7 +32,7 @@ export default function ButtonLang() {
       <button
         type='button'
         onClick={handleLangSwitch}
-        className='absolute right-8 top-4 rounded-md'
+        className='text-center absolute py-4 m-auto right-16 top-4 text-base font-medium rounded-md hover:underline hover:text-blue-600 hover:dark:text-blue-400'
       >
         {isEN ? 'en' : 'pt'}
       </button>

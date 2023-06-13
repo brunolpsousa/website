@@ -72,10 +72,10 @@ export default function App({ Component, pageProps }) {
         />
       </Head>
       <main>
-        <ButtonLang />
         <ButtonTheme />
         <div className='bg-stone-50 dark:bg-stone-900 text-stone-800 dark:text-stone-200'>
           <div className='flex flex-col items-center h-screen max-w-5xl w-11/12 m-auto'>
+            <ButtonLang />
             <Component {...pageProps} />
             <Footer />
           </div>
