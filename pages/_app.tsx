@@ -1,10 +1,10 @@
 import '../src/style/global.css'
-import { useState, useEffect } from 'react'
-import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import ButtonLang from '../src/components/ButtonLang'
 import ButtonTheme from '../src/components/ButtonTheme'
 import Footer from '../src/components/Footer'
+import { Inter } from 'next/font/google'
+import { useState, useEffect } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 

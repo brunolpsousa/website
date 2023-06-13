@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 
 const localLang = () => {
-  const [lang, setLang] = useState(false)
+  const [isEN, setIsEN] = useState(false)
   useEffect(() => {
-    setLang(window.localStorage.lang == 'pt' ? false : true)
+    setIsEN(window.localStorage.lang == 'pt' ? false : true)
   })
-  return lang
+  return isEN
 }
 
 export { localLang }
