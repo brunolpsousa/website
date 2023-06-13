@@ -1,9 +1,10 @@
 import Link from 'next/link'
-import { localLang } from '../src/components/localLang'
+import { getLang } from '../src/components/getLang'
 
 export default function Curriculum() {
+  const isEN = getLang()
   const cv_link = () => {
-    return localLang()
+    return isEN
       ? 'https://drive.google.com/file/d/1XU3SmuO14j4ZuXaP1usDowxqArbSXisQ/'
       : 'https://drive.google.com/file/d/1OkEk3ztGypFpPrNSehem41ENgm5HpaA-/'
   }
@@ -23,7 +24,7 @@ export default function Curriculum() {
             type='button'
             className='text-center absolute left-0 inline-block my-12 px-8 py-3 text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
           >
-            {localLang() ? 'Return' : 'Voltar'}
+            {isEN ? 'Return' : 'Voltar'}
           </button>
         </Link>
         <button

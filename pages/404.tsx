@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import { localLang } from '../src/components/localLang'
+import { getLang } from '../src/components/getLang'
 
 export default function Custom404() {
+  const isEN = getLang()
   const returnToIndex: Function = () => {
     if (typeof document !== 'undefined') {
       setInterval(function () {
@@ -19,7 +20,7 @@ export default function Custom404() {
         Oops!
       </h1>
       <p className='text-base md:text-xl text-stone-500 dark:text-stone-200 mb-3'>
-        {localLang()
+        {isEN
           ? 'Could not load this page'
           : 'Não foi possível carregar esta página'}
       </p>
@@ -29,7 +30,7 @@ export default function Custom404() {
           type='button'
           className='text-center inline-block my-12 px-8 py-3 w-max text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
         >
-          {localLang() ? 'Return' : 'Voltar'}
+          {isEN ? 'Return' : 'Voltar'}
         </button>
       </Link>
     </div>

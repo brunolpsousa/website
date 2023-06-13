@@ -1,14 +1,15 @@
-import { localLang } from './localLang'
+import { getLang } from './getLang'
 
 export default function Intro() {
-  const p_en = (
+  const isEN = getLang()
+  const en = (
     <>
       Programmer and Analysis and Systems Development student.
       <br />
       Looking for new challenges and continuous learning.
     </>
   )
-  const p_pt = (
+  const pt = (
     <>
       Programador e estudante de Análise e Desenvolvimento de Sistemas.
       <br />
@@ -24,7 +25,7 @@ export default function Intro() {
         Software Developer
       </p>
       <p className='text-sm max-w-xl mb-6 text-stone-500 dark:text-stone-300 font-semibold'>
-        {localLang() ? p_en : p_pt}
+        {isEN ? en : pt}
       </p>
     </div>
   )
