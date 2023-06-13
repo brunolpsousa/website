@@ -12,18 +12,6 @@ export default function Hangman() {
   const [wordToGuessNorm, setWordToGuessNorm] = useState('')
   const [guessed, setGuessed] = useState<string[]>([])
   const mistakes = guessed.filter((letter) => !wordToGuessNorm.includes(letter))
-
-  const addGuess = useCallback(
-    (letter: string) => {
-      if (guessed.includes(letter) || lose || win) return
-      const button = document.getElementById(letter.toUpperCase())
-      button?.classList.add('opacity-30')
-      button?.setAttribute('disabled', 'true')
-      setGuessed((guessed) => [...guessed, letter])
-    },
-    [guessed]
-  )
-
   const lose = mistakes.length >= 6
   const win = wordToGuessNorm
     .split('')
@@ -49,17 +37,37 @@ export default function Hangman() {
         parts[i].style.display = 'none'
       }
       guessed.forEach((element) => {
-        const keys = document.getElementById(element.toUpperCase())
+        const keys = document.getElementById(element)
         keys?.classList.remove('opacity-30')
         keys?.removeAttribute('disabled')
       })
     }
+
     const words = isEN ? hangWords.en : hangWords.pt
     const secret = words[Math.floor(Math.random() * words.length)].toLowerCase()
-    setGuessed([])
+    const specialChars = ['-', '/', ' ']
+
     setWordToGuess(secret)
     setWordToGuessNorm(secret.normalize('NFD').replace(/\p{Diacritic}/gu, ''))
+    setGuessed([])
+
+    specialChars.forEach((element) => {
+      if (secret.includes(element)) {
+        setGuessed((guessed) => [...guessed, element])
+      }
+    })
   }
+
+  const addGuess = useCallback(
+    (letter: string) => {
+      if (guessed.includes(letter) || lose || win) return
+      const button = document.getElementById(letter)
+      button?.classList.add('opacity-30')
+      button?.setAttribute('disabled', 'true')
+      setGuessed((guessed) => [...guessed, letter])
+    },
+    [guessed]
+  )
 
   useEffect(() => {
     refreshGame()

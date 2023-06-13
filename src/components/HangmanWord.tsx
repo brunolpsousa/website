@@ -14,6 +14,9 @@ export default function HangmanWord({
       {word.split('').map((letter, index) => (
         <span
           className='text-center border-b-black dark:border-b-white border-b-4 w-9 md:w-16'
+          style={{
+            visibility: letter === ' ' ? 'hidden' : 'visible',
+          }}
           key={index}
         >
           <span
