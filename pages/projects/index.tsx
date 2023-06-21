@@ -11,7 +11,9 @@ export default function Projects() {
       </h1>
       <ul className='p-16 text-base md:text-xl m-3'>
         <li className='hover:underline customHover'>
-          <Link href={'/hangman'}>{isEN ? 'Hangman' : 'Jogo da Forca'}</Link>
+          <Link href={'projects/hangman'}>
+            {isEN ? 'Hangman' : 'Jogo da Forca'}
+          </Link>
         </li>
       </ul>
       <Link href={'/'}>
