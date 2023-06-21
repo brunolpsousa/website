@@ -4,12 +4,15 @@
 
 @layer components {
   body {
-    @apply text-zinc-800 dark:text-zinc-100 bg-zinc-100 dark:bg-zinc-800
-  }
-  .navBtn {
-    @apply text-center inline-block px-8 py-3 text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100
+    @apply text-zinc-800 dark:text-zinc-100 bg-zinc-100 dark:bg-zinc-800;
   }
   .customHover {
-    @apply hover:text-blue-600 hover:dark:text-blue-400
+    @apply hover:text-blue-600 hover:dark:text-blue-400;
+  }
+  .navItem {
+    @apply float-right block text-center m-4 hover:underline customHover;
+  }
+  .navBtn {
+    @apply text-center inline-block px-8 py-3 text-base font-medium rounded-md text-white dark:text-zinc-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100;
   }
 }

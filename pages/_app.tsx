@@ -1,8 +1,5 @@
 import Head from 'next/head'
-import ButtonTheme from '../src/components/ButtonTheme'
-import ButtonLang from '../src/components/ButtonLang'
-import Curriculum from '../src/components/Curriculum'
-import Projects from '../src/components/Projects'
+import Navbar from '../src/components/Navbar'
 import Footer from '../src/components/Footer'
 import { Inter } from 'next/font/google'
 import { useState, useEffect } from 'react'
@@ -58,10 +55,7 @@ export default function App({ Component, pageProps }) {
       </Head>
 
       <main className='flex flex-col items-center h-screen max-w-5xl w-11/12 m-auto'>
-        <ButtonTheme />
-        <ButtonLang />
-        <Curriculum />
-        <Projects />
+        <Navbar />
         <Component {...pageProps} />
         <Footer />
       </main>

@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className='flex flex-col my-4 text-center relative bottom-0'>
+    <div className='text-center m-4 bottom-0 relative'>
       <div className='container max-w-screen-lg mx-auto'>
         <div>
           <div className='flex flex-wrap justify-center gap-2'>

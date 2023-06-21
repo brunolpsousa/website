@@ -111,9 +111,8 @@ export default function ButtonTheme() {
 
   return (
     <button
-      type='button'
       onClick={handleThemeSwitch}
-      className='absolute p-2 z-10 left-8 top-4 bg-violet-300 dark:bg-yellow-200 text-lg text-white dark:text-stone-700 rounded-md'
+      className='p-2 bg-violet-300 dark:bg-yellow-200 text-lg text-white dark:text-zinc-700 rounded-md'
     >
       {theme === 1 ? moon : theme === 2 ? sun : auto}
     </button>

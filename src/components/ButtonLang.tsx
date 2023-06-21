@@ -22,14 +22,8 @@ export default function ButtonLang() {
   }, [isEN])
 
   return (
-    <Link href={''}>
-      <button
-        type='button'
-        onClick={handleLangSwitch}
-        className='text-center absolute py-4 m-auto right-8 top-4 text-base font-medium rounded-md customHover'
-      >
-        {isEN ? 'en' : 'pt'}
-      </button>
+    <Link href={''} onClick={handleLangSwitch}>
+      {isEN ? 'en' : 'pt'}
     </Link>
   )
 }
