@@ -5,7 +5,7 @@ import { getLang } from './getLang'
 export default function Contact() {
   const isEN = getLang()
   return (
-    <div className='flex flex-col mb-10 mx-auto w-full h-screen'>
+    <div className='flex flex-col mb-12 mx-auto w-full h-screen'>
       <div className='flex justify-center items-center'>
         <form
           action={gfToken}
@@ -19,23 +19,23 @@ export default function Contact() {
             autoCapitalize='words'
             name='Name'
             placeholder={isEN ? 'Name' : 'Nome'}
-            className='p-2 bg-transparent border-2 dark:border-stone-500 rounded-md focus:outline-none'
+            className='p-2 bg-transparent border-2 border-zinc-300 dark:border-zinc-500 rounded-md focus:outline-none'
           />
           <input
             type='email'
-            name='Email'
-            placeholder='Email'
-            className='my-2 p-2 bg-transparent border-2 dark:border-stone-500 rounded-md focus:outline-none'
+            name='E-mail'
+            placeholder='E-mail'
+            className='my-2 p-2 bg-transparent border-2 border-zinc-300 dark:border-zinc-500 rounded-md focus:outline-none'
           />
           <textarea
             name='Message'
             placeholder={isEN ? 'Message' : 'Mensagem'}
             rows={8}
-            className='p-2 mb-4 bg-transparent border-2 dark:border-stone-500 rounded-md focus:outline-none'
+            className='p-2 mb-4 bg-transparent border-2 border-zinc-300 dark:border-zinc-500 rounded-md focus:outline-none'
           />
           <button
             type='submit'
-            className='text-center place-self-end inline-block px-8 py-3 w-max text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
+            className='navBtn place-self-end'
           >
             {isEN ? 'Send' : 'Enviar'}
           </button>

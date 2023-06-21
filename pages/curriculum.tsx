@@ -22,7 +22,7 @@ export default function Curriculum() {
           <button
             id='ReturnButton'
             type='button'
-            className='text-center absolute left-0 inline-block my-12 px-8 py-3 text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
+            className='navBtn absolute left-0 my-12'
           >
             {isEN ? 'Return' : 'Voltar'}
           </button>
@@ -30,7 +30,7 @@ export default function Curriculum() {
         <button
           id='Download'
           type='button'
-          className='text-center absolute right-0 inline-block my-12 px-8 py-3 text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
+          className='navBtn absolute right-0 my-12'
         >
           <a href={cv_link() + 'view'} target='_blank'>
             Download

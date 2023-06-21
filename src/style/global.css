@@ -4,6 +4,12 @@
 
 @layer components {
   body {
-    @apply text-stone-800 dark:text-stone-200 bg-stone-50 dark:bg-stone-900
+    @apply text-zinc-800 dark:text-zinc-100 bg-zinc-100 dark:bg-zinc-800
+  }
+  .navBtn {
+    @apply text-center inline-block px-8 py-3 text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100
+  }
+  .customHover {
+    @apply hover:text-blue-600 hover:dark:text-blue-400
   }
 }

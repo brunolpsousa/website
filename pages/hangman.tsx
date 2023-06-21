@@ -95,7 +95,7 @@ export default function Hangman() {
           <button
             id='ReturnButton'
             type='button'
-            className='text-center absolute left-0 inline-block my-12 px-5 py-3 text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
+            className='navBtn absolute left-3 my-12'
           >
             {isEN ? 'Return' : 'Voltar'}
           </button>
@@ -103,10 +103,10 @@ export default function Hangman() {
         <button
           id='Retry'
           type='button'
-          className='text-center absolute right-0 inline-block my-12 px-5 py-3 text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
+          className='navBtn absolute right-3 my-12'
           onClick={() => refreshGame()}
         >
-          {isEN ? 'Play again' : 'Jogar novamente'}
+          {isEN ? 'Play' : 'Jogar'}
         </button>
       </div>
     </div>

@@ -5,26 +5,24 @@ export default function Intro() {
   const en = (
     <>
       Programmer and Analysis and Systems Development student.
-      <br />
       Looking for new challenges and continuous learning.
     </>
   )
   const pt = (
     <>
       Programador e estudante de Análise e Desenvolvimento de Sistemas.
-      <br />
       Em busca de novos desafios e aprendizado contínuo.
     </>
   )
   return (
-    <div className='flex items-center justify-center flex-col text-center pt-20 pb-6'>
-      <h1 className='text-5xl md:text-6xl text-stone-800 dark:text-stone-50 mb-1 md:mb-3 font-bold'>
+    <div className='flex items-center justify-center flex-col text-center mt-20'>
+      <h1 className='text-5xl md:text-6xl mb-1 md:mb-3 font-semibold'>
         Bruno Sousa
       </h1>
-      <p className='text-xl md:text-2xl text-stone-600 dark:text-stone-100 mb-3 font-medium'>
+      <p className='text-xl md:text-2xl mb-3 font-medium'>
         Software Developer
       </p>
-      <p className='text-sm max-w-xl mb-6 text-stone-500 dark:text-stone-300 font-semibold'>
+      <p className='text-sm max-w-xl mb-6 font-semibold'>
         {isEN ? en : pt}
       </p>
     </div>

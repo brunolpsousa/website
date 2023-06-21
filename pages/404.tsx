@@ -6,29 +6,29 @@ export default function Custom404() {
   const returnToIndex: Function = () => {
     if (typeof document !== 'undefined') {
       setInterval(function () {
-        document?.getElementById('ReturnButton')?.click()
+        document?.getElementById('ReturnButton-404')?.click()
       }, 3000)
     }
   }
 
   return (
     <div
-      className='flex flex-col items-center justify-center h-screen m-auto'
+      className='flex flex-col items-center justify-center mt-20 mb-20 mx-auto w-full h-screen'
       onLoad={returnToIndex()}
     >
-      <h1 className='text-3xl md:text-4xl text-stone-600 dark:text-stone-100 mb-3 font-medium'>
+      <h1 className='text-3xl md:text-4xl mb-3 font-medium'>
         Oops!
       </h1>
-      <p className='text-base md:text-xl text-stone-500 dark:text-stone-200 mb-3'>
+      <p className='text-base md:text-xl mb-3'>
         {isEN
           ? 'Could not load this page'
           : 'Não foi possível carregar esta página'}
       </p>
       <Link href={'/'}>
         <button
-          id='ReturnButton'
+          id='ReturnButton-404'
           type='button'
-          className='text-center inline-block my-12 px-8 py-3 w-max text-base font-medium rounded-md text-white dark:text-stone-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100'
+          className='navBtn my-12'
         >
           {isEN ? 'Return' : 'Voltar'}
         </button>

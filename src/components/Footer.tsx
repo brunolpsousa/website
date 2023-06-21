@@ -1,13 +1,13 @@
 export default function Footer() {
   return (
-    <div className='flex flex-col py-5 text-center relative bottom-0'>
+    <div className='flex flex-col my-4 text-center relative bottom-0'>
       <div className='container max-w-screen-lg mx-auto'>
         <div>
           <div className='flex flex-wrap justify-center gap-2'>
             <a
               href='https://linkedin.com/in/brunolpsousa'
               target='_blank'
-              className='bg-stone-400 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded-full'
+              className='bg-zinc-400 p-2 text-zinc-50 inline-flex items-center space-x-2 rounded-full'
             >
               <svg
                 className='w-5 h-5 fill-current'
@@ -23,7 +23,7 @@ export default function Footer() {
             <a
               href='https://github.com/brunolpsousa'
               target='_blank'
-              className='bg-stone-400 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded-full'
+              className='bg-zinc-400 p-2 text-zinc-50 inline-flex items-center space-x-2 rounded-full'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -46,7 +46,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <p className='text-sm mt-2 opacity-50'>
+        <p className='text-sm mt-2 opacity-50 dark:opacity-70'>
           &copy; {new Date().getFullYear()} Bruno Sousa
         </p>
       </div>

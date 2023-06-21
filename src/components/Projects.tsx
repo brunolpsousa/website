@@ -8,7 +8,7 @@ export default function Projects() {
       <button
         id='Projects'
         type='button'
-        className='text-center absolute py-4 m-auto right-48 top-4 text-base font-medium rounded-md hover:underline hover:text-blue-600 hover:dark:text-blue-400'
+        className='text-center absolute py-4 m-auto right-44 top-4 text-base font-medium rounded-md hover:underline customHover'
       >
         {isEN ? 'Projects' : 'Projetos'}
       </button>
