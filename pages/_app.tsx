@@ -1,30 +1,17 @@
-import '../src/style/global.css'
 import Head from 'next/head'
+import ButtonTheme from '../src/components/ButtonTheme'
 import ButtonLang from '../src/components/ButtonLang'
 import Curriculum from '../src/components/Curriculum'
 import Projects from '../src/components/Projects'
-import ButtonTheme from '../src/components/ButtonTheme'
 import Footer from '../src/components/Footer'
 import { Inter } from 'next/font/google'
 import { useState, useEffect } from 'react'
+import '../src/style/global.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function App({ Component, pageProps }) {
   const [autoSVG, setAutoSVG] = useState(false)
-
-  useEffect(() => {
-    const url = 'brunolpsousa.duckdns.org'
-    const hostname = window.location.hostname
-    if (hostname === url) {
-      window.location.replace(
-        'https://brunolpsousa.vercel.app' + window.location.pathname
-      )
-    }
-    setAutoSVG(document.documentElement.classList.contains('dark'))
-    document.querySelector('body')?.classList.add('bg-stone-50')
-    document.querySelector('body')?.classList.add('dark:bg-stone-900')
-  })
 
   const getIcon = () => {
     const icon = autoSVG
@@ -33,16 +20,12 @@ export default function App({ Component, pageProps }) {
     return icon
   }
 
+  useEffect(() => {
+    setAutoSVG(document.documentElement.classList.contains('dark'))
+  })
+
   return (
     <>
-      <style jsx global>{`
-        html {
-          font-family: ${inter.style.fontFamily};
-        }
-        .hang-parts {
-          display: none;
-        }
-      `}</style>
       <Head>
         <title>Bruno Sousa</title>
         <meta name='author' content='Bruno Sousa' />
@@ -73,18 +56,21 @@ export default function App({ Component, pageProps }) {
           content='https://brunolpsousa.vercel.app/assets/share_link.png'
         />
       </Head>
-      <main>
+
+      <main className='flex flex-col items-center h-screen max-w-5xl w-11/12 m-auto'>
         <ButtonTheme />
-        <div className='bg-stone-50 dark:bg-stone-900 text-stone-800 dark:text-stone-200'>
-          <div className='flex flex-col items-center h-screen max-w-5xl w-11/12 m-auto'>
-            <ButtonLang />
-            <Curriculum />
-            <Projects />
-            <Component {...pageProps} />
-            <Footer />
-          </div>
-        </div>
+        <ButtonLang />
+        <Curriculum />
+        <Projects />
+        <Component {...pageProps} />
+        <Footer />
       </main>
+
+      <style jsx global>{`
+        html {
+          font-family: ${inter.style.fontFamily};
+        }
+      `}</style>
     </>
   )
 }

@@ -22,7 +22,7 @@ export default function ButtonLang() {
   useEffect(() => {
     if (isEN) {
       localStorage.lang = 'en'
-    } else if (!isEN) {
+    } else {
       localStorage.lang = 'pt'
     }
   }, [isEN])
