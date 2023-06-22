@@ -11,11 +11,12 @@ export default function Hangman() {
   const [wordToGuess, setWordToGuess] = useState('')
   const [wordToGuessNorm, setWordToGuessNorm] = useState('')
   const [guessed, setGuessed] = useState<string[]>([])
+  const [guessedWords, setGuessedWords] = useState<string[]>([])
   const mistakes = guessed.filter((letter) => !wordToGuessNorm.includes(letter))
   const lose = mistakes.length >= 6
-  const win = wordToGuessNorm
-    .split('')
-    .every((letter) => guessed.includes(letter))
+  const win =
+    wordToGuessNorm !== '' &&
+    wordToGuessNorm.split('').every((letter) => guessed.includes(letter))
 
   function gameTitle(): string {
     const gameSentence = isEN ? 'Hangman' : 'Jogo da Forca'
@@ -46,6 +47,16 @@ export default function Hangman() {
     const words = isEN ? hangWords.en : hangWords.pt
     const secret = words[Math.floor(Math.random() * words.length)].toLowerCase()
     const specialChars = ['-', '/', ' ']
+
+    if (guessedWords.includes(secret)) {
+      return refreshGame()
+    }
+
+    if (guessedWords.length < 10) {
+      setGuessedWords((guessedWords) => [...guessedWords, secret])
+    } else {
+      setGuessedWords([])
+    }
 
     setWordToGuess(secret)
     setWordToGuessNorm(secret.normalize('NFD').replace(/\p{Diacritic}/gu, ''))
