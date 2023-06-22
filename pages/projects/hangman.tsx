@@ -23,17 +23,14 @@ export default function Hangman() {
     const gameSentence = isEN ? 'Hangman' : 'Jogo da Forca'
     const winSentence = isEN ? 'Congratulations!' : 'Parabéns!'
     const loseSentence = isEN ? 'You lose!' : 'Você perdeu!'
-    if (wordToGuessNorm !== '' && win) {
-      return winSentence
-    } else if (lose) {
-      return loseSentence
-    } else {
-      return gameSentence
-    }
+    return win ? winSentence : lose ? loseSentence : gameSentence
   }
 
   function refreshGame() {
     if (typeof document !== 'undefined') {
+      document
+        .querySelectorAll<HTMLElement>('.keys')
+        .forEach((e) => e.removeAttribute('disabled'))
       const parts = document.querySelectorAll<HTMLElement>('.hang-parts')
       for (let i = 0; i < parts.length; i++) {
         parts[i].style.display = 'none'
@@ -41,7 +38,6 @@ export default function Hangman() {
       guessed.forEach((element) => {
         const keys = document.getElementById(element)
         keys?.classList.remove('opacity-30')
-        keys?.removeAttribute('disabled')
       })
     }
 
@@ -53,11 +49,11 @@ export default function Hangman() {
       return refreshGame()
     }
 
-    if (level > 0 && level <= 5 && (secret.length < 4 || secret.length > 6)) {
+    if (level > 0 && level <= 3 && (secret.length < 4 || secret.length > 6)) {
       return refreshGame()
     } else if (
-      level > 5 &&
-      level <= 10 &&
+      level > 3 &&
+      level <= 8 &&
       (secret.length < 3 || secret.length > 8)
     ) {
       return refreshGame()
@@ -107,6 +103,11 @@ export default function Hangman() {
 
   useEffect(() => {
     getLevel()
+    if (win || lose) {
+      document
+        .querySelectorAll<HTMLElement>('.keys')
+        .forEach((e) => e.setAttribute('disabled', 'true'))
+    }
   }, [win, lose])
 
   useEffect(() => {
