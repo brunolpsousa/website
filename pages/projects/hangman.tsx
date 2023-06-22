@@ -8,6 +8,7 @@ import { useCallback, useEffect, useState } from 'react'
 
 export default function Hangman() {
   const isEN = getLang()
+  const [level, setLevel] = useState(0)
   const [wordToGuess, setWordToGuess] = useState('')
   const [wordToGuessNorm, setWordToGuessNorm] = useState('')
   const [guessed, setGuessed] = useState<string[]>([])
@@ -52,6 +53,16 @@ export default function Hangman() {
       return refreshGame()
     }
 
+    if (level > 0 && level <= 5 && (secret.length < 4 || secret.length > 6)) {
+      return refreshGame()
+    } else if (
+      level > 5 &&
+      level <= 10 &&
+      (secret.length < 3 || secret.length > 8)
+    ) {
+      return refreshGame()
+    }
+
     if (guessedWords.length < 10) {
       setGuessedWords((guessedWords) => [...guessedWords, secret])
     } else {
@@ -80,6 +91,24 @@ export default function Hangman() {
     [guessed]
   )
 
+  function getLevel() {
+    if ('hangLevel' in localStorage && level === 0) {
+      setLevel(parseInt(localStorage.hangLevel))
+    } else if (level === 0) {
+      setLevel(1)
+    }
+    if (win) {
+      setLevel(level + 1)
+    } else if (lose) {
+      level > 2 ? setLevel(level - 2) : setLevel(1)
+    }
+    level > 0 ? localStorage.setItem('hangLevel', level.toString()) : null
+  }
+
+  useEffect(() => {
+    getLevel()
+  }, [win, lose])
+
   useEffect(() => {
     refreshGame()
   }, [isEN])
@@ -98,6 +127,10 @@ export default function Hangman() {
   return (
     <div className='flex flex-col items-center justify-center mt-20 mb-24 mx-auto w-full h-screen'>
       <h1 className='text-4xl md:text-6xl mb-8'>{gameTitle()}</h1>
+      <h3 className='text-xl md:text-2xl mb-8'>
+        {isEN ? 'Level: ' : 'Nível: '}
+        {level}
+      </h3>
       <HangmanDraw mistakes={mistakes.length} />
       <HangmanWord reveal={lose} word={wordToGuess} guessed={guessed} />
       <HangmanKeyboard addGuess={addGuess} />
