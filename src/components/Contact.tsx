@@ -5,7 +5,7 @@ import { getLang } from './getLang'
 export default function Contact() {
   const isEN = getLang()
   return (
-    <div className='flex flex-col mb-12 mx-auto w-full h-screen'>
+    <div className='flex flex-col pb-12 w-full'>
       <div className='flex justify-center items-center'>
         <form
           action={gfToken}
@@ -33,10 +33,7 @@ export default function Contact() {
             rows={8}
             className='p-2 mb-4 bg-transparent border-2 border-zinc-300 dark:border-zinc-500 rounded-md focus:outline-none'
           />
-          <button
-            type='submit'
-            className='navBtn place-self-end'
-          >
+          <button type='submit' className='navBtn place-self-end'>
             {isEN ? 'Send' : 'Enviar'}
           </button>
         </form>

@@ -126,31 +126,22 @@ export default function Hangman() {
   }, [guessed])
 
   return (
-    <div className='flex flex-col items-center justify-center mt-20 mb-24 mx-auto w-full h-screen'>
-      <h1 className='text-4xl md:text-6xl mb-8'>{gameTitle()}</h1>
-      <h3 className='text-xl md:text-2xl mb-8'>
+    <div className='flex flex-col items-center justify-center pb-12 m-auto w-full'>
+      <h1 className='text-5xl mb-8'>{gameTitle()}</h1>
+      <h3 className='text-2xl mb-8'>
         {isEN ? 'Level: ' : 'Nível: '}
         {level}
       </h3>
       <HangmanDraw mistakes={mistakes.length} />
       <HangmanWord reveal={lose} word={wordToGuess} guessed={guessed} />
       <HangmanKeyboard addGuess={addGuess} />
-      <div className='relative w-5/6 md:w-1/2'>
+      <div className='my-12 space-x-12'>
         <Link href={'/projects'}>
-          <button
-            id='ReturnButton'
-            type='button'
-            className='navBtn absolute left-3 my-12'
-          >
+          <button type='button' className='navBtn'>
             {isEN ? 'Return' : 'Voltar'}
           </button>
         </Link>
-        <button
-          id='Retry'
-          type='button'
-          className='navBtn absolute right-3 my-12'
-          onClick={() => refreshGame()}
-        >
+        <button type='button' className='navBtn' onClick={() => refreshGame()}>
           {isEN ? 'Play' : 'Jogar'}
         </button>
       </div>

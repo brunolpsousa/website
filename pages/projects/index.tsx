@@ -5,11 +5,11 @@ export default function Projects() {
   const isEN = getLang()
 
   return (
-    <div className='flex flex-col items-center justify-center h-screen m-auto'>
-      <h1 className='text-3xl md:text-4xl mb-3 font-medium'>
+      <div className='flex flex-col items-center justify-center pb-12 m-auto'>
+      <h1 className='text-5xl mb-3 font-medium'>
         {isEN ? 'Projects' : 'Projetos'}
       </h1>
-      <ul className='p-16 text-base md:text-xl m-3'>
+      <ul className='p-16 text-2xl m-3'>
         <li className='hover:underline customHover'>
           <Link href={'projects/hangman'}>
             {isEN ? 'Hangman' : 'Jogo da Forca'}

@@ -9,20 +9,17 @@ export default function Curriculum() {
       : 'https://drive.google.com/file/d/1OkEk3ztGypFpPrNSehem41ENgm5HpaA-/'
   }
   return (
-    <div className='flex flex-col items-center justify-center mt-20 mb-24 mx-auto w-full h-screen'>
+    <div className='flex flex-col items-center justify-center m-auto w-full h-full'>
       <iframe
-        id='Curriculum'
         title='Curriculum'
         src={cv_link() + 'preview'}
-        style={{ maxHeight: '100vw', maxWidth: '85%' }}
         className='h-full w-full'
       />
-      <div className='relative w-4/6 md:w-1/2'>
+      <div className='my-12 space-x-12'>
         <Link href={'/'}>
           <button
-            id='ReturnButton'
             type='button'
-            className='navBtn absolute left-0 my-12'
+            className='navBtn'
           >
             {isEN ? 'Return' : 'Voltar'}
           </button>
@@ -30,7 +27,7 @@ export default function Curriculum() {
         <button
           id='Download'
           type='button'
-          className='navBtn absolute right-0 my-12'
+          className='navBtn'
         >
           <a href={cv_link() + 'view'} target='_blank'>
             Download

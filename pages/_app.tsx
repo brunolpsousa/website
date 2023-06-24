@@ -54,7 +54,7 @@ export default function App({ Component, pageProps }) {
         />
       </Head>
 
-      <main className='flex flex-col items-center h-screen max-w-5xl w-11/12 m-auto'>
+      <main className='flex flex-col items-center m-auto h-screen max-w-5xl w-11/12'>
         <Navbar />
         <Component {...pageProps} />
         <Footer />

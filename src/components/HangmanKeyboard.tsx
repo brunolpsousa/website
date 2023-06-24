@@ -16,7 +16,7 @@ export default function HangmanKeyboard({ addGuess }: KeyboardProps) {
           id={key}
           key={key}
           onClick={() => addGuess(key)}
-          className='keys mx-1 p-1 md:p-2 w-7 md:w-10 bg-zinc-800 dark:bg-zinc-100 text-2xl text-white dark:text-zinc-700 rounded-md'
+          className='keys mx-1 p-1 md:p-2 w-8 md:w-10 bg-zinc-800 dark:bg-zinc-100 text-2xl text-white dark:text-zinc-700 rounded-md'
         >
           {key}
         </button>

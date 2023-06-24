@@ -18,8 +18,8 @@ export default function Timeline() {
     ))
   }
   return (
-    <div className='flex flex-col md:flex-row justify-center my-12'>
-      <div id='chLang' className='w-full md:w-7/12'>
+    <div className='flex flex-col md:flex-row justify-center py-12'>
+      <div className='w-full md:w-7/12'>
         <Title id='Timeline'>{isEN ? 'Timeline' : 'Linha do tempo'}</Title>
         {timemap()}
       </div>

@@ -18,7 +18,7 @@ export default function Navbar() {
     ) : null
   }
   return (
-    <ul className='absolute my-4 top-0 font-medium w-full'>
+    <ul className='font-medium relative p-2 pb-8 top-0 w-screen'>
       <li className='navItem float-left'>
         <ButtonTheme />
       </li>
