@@ -1,4 +1,4 @@
-import { getLang } from './getLang'
+import { getLang } from '../../utils/getLang'
 
 export default function Intro() {
   const isEN = getLang()

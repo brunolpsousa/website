@@ -1,7 +1,6 @@
-import Title from './Title'
 import TimelineItem from './TimelineItem'
-import timeline from '../data/timeline'
-import { getLang } from './getLang'
+import timeline from '../../data/timeline'
+import { getLang } from '../../utils/getLang'
 
 export default function Timeline() {
   const isEN = getLang()
@@ -20,7 +19,9 @@ export default function Timeline() {
   return (
     <div className='flex flex-col md:flex-row justify-center py-12'>
       <div className='w-full md:w-7/12'>
-        <Title id='Timeline'>{isEN ? 'Timeline' : 'Linha do tempo'}</Title>
+        <h1 className='text-2xl font-medium mb-5'>
+          {isEN ? 'Timeline' : 'Linha do tempo'}
+        </h1>
         {timemap()}
       </div>
     </div>

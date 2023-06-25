@@ -1,6 +1,5 @@
-import Title from './Title'
-import { gfToken } from '../data/getform'
-import { getLang } from './getLang'
+import { gfToken } from '../../data/getform'
+import { getLang } from '../../utils/getLang'
 
 export default function Contact() {
   const isEN = getLang()
@@ -12,7 +11,9 @@ export default function Contact() {
           method='POST'
           className='flex flex-col w-full md:w-7/12'
         >
-          <Title id='Contact'>{isEN ? 'Contact' : 'Contato'}</Title>
+          <h1 className='text-2xl font-medium mb-5'>
+            {isEN ? 'Contact' : 'Contato'}
+          </h1>
           <input type='hidden' name='_gotcha' className='hidden !imporant' />
           <input
             type='text'
