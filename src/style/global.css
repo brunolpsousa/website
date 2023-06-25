@@ -10,9 +10,9 @@
     @apply hover:text-blue-600 hover:dark:text-blue-400;
   }
   .navItem {
-    @apply float-right block text-center m-4 hover:underline customHover;
+    @apply float-right block text-center select-none my-4 mx-3 md:m-4 hover:underline customHover;
   }
   .navBtn {
-    @apply text-center inline-block px-8 py-3 text-base font-medium rounded-md text-white dark:text-zinc-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100;
+    @apply text-center select-none inline-block px-8 py-3 text-base font-medium rounded-md text-white dark:text-zinc-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100;
   }
 }

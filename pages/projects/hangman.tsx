@@ -127,7 +127,7 @@ export default function Hangman() {
 
   return (
     <div className='flex flex-col items-center justify-center pb-12 m-auto w-full'>
-      <h1 className='text-5xl mb-8'>{gameTitle()}</h1>
+      <h1 className='text-center leading-tight text-5xl mb-8'>{gameTitle()}</h1>
       <h3 className='text-2xl mb-8'>
         {isEN ? 'Level: ' : 'Nível: '}
         {level}
@@ -135,7 +135,7 @@ export default function Hangman() {
       <HangmanDraw mistakes={mistakes.length} />
       <HangmanWord reveal={lose} word={wordToGuess} guessed={guessed} />
       <HangmanKeyboard addGuess={addGuess} />
-      <div className='my-12 space-x-12'>
+      <div className='flex flex-shrink my-12 space-x-12'>
         <Link href={'/projects'}>
           <button type='button' className='navBtn'>
             {isEN ? 'Return' : 'Voltar'}

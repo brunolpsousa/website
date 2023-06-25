@@ -16,7 +16,7 @@ export default function HangmanKeyboard({ addGuess }: KeyboardProps) {
           id={key}
           key={key}
           onClick={() => addGuess(key)}
-          className='keys mx-1 p-1 md:p-2 w-7 md:w-10 bg-zinc-800 dark:bg-zinc-100 text-2xl text-white dark:text-zinc-700 rounded-md'
+          className='keys p-1 mx-1 md:p-2 w-7 md:w-10 bg-zinc-800 dark:bg-zinc-100 text-2xl text-white dark:text-zinc-700 rounded-md'
         >
           {key}
         </button>
@@ -27,11 +27,11 @@ export default function HangmanKeyboard({ addGuess }: KeyboardProps) {
   return (
     <div
       id='keyboard'
-      className='grid grid-flow-row gap-3 place-items-center justify-items-center'
+      className='flex flex-col gap-3 place-items-center justify-items-center select-none'
     >
-      <span>{mapKeys(keys[0])}</span>
-      <span>{mapKeys(keys[1])}</span>
-      <span>{mapKeys(keys[2])}</span>
+      <span className='flex flex-shrink'>{mapKeys(keys[0])}</span>
+      <span className='flex flex-shrink'>{mapKeys(keys[1])}</span>
+      <span className='flex flex-shrink'>{mapKeys(keys[2])}</span>
     </div>
   )
 }

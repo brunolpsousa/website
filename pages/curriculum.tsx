@@ -15,7 +15,7 @@ export default function Curriculum() {
         src={cv_link() + 'preview'}
         className='h-full w-full'
       />
-      <div className='my-12 space-x-12'>
+      <div className='flex flex-shrink my-12 space-x-12'>
         <Link href={'/'}>
           <button
             type='button'
