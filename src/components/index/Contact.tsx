@@ -1,5 +1,5 @@
-import { gfToken } from '../../data/getform'
-import { getLang } from '../../utils/getLang'
+import { gfToken } from '@data/getform'
+import { getLang } from '@utils/getLang'
 
 export default function Contact() {
   const isEN = getLang()

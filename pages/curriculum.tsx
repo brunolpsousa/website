@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getLang } from '../src/utils/getLang'
+import { getLang } from '@utils/getLang'
 
 export default function Curriculum() {
   const isEN = getLang()
@@ -17,18 +17,11 @@ export default function Curriculum() {
       />
       <div className='flex flex-shrink my-12 space-x-12'>
         <Link href={'/'}>
-          <button
-            type='button'
-            className='navBtn'
-          >
+          <button type='button' className='navBtn'>
             {isEN ? 'Return' : 'Voltar'}
           </button>
         </Link>
-        <button
-          id='Download'
-          type='button'
-          className='navBtn'
-        >
+        <button id='Download' type='button' className='navBtn'>
           <a href={cv_link() + 'view'} target='_blank'>
             Download
           </a>

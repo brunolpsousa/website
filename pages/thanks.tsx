@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getLang } from '../src/utils/getLang'
+import { getLang } from '@utils/getLang'
 
 export default function ThankYou() {
   const isEN = getLang()
@@ -17,19 +17,11 @@ export default function ThankYou() {
       onLoad={returnToIndex()}
     >
       <h1 className='text-3xl mb-3 font-medium'>
-        {isEN
-          ? 'Message sent successfully'
-          : 'Mensagem enviada com sucesso'}
+        {isEN ? 'Message sent successfully' : 'Mensagem enviada com sucesso'}
       </h1>
-      <p className='text-2xl mb-3'>
-        {isEN ? 'Thank you!' : 'Obrigado!'}
-      </p>
+      <p className='text-2xl mb-3'>{isEN ? 'Thank you!' : 'Obrigado!'}</p>
       <Link href={'/'}>
-        <button
-          id='ReturnButton-Thx'
-          type='button'
-          className='navBtn my-12'
-        >
+        <button id='ReturnButton-Thx' type='button' className='navBtn my-12'>
           {isEN ? 'Return' : 'Voltar'}
         </button>
       </Link>

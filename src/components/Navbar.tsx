@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import ButtonLang from './ButtonLang'
 import ButtonTheme from './ButtonTheme'
-import { getLang } from '../utils/getLang'
+import { getLang } from '@utils/getLang'
 import { useEffect } from 'react'
 
 export default function Navbar() {
