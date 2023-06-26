@@ -1,9 +1,9 @@
-import HangmanDraw from '../../src/components/projects/hangman/HangmanDraw'
-import HangmanWord from '../../src/components/projects/hangman/HangmanWord'
-import HangmanKeyboard from '../../src/components/projects/hangman/HangmanKeyboard'
+import HangmanDraw from '@components/projects/hangman/HangmanDraw'
+import HangmanWord from '@components/projects/hangman/HangmanWord'
+import HangmanKeyboard from '@components/projects/hangman/HangmanKeyboard'
 import Link from 'next/link'
-import hangWords from '../../src/data/hangmanWords'
-import { getLang } from '../../src/utils/getLang'
+import hangWords from '@data/hangmanWords'
+import { getLang } from '@utils/getLang'
 import { useCallback, useEffect, useState } from 'react'
 
 export default function Hangman() {
