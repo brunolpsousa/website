@@ -1,29 +1,30 @@
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import usePersistedState from '@utils/usePersistedState'
 
 export default function ButtonLang() {
-  const [isEN, setIsEN] = useState(false)
+  const [isEN, setIsEN] = usePersistedState('lang', '')
+  const [icon, setIcon] = useState('pt')
 
   const handleLangSwitch = () => {
-    isEN ? (localStorage.lang = 'pt') : (localStorage.lang = 'en')
-    setIsEN(isEN ? false : true)
+    const str = isEN === 'pt' ? 'en' : 'pt'
+    setIsEN(str)
+    setIcon(str)
   }
 
   useEffect(() => {
-    if (
-      localStorage.lang === 'en' ||
-      (!('lang' in localStorage) &&
-        !navigator.languages.toString().includes('pt'))
-    ) {
-      setIsEN(true)
+    const hasPT = navigator.languages.toString().includes('pt')
+    if (isEN === 'en' || (isEN === '' && !hasPT)) {
+      setIsEN('en')
     } else {
-      setIsEN(false)
+      setIsEN('pt')
     }
-  }, [isEN])
+    setIcon(isEN)
+  }, [])
 
   return (
     <Link href={''} onClick={handleLangSwitch}>
-      {isEN ? 'en' : 'pt'}
+      {icon}
     </Link>
   )
 }

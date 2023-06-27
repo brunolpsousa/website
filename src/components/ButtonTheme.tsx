@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import usePersistedState from '@utils/usePersistedState'
 
 const sun = (
   <svg
@@ -53,68 +54,50 @@ const auto = (
 )
 
 export default function ButtonTheme() {
-  const [theme, setTheme] = useState(0)
+  const [theme, setTheme] = usePersistedState<string>('theme', 'auto')
+  const [colors, setColors] = usePersistedState<string>('colors', 'light')
+  const [icon, setIcon] = useState<JSX.Element>(auto)
 
   const setLight = () => {
     document.documentElement.classList.remove('dark')
+    setColors('light')
   }
   const setDark = () => {
     document.documentElement.classList.add('dark')
+    setColors('dark')
   }
 
-  const handler = () => {
-    if (theme === 0 && !('theme' in localStorage)) {
-      document.documentElement.classList.contains('dark')
-        ? setLight()
-        : setDark()
-    }
-  }
-
-  const handleThemeSwitch = () => {
-    if (theme === 1 || theme === 2) {
-      setTheme(0)
-      localStorage.removeItem('theme')
-    } else {
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setTheme(1)
-        localStorage.setItem('theme', 'light')
-      } else {
-        setTheme(2)
-        localStorage.setItem('theme', 'dark')
-      }
-    }
-    document.documentElement.classList.contains('dark') ? setLight() : setDark()
+  const toggleTheme = () => {
+    setTheme(
+      theme === 'light' || theme === 'dark'
+        ? 'auto'
+        : theme === 'auto' && colors === 'dark'
+        ? 'light'
+        : 'dark'
+    )
   }
 
   useEffect(() => {
-    if (!('theme' in localStorage)) {
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? setDark()
-        : setLight()
-      setTheme(0)
-    } else if (localStorage.theme === 'light') {
-      setLight()
-      setTheme(1)
-    } else if (localStorage.theme === 'dark') {
-      setDark()
-      setTheme(2)
-    }
+    const mMedia = window.matchMedia('(prefers-color-scheme: dark)').matches
+    ;(mMedia && theme === 'auto') || theme === 'dark' ? setDark() : setLight()
+    setIcon(theme === 'light' ? sun : theme === 'dark' ? moon : auto)
+  }, [theme])
 
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', handler)
-    return () =>
-      window
-        .matchMedia('(prefers-color-scheme: dark)')
-        .removeEventListener('change', handler)
+  useEffect(() => {
+    const mMedia = window.matchMedia('(prefers-color-scheme: dark)')
+    mMedia.onchange = () => {
+      if (JSON.parse(localStorage.theme) === 'auto') {
+        mMedia.matches ? setDark() : setLight()
+      }
+    }
   }, [])
 
   return (
     <button
-      onClick={handleThemeSwitch}
+      onClick={toggleTheme}
       className='p-2 bg-violet-300 dark:bg-yellow-200 text-lg text-white dark:text-zinc-700 rounded-md'
     >
-      {theme === 1 ? moon : theme === 2 ? sun : auto}
+      {icon}
     </button>
   )
 }
