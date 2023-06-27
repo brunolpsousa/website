@@ -16,10 +16,11 @@ export default function ButtonLang() {
     const hasPT = navigator.languages.toString().includes('pt')
     if (isEN === 'en' || (isEN === '' && !hasPT)) {
       setIsEN('en')
+      setIcon('en')
     } else {
       setIsEN('pt')
+      setIcon('pt')
     }
-    setIcon(isEN)
   }, [])
 
   return (

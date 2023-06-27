@@ -17,6 +17,7 @@ export default function Hangman() {
   const mistakes = guessed.filter((letter) => !wordToGuessNorm.includes(letter))
 
   const [level, setLevel] = usePersistedState('hangLevel', 1)
+  const [currentLevel, setCurrentLevel] = useState(1)
   const win =
     wordToGuessNorm !== '' &&
     wordToGuessNorm.split('').every((letter) => guessed.includes(letter))
@@ -27,14 +28,6 @@ export default function Hangman() {
     const winSentence = isEN ? 'Congratulations!' : 'Parabéns!'
     const loseSentence = isEN ? 'You lose!' : 'Você perdeu!'
     return win ? winSentence : lose ? loseSentence : gameSentence
-  }
-
-  function currentLevel(): number {
-    const [currentLevel, setCurrentLevel] = useState(1)
-    useEffect(() => {
-      setCurrentLevel(level)
-    }, [level])
-    return currentLevel
   }
 
   function checkResult(): void {
@@ -121,6 +114,7 @@ export default function Hangman() {
 
   function refreshGame(): void {
     clearGame()
+    setCurrentLevel(level)
     sortWord()
   }
 
@@ -158,7 +152,7 @@ export default function Hangman() {
       <h1 className='text-center leading-tight text-5xl mb-8'>{gameTitle()}</h1>
       <h3 className='text-2xl mb-8'>
         {isEN ? 'Level: ' : 'Nível: '}
-        {currentLevel()}
+        {currentLevel}
       </h3>
       <HangmanDraw mistakes={mistakes.length} />
       <HangmanWord reveal={lose} word={wordToGuess} guessed={guessed} />
