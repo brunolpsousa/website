@@ -13,10 +13,10 @@ export default function TimelineItem({
 }) {
   const isEN = getLang()
   function getDuration(duration: string[]): string {
-    const localDate = new Date(duration[0])
+    const initialDate = new Date(duration[0])
     const endDate = duration[1] ? new Date(duration[1]) : new Date()
     const totalTime = Math.round(
-      (endDate.valueOf() - localDate.valueOf()) / 1000 / 60 / 60 / 24 / 30
+      (endDate.valueOf() - initialDate.valueOf()) / 1000 / 60 / 60 / 24 / 30
     )
 
     if (totalTime < 2) {
