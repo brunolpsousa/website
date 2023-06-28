@@ -1,4 +1,5 @@
 import { getLang } from '@utils/getLang'
+
 export default function TimelineItem({
   year,
   title,
@@ -10,7 +11,7 @@ export default function TimelineItem({
   duration: string[]
   details: string
 }) {
-  const isEn = getLang()
+  const isEN = getLang()
   function getDuration(duration: string[]): string {
     const localDate = new Date(duration[0])
     const endDate = duration[1] ? new Date(duration[1]) : new Date()
@@ -19,7 +20,7 @@ export default function TimelineItem({
     )
 
     if (totalTime < 2) {
-      return isEn ? 'now' : 'agora'
+      return isEN ? 'now' : 'agora'
     }
 
     const year = totalTime > 11 ? Math.floor(totalTime / 12) : null
@@ -29,13 +30,10 @@ export default function TimelineItem({
 
     if (year) {
       result = year.toString()
-      result += isEn ? ' year' : ' ano'
-      year > 1 ? (result += 's') : null
+      result += isEN ? 'y ' : 'a '
     }
     if (month > 1) {
-      year
-        ? (result += isEn ? ` and ${month} months` : ` e ${month} meses`)
-        : (result = month + (isEn ? ' months' : ' meses'))
+      result += `${month}m`
     }
     return result
   }

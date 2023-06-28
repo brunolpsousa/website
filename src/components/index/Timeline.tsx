@@ -8,7 +8,7 @@ export default function Timeline() {
     const timelang = isEN ? timeline.en : timeline.pt
     return timelang.map((item) => (
       <TimelineItem
-        key='TimelineItem'
+        key={item.title}
         year={item.year}
         title={item.title}
         duration={item.duration}
