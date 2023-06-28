@@ -18,7 +18,7 @@ export default function Navbar() {
 
   useEffect(() => {
     handler(window.location.pathname.split('/')[1])
-  }, [])
+  })
 
   return (
     <ul
@@ -29,19 +29,13 @@ export default function Navbar() {
         <ButtonTheme />
       </li>
       <li className='navItem'>
-        <Link href='/' onClick={() => handler('')}>
-          {isEN ? 'Home' : 'Início'}
-        </Link>
+        <Link href='/'>{isEN ? 'Home' : 'Início'}</Link>
       </li>
       <li id='projects' className='navItem'>
-        <Link href='/projects' onClick={() => handler('projects')}>
-          {isEN ? 'Projects' : 'Projetos'}
-        </Link>
+        <Link href='/projects'>{isEN ? 'Projects' : 'Projetos'}</Link>
       </li>
       <li id='curriculum' className='navItem'>
-        <Link href='/curriculum' onClick={() => handler('curriculum')}>
-          {isEN ? 'Resume' : 'Currículo'}
-        </Link>
+        <Link href='/curriculum'>{isEN ? 'Resume' : 'Currículo'}</Link>
       </li>
       <li id='buttonLang' className='navItem hover:no-underline'>
         <ButtonLang />
