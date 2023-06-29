@@ -23,7 +23,7 @@ export default function Navbar() {
   return (
     <ul
       id='navbar'
-      className='font-medium flex flex-row place-content-end items-center relative mb-8 py-2 px-0 md:px-2 pb-8 top-0 w-[97vw]'
+      className='font-medium flex flex-row place-content-end items-center relative mb-8 pb-8 top-2 w-full'
     >
       <li id='buttonTheme' className='navItem absolute left-0'>
         <ButtonTheme />
