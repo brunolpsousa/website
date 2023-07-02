@@ -1,9 +1,9 @@
+import '@style/main.css'
 import Head from 'next/head'
 import Navbar from '@components/Navbar'
 import Footer from '@components/Footer'
 import { Inter } from 'next/font/google'
 import { useState, useEffect } from 'react'
-import '@style/main.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -60,7 +60,7 @@ export default function App({ Component, pageProps }) {
 
       <style jsx global>{`
         html {
-          font-family: ${inter.style.fontFamily};
+          font-family: ${inter.style.fontFamily}, sans-serif;
         }
       `}</style>
     </>
