@@ -17,10 +17,10 @@
   }
   /* draggable scrollbar itself */
   body::-webkit-scrollbar-thumb {
-    @apply bg-zinc-300 dark:bg-zinc-700 border-zinc-100 dark:border-zinc-800 border-4 border-solid rounded-2xl;
+    @apply border-4 border-solid rounded-2xl bg-zinc-300 dark:bg-zinc-600 border-zinc-100 dark:border-zinc-800;
   }
   body::-webkit-scrollbar-thumb:hover {
-    @apply bg-zinc-400 border-zinc-50 dark:bg-zinc-950 dark:border-zinc-700 border-2;
+    @apply border-2 bg-zinc-400 border-zinc-50 dark:bg-zinc-400 dark:border-zinc-950;
   }
 
   .customHover {
