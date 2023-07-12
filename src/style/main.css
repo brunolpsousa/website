@@ -6,6 +6,23 @@
   body {
     @apply text-zinc-800 dark:text-zinc-100 bg-zinc-100 dark:bg-zinc-800;
   }
+
+  /* entire scrollbar scope */
+  body::-webkit-scrollbar {
+    @apply w-3;
+  }
+  /* space below the scrollbar */
+  body::-webkit-scrollbar-track {
+    @apply bg-zinc-100 dark:bg-zinc-800;
+  }
+  /* draggable scrollbar itself */
+  body::-webkit-scrollbar-thumb {
+    @apply bg-zinc-300 dark:bg-zinc-700 border-zinc-100 dark:border-zinc-800 border-4 border-solid rounded-2xl;
+  }
+  body::-webkit-scrollbar-thumb:hover {
+    @apply bg-zinc-400 border-zinc-50 dark:bg-zinc-950 dark:border-zinc-700 border-2;
+  }
+
   .customHover {
     @apply hover:text-blue-600 hover:dark:text-blue-400;
   }
