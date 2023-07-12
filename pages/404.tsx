@@ -5,7 +5,7 @@ export default function Custom404() {
   const isEN = getLang()
   const returnToIndex: Function = () => {
     if (typeof document !== 'undefined') {
-      setInterval(function () {
+      setInterval(function() {
         document?.getElementById('ReturnButton-404')?.click()
       }, 3000)
     }

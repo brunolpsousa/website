@@ -72,14 +72,14 @@ export default function ButtonTheme() {
       theme === 'light' || theme === 'dark'
         ? 'auto'
         : theme === 'auto' && colors === 'dark'
-        ? 'light'
-        : 'dark'
+          ? 'light'
+          : 'dark'
     )
   }
 
   useEffect(() => {
     const mMedia = window.matchMedia('(prefers-color-scheme: dark)').matches
-    ;(mMedia && theme === 'auto') || theme === 'dark' ? setDark() : setLight()
+      ; (mMedia && theme === 'auto') || theme === 'dark' ? setDark() : setLight()
     setIcon(theme === 'light' ? sun : theme === 'dark' ? moon : auto)
   }, [theme])
 

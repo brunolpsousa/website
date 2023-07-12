@@ -5,7 +5,7 @@ export default function ThankYou() {
   const isEN = getLang()
   const returnToIndex: Function = () => {
     if (typeof document !== 'undefined') {
-      setInterval(function () {
+      setInterval(function() {
         document?.getElementById('ReturnButton-Thx')?.click()
       }, 5000)
     }
