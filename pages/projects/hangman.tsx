@@ -133,7 +133,7 @@ export default function Hangman() {
 
   useEffect(() => {
     refreshGame()
-  }, [])
+  }, [isEN])
 
   useEffect(() => {
     checkResult()
