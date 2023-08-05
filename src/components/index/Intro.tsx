@@ -1,6 +1,6 @@
-import { getLang } from '@utils/getLang'
+import getLang from '@utils/getLang'
 
-export default function Intro() {
+export default () => {
   const isEN = getLang()
   const en = (
     <>

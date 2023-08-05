@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import usePersistedState from '@utils/usePersistedState'
 
-export default function ButtonLang() {
+export default () => {
   const [isEN, setIsEN] = usePersistedState('lang', '')
   const [icon, setIcon] = useState('pt')
 

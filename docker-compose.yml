@@ -1,11 +1,28 @@
-version: '3'
+version: '3.8'
 
 services:
   app:
-    user: node:node
+    container_name: app
+    working_dir: /app
     build: .
+    networks:
+      - frontend
+    volumes:
+      - ./src:/app/src
+    environment:
+      NODE_ENV: development
+    user: node:node
     ports:
       - 3000:3000
-    volumes:
-      - .:/app
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '5'
     command: npm run dev
+    restart: always
+
+networks:
+  frontend:
+    name: frontend
+    driver: bridge

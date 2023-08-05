@@ -1,8 +1,8 @@
 import TimelineItem from './TimelineItem'
 import timeline from '@data/timeline'
-import { getLang } from '@utils/getLang'
+import getLang from '@utils/getLang'
 
-export default function Timeline() {
+export default () => {
   const isEN = getLang()
   const timemap = () => {
     const timelang = isEN ? timeline.en : timeline.pt

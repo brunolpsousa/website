@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { getLang } from '@utils/getLang'
+import getLang from '@utils/getLang'
 
-export default function Curriculum() {
+export default () => {
   const isEN = getLang()
   const cv_link = () => {
     return isEN

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const getLang = () => {
+export default () => {
   const [langEN, setLangEN] = useState(false)
   useEffect(() => {
     const lang = JSON.parse(window.localStorage.lang)
@@ -8,5 +8,3 @@ const getLang = () => {
   })
   return langEN
 }
-
-export { getLang }

@@ -3,11 +3,11 @@ import HangmanWord from '@components/projects/hangman/HangmanWord'
 import HangmanKeyboard from '@components/projects/hangman/HangmanKeyboard'
 import Link from 'next/link'
 import hangWords from '@data/hangmanWords'
-import { getLang } from '@utils/getLang'
+import getLang from '@utils/getLang'
 import { useCallback, useEffect, useState } from 'react'
 import usePersistedState from '@utils/usePersistedState'
 
-export default function Hangman() {
+export default () => {
   const isEN = getLang()
 
   const [wordToGuess, setWordToGuess] = useState('')
@@ -128,7 +128,7 @@ export default function Hangman() {
 
       setGuessed((guessed) => [...guessed, letter])
     },
-    [guessed]
+    [guessed],
   )
 
   useEffect(() => {

@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import { getLang } from '@utils/getLang'
+import getLang from '@utils/getLang'
 
-export default function Custom404() {
+export default () => {
   const isEN = getLang()
   const returnToIndex: Function = () => {
     if (typeof document !== 'undefined') {
-      setInterval(function() {
+      setInterval(() => {
         document?.getElementById('ReturnButton-404')?.click()
       }, 3000)
     }

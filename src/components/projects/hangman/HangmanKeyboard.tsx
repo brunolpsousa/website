@@ -2,7 +2,7 @@ interface KeyboardProps {
   addGuess: (key: string) => void
 }
 
-export default function HangmanKeyboard({ addGuess }: KeyboardProps) {
+export default ({ addGuess }: KeyboardProps) => {
   const keys = [
     ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
     ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
