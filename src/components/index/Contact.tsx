@@ -13,7 +13,6 @@ export default () => {
     redirectTo: 'https://brunolpsousa.vercel.app/thanks',
     accessKey: process.env.NEXT_PUBLIC_FORM,
   })
-  console.log(contact.accessKey)
 
   const [_, setResponse] = useState({
     type: '',
@@ -46,11 +45,12 @@ export default () => {
         })
       }
     } catch (e) {
-      console.log('An error occurred', e)
       setResponse({
         type: 'error',
         message: 'An error occured while submitting the form',
       })
+    } finally {
+      window.location.replace('thanks')
     }
   }
 
