@@ -3,12 +3,36 @@ version: '3.8'
 services:
   app:
     container_name: app
+    profiles: ["prod"]
     working_dir: /app
     build: .
     networks:
       - frontend
     volumes:
       - ./src:/app/src
+    environment:
+      NODE_ENV: production
+    user: node:node
+    ports:
+      - 2000:3000
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '5'
+    command: sh -c "npm run build && npm start"
+    restart: always
+
+  dev:
+    container_name: dev
+    working_dir: /app
+    build: .
+    networks:
+      - frontend
+    volumes:
+      - ./src:/app/src
+    environment:
+      NODE_ENV: development
     user: node:node
     ports:
       - 3000:3000

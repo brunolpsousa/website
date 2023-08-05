@@ -1,5 +1,9 @@
 include .env
 
+args = $(filter-out $@,$(MAKECMDGOALS))
+current_dir = $(notdir $(shell pwd))
+dir = $(subst #,,${current_dir})
+
 upd:
 	docker-compose up -d
 
@@ -16,13 +20,16 @@ restart:
 	docker-compose restart
 
 build:
-	docker-compose build --no-cache
+	docker-compose build --no-cache ${args}
 
 logs:
 	docker-compose logs -f
 
 sh:
 	docker-compose run --rm app sh
+
+prod:
+	docker-compose run --rm app
 
 test:
 	docker-compose run --rm app npm run test
@@ -34,11 +41,7 @@ coverage:
 %:
 	@:
 
-current_dir = $(notdir $(shell pwd))
-dir = $(subst #,,${current_dir})
-args = $(filter-out $@,$(MAKECMDGOALS))
-
 rm:
 	docker rmi ${dir}-${args}
 
-.PHONY: upd up down stop restart build logs sh test coverage rm
+.PHONY: upd up down stop restart build logs sh prod test coverage rm
