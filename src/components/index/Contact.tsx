@@ -1,7 +1,7 @@
 import { gfToken } from '@data/getform'
-import { getLang } from '@utils/getLang'
+import getLang from '@utils/getLang'
 
-export default function Contact() {
+export default () => {
   const isEN = getLang()
   return (
     <div className='flex flex-col pb-12 w-full'>

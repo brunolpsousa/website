@@ -4,11 +4,7 @@ interface HangmanWordProps {
   reveal: boolean
 }
 
-export default function HangmanWord({
-  word,
-  guessed,
-  reveal,
-}: HangmanWordProps) {
+export default ({ word, guessed, reveal }: HangmanWordProps) => {
   return (
     <div className='flex justify-center gap-2 text-4xl md:text-6xl font-bold uppercase m-12'>
       {word.split('').map((letter, index) => (
@@ -23,13 +19,13 @@ export default function HangmanWord({
             style={{
               visibility:
                 guessed.includes(
-                  letter.normalize('NFD').replace(/\p{Diacritic}/gu, '')
+                  letter.normalize('NFD').replace(/\p{Diacritic}/gu, ''),
                 ) || reveal
                   ? 'visible'
                   : 'hidden',
               color:
                 !guessed.includes(
-                  letter.normalize('NFD').replace(/\p{Diacritic}/gu, '')
+                  letter.normalize('NFD').replace(/\p{Diacritic}/gu, ''),
                 ) && reveal
                   ? 'red'
                   : 'currentcolor',

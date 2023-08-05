@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function App({ Component, pageProps }) {
+export default ({ Component, pageProps }: any) => {
   const darkThemeIcon =
     'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYBAMAAAASWSDLAAAABGdBTUEAALGPC/xhBQAAACBjSFJN AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAKlBMVEUAAAD///////////// ///////////+//////7//v/+/v/+//7+/v7//v7hvSmpAAAABnRSTlMAEM+/0MD0NtDBAAAAAWJL R0QB/wIt3gAAAAd0SU1FB+cEBAQ6OcDSTqAAAAB2SURBVBjTY2CgAhAyYGBgUYSwGdUCGBhYiwQg Ei1AmtETLMWo5QiiRJJAUkJLwAoYvYFSjBqOEK0iTQIMLC0CUHPcDBhYJwkgDGX0gNogdAQoKnIJ YoA2SC+jD1hKqAQsJgKynFETYiijJ8htMENFQG5zpIaXAY/fDk3GrDYOAAAAJXRFWHRkYXRlOmNy ZWF0ZQAyMDIzLTA0LTA0VDAyOjU4OjU3KzAyOjAwLS8rSwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAy My0wNC0wNFQwMjo1ODo1NyswMjowMFxyk/cAAAAASUVORK5CYII='
   const lightThemeIcon =

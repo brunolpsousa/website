@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import { getLang } from '@utils/getLang'
+import getLang from '@utils/getLang'
 
-export default function ThankYou() {
+export default () => {
   const isEN = getLang()
   const returnToIndex: Function = () => {
     if (typeof document !== 'undefined') {
-      setInterval(function() {
+      setInterval(() => {
         document?.getElementById('ReturnButton-Thx')?.click()
       }, 5000)
     }

@@ -2,7 +2,7 @@ interface HangmanDrawProps {
   mistakes: number
 }
 
-export default function HangmanDraw({ mistakes }: HangmanDrawProps) {
+export default ({ mistakes }: HangmanDrawProps) => {
   const draw: Function = () => {
     if (typeof document !== 'undefined') {
       const parts = document?.querySelectorAll<HTMLElement>('.hang-parts')!

@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { getLang } from '../../src/utils/getLang'
+import getLang from '@utils/getLang'
 
-export default function Projects() {
+export default () => {
   const isEN = getLang()
 
   return (
