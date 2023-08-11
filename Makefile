@@ -58,6 +58,8 @@ rm:
 rmf:
 	docker rmi ${dir}${sep}${args} -f
 
+# This allows us to accept extra arguments (by doing nothing when we get a job that
+# doesn't match, rather than throwing an error).
 %:
 	@:
 
