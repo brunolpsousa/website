@@ -1,9 +1,22 @@
 include .env
 
+# The $(notdir) function in GNU Make takes a list of arguments, separated by spaces.
+# Some functions support escaping spaces with \\, but $(notdir) is not one of them.
+# This defines a "space-safe" version of notdir called notdirx. It's quite simple:
+# s^ first turns all spaces to circumflex accents (hoping that they cannot be present
+# in file names), and ^s converts back. In between we can safely call the original
+# notdir function.
+# https://stackoverflow.com/questions/1189781/using-make-dir-or-notdir-on-a-path-with-spaces
+
+s^ = $(subst $(empty) ,^,$1)
+^s = $(subst ^, ,$1)
+notdirx = $(call ^s,$(notdir $(call s^,$1)))
+
+_dir = $(call notdirx,${PWD})
+dir = $(subst #,,${_dir})
+sep = $(shell command -vp docker >/dev/null && echo - || echo _)
+
 args = $(shell arg="$(filter-out $@,$(MAKECMDGOALS))" && echo $${arg:-${1}})
-current_dir = $(notdir $(shell pwd))
-dir = $(subst #,,${current_dir})
-sep = $(shell command -vp docker && echo - || echo _)
 
 upd:
 	docker-compose up -d $(call args,)
