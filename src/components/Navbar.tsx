@@ -7,17 +7,17 @@ import { useEffect } from 'react'
 export default () => {
   const isEN = getLang()
 
-  const handler = (currentPath: string) => {
-    const getNavItems = document.querySelectorAll('.navItem')
-    for (let i = 0; i < getNavItems.length; i++) {
-      getNavItems[i].id === currentPath
-        ? getNavItems[i].classList.add('hidden')
-        : getNavItems[i].classList.remove('hidden')
+  const navLinkHide = (currentPath: string) => {
+    const getNavLinks = document.querySelectorAll('.navItem')
+    for (const link of getNavLinks) {
+      link.id === currentPath
+        ? link.classList.add('hidden')
+        : link.classList.remove('hidden')
     }
   }
 
   useEffect(() => {
-    handler(window.location.pathname.split('/')[1])
+    navLinkHide(window.location.pathname.split('/')[1])
   })
 
   return (
