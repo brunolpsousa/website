@@ -1,4 +1,5 @@
 include .env
+ctr = 'app'
 
 # The $(notdir) function in GNU Make takes a list of arguments, separated by spaces.
 # Some functions support escaping spaces with \\, but $(notdir) is not one of them.
@@ -40,27 +41,30 @@ logs:
 	docker-compose logs -f
 
 sh:
-	docker-compose exec $(call args,app) sh
+	docker-compose exec $(call args,${ctr}) sh
 
 prod:
-	docker-compose run -e NODE_ENV=production --name app_prod -p 3001:${PORT} --rm \
-		$(call args,app) sh -c "npm run build && npm start"
+	docker-compose run -e NODE_ENV=production --name ${ctr}_production -p 5001:${PORT} \
+		--rm $(call args,${ctr}) sh -c "npm run build && npm start"
 
 test:
-	docker-compose exec $(call args,app) npm test
+	docker-compose exec $(call args,${ctr}) npm test
 
 coverage:
-	docker-compose exec $(call args,app) npm run coverage
+	docker-compose exec $(call args,${ctr}) npm run coverage
 
 rm:
-	docker rmi ${dir}${sep}${args}
+	docker rmi ${dir}${sep}$(call args,${ctr})
 
 rmf:
-	docker rmi ${dir}${sep}${args} -f
+	docker rmi ${dir}${sep}$(call args,${ctr}) -f
+
+redeploy:
+	make down; make build; make up
 
 # This allows us to accept extra arguments (by doing nothing when we get a job that
 # doesn't match, rather than throwing an error).
 %:
 	@:
 
-.PHONY: upd up down stop restart build logs sh prod test coverage rm rmf
+.PHONY: upd up down stop restart build logs sh prod test coverage rm rmf redeploy
