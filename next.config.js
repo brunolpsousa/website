@@ -4,6 +4,7 @@
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
+  output: 'export',
   async redirects() {
     return [
       {
@@ -22,7 +23,7 @@ const nextConfig = {
         permanent: true,
       },
     ]
-  }
+  },
 }
 
 module.exports = nextConfig
