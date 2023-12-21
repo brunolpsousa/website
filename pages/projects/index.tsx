@@ -16,6 +16,15 @@ export default () => {
           </Link>
         </li>
       </ul>
+      <ul className='hover:underline customHover'>
+        <Link
+          className='extLink'
+          href={'https://github.com/brunolpsousa'}
+          target='_blank'
+        >
+          {isEN ? 'See more at GitHub' : 'Ver mais no GitHub'}
+        </Link>
+      </ul>
       <Link href={'/'}>
         <button className='navBtn my-8'>{isEN ? 'Return' : 'Voltar'}</button>
       </Link>

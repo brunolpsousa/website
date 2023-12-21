@@ -11,24 +11,40 @@
   body::-webkit-scrollbar {
     @apply w-3;
   }
+
   /* space below the scrollbar */
   body::-webkit-scrollbar-track {
     @apply bg-zinc-100 dark:bg-zinc-800;
   }
+
   /* draggable scrollbar itself */
   body::-webkit-scrollbar-thumb {
     @apply border-4 border-solid rounded-2xl bg-zinc-300 dark:bg-zinc-600 border-zinc-100 dark:border-zinc-800;
   }
+
   body::-webkit-scrollbar-thumb:hover {
     @apply border-2 bg-zinc-400 border-zinc-50 dark:bg-zinc-400 dark:border-zinc-950;
+  }
+
+  @font-face {
+    font-family: 'FontAwesome';
+    src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.ttf') format('truetype');
+  }
+
+  .extLink[target='_blank']::after {
+    content: '\f35d';
+    font-family: 'FontAwesome';
+    margin-left: 6px;
   }
 
   .customHover {
     @apply hover:text-blue-600 hover:dark:text-blue-400;
   }
+
   .navItem {
     @apply float-right block text-center select-none my-4 mx-3 md:m-4 hover:underline customHover;
   }
+
   .navBtn {
     @apply text-center select-none inline-block px-8 py-3 text-base font-medium rounded-md text-white dark:text-zinc-900 bg-gradient-to-r from-green-500 to-green-300 drop-shadow-md hover:stroke-gray-100;
   }
