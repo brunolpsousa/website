@@ -1,3 +1,5 @@
+// Ref: https://youtu.be/ewppbL5Iz54 and https://youtu.be/KNH_-_esmaI
+
 import HangmanDraw from '@components/projects/hangman/HangmanDraw'
 import HangmanWord from '@components/projects/hangman/HangmanWord'
 import HangmanKeyboard from '@components/projects/hangman/HangmanKeyboard'

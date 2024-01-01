@@ -1,3 +1,5 @@
+// Ref: https://youtu.be/b0pkpcD8Ms4
+
 import '@style/main.css'
 import Head from 'next/head'
 import Navbar from '@components/Navbar'

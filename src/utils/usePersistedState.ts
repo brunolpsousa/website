@@ -1,3 +1,5 @@
+// Ref: https://youtu.be/ngVU74daJ8Y
+
 import { useState, useEffect, Dispatch, SetStateAction } from 'react'
 
 type Response<T> = [T, Dispatch<SetStateAction<T>>]
