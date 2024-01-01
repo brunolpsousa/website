@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import usePersistedState from '@utils/usePersistedState'
+import Router from 'next/router'
 
 const sun = (
   <svg
@@ -72,9 +73,10 @@ export default () => {
       theme === 'light' || theme === 'dark'
         ? 'auto'
         : theme === 'auto' && colors === 'dark'
-        ? 'light'
-        : 'dark',
+          ? 'light'
+          : 'dark',
     )
+    Router.replace(Router.asPath, undefined, { scroll: false })
   }
 
   useEffect(() => {

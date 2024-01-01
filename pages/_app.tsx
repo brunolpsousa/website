@@ -15,8 +15,16 @@ export default ({ Component, pageProps }: any) => {
   const [favicon, setFavicon] = useState(darkThemeIcon)
 
   useEffect(() => {
-    const colors = JSON.parse(window.localStorage.colors)
+    const colors = JSON.parse(localStorage.colors)
     setFavicon(colors === 'dark' ? darkThemeIcon : lightThemeIcon)
+
+    const mMedia = window.matchMedia('(prefers-color-scheme: dark)')
+    mMedia.onchange = () => {
+      const theme = JSON.parse(localStorage.theme)
+      if (theme === 'auto')
+        return setFavicon(mMedia.matches ? darkThemeIcon : lightThemeIcon)
+      setFavicon(theme === 'dark' ? darkThemeIcon : lightThemeIcon)
+    }
   })
 
   return (
