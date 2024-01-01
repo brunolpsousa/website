@@ -21,7 +21,7 @@ export default () => {
   const [level, setLevel] = usePersistedState('hangLevel', 1)
   const [currentLevel, setCurrentLevel] = useState(1)
   const win =
-    wordToGuessNorm !== '' &&
+    wordToGuessNorm &&
     wordToGuessNorm.split('').every((letter) => guessed.includes(letter))
   const lose = mistakes.length >= 6
 

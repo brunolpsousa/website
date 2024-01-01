@@ -12,7 +12,8 @@ export default () => {
   const pairsFound: string[][] = []
   const [endGame, setEndGame] = useState(false)
 
-  deck.sort(() => 0.5 - Math.random())
+  const cardDeck = deck.flatMap((i) => [i, i])
+  cardDeck.sort(() => 0.5 - Math.random())
 
   function gameTitle(): string {
     const gameSentence = isEN ? 'Memory Game' : 'Jogo da Memória'
@@ -20,9 +21,9 @@ export default () => {
     return endGame ? endSentence : gameSentence
   }
 
-  function createBoard() {
+  function createBoard(): void {
     const board = document.querySelector('.board')
-    for (let i = 0; i < deck.length; i++) {
+    for (let i = 0; i < cardDeck.length; i++) {
       const card = document.createElement('img')
       card.setAttribute('src', '/projects/memory/board.png')
       card.setAttribute('data-id', i.toString())
@@ -31,7 +32,7 @@ export default () => {
     }
   }
 
-  function checkForMatch() {
+  function checkForMatch(): void {
     const resultView = document.querySelector('#result')!
     const cards = document.querySelectorAll('img')
     const optionOneId = cardsChosenId[0]
@@ -57,15 +58,15 @@ export default () => {
     setEndGame(pairsFound.length === cards.length / 2)
   }
 
-  function flipCard(this: HTMLElement) {
+  function flipCard(this: HTMLElement): void {
     const cardId = Number(this.getAttribute('data-id'))
-    cardsChosen.push(deck[cardId].name)
+    cardsChosen.push(cardDeck[cardId].name)
     cardsChosenId.push(cardId)
-    this.setAttribute('src', deck[cardId].img)
+    this.setAttribute('src', cardDeck[cardId].img)
     if (cardsChosen.length === 2) setTimeout(checkForMatch, 400)
   }
 
-  function refreshGame() {
+  function refreshGame(): void {
     document.querySelector('#result')!.textContent = '0'
     pairsFound.length = 0
 
