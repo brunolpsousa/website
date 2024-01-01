@@ -10,9 +10,14 @@ export default () => {
         {isEN ? 'Projects' : 'Projetos'}
       </h1>
       <ul className='text-2xl text-center p-16 m-3'>
-        <li className='hover:underline customHover'>
+        <li className='customHover m-1'>
           <Link href={'projects/hangman'}>
             {isEN ? 'Hangman' : 'Jogo da Forca'}
+          </Link>
+        </li>
+        <li className='customHover m-1'>
+          <Link href={'projects/memory'}>
+            {isEN ? 'Memory Game' : 'Jogo da Memória'}
           </Link>
         </li>
       </ul>
