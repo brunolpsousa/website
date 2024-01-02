@@ -140,6 +140,7 @@ export default () => {
   useEffect(() => {
     checkResult()
     const handler = (e: KeyboardEvent) => {
+      if (e.ctrlKey) return
       const letter = e.key.toLowerCase()
       if (!letter.match(/^[a-z]$/)) return
       e.preventDefault()
