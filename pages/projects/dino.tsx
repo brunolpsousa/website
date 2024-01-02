@@ -18,8 +18,8 @@ export default () => {
   }
 
   function jump(e: KeyboardEvent | MouseEvent): void {
-    e.preventDefault()
     if (isJumping || isGameOver || e.ctrlKey) return
+    e.preventDefault()
     if (
       ('key' in e && (e.key === ' ' || e.key === 'ArrowUp')) ||
       ('buttons' in e && e.buttons === 0)
