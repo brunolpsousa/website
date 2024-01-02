@@ -38,6 +38,11 @@ export default () => {
     const optionOneId = cardsChosenId[0]
     const optionTwoId = cardsChosenId[1]
 
+    for (let i = 0; i < cards.length; i++) {
+      if (cards[i].getAttribute('src') === '/projects/memory/board.png')
+        cards[i].addEventListener('click', flipCard)
+    }
+
     if (optionOneId === optionTwoId) {
       cards[optionOneId].setAttribute('src', '/projects/memory/board.png')
       cards[optionTwoId].setAttribute('src', '/projects/memory/board.png')
@@ -63,7 +68,15 @@ export default () => {
     cardsChosen.push(cardDeck[cardId].name)
     cardsChosenId.push(cardId)
     this.setAttribute('src', cardDeck[cardId].img)
-    if (cardsChosen.length === 2) setTimeout(checkForMatch, 400)
+
+    if (cardsChosen.length === 2) {
+      const cards = document.querySelectorAll('img')
+      for (let i = 0; i < cards.length; i++) {
+        if (cards[i].getAttribute('src') === '/projects/memory/board.png')
+          cards[i].removeEventListener('click', flipCard)
+      }
+      setTimeout(checkForMatch, 500)
+    }
   }
 
   function refreshGame(): void {
