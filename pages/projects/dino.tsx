@@ -17,10 +17,13 @@ export default () => {
     return endGame ? endSentence : gameSentence
   }
 
-  function jump(e: any): void {
+  function jump(e: KeyboardEvent | MouseEvent): void {
     e.preventDefault()
     if (isJumping || isGameOver || e.ctrlKey) return
-    if (e.key === ' ' || e.key === 'ArrowUp' || e.buttons === 0) {
+    if (
+      ('key' in e && (e.key === ' ' || e.key === 'ArrowUp')) ||
+      ('buttons' in e && e.buttons === 0)
+    ) {
       isJumping = true
       jumpAction()
     }
