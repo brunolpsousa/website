@@ -60,7 +60,7 @@ export default () => {
 
     const bugs = document.querySelector('.bugs') as HTMLElement
     const randomTime = Math.random() * 3000
-    let bugPosition = 1200
+    let bugPosition = window.screen.width - 64
     const bug = document.createElement('div')
 
     bugs.appendChild(bug)
@@ -86,18 +86,12 @@ export default () => {
 
   function refreshGame(): void {
     window.location.reload()
-    // const bugs = document.querySelector('.bugs')
-    // while (bugs?.firstChild) bugs?.removeChild(bugs.firstChild)
-    // isGameOver = false
-    // setEndGame(false)
-    // start()
   }
 
   useEffect(() => {
     document.addEventListener('keydown', jump)
     document.addEventListener('click', jump)
-    start()
-    // refreshGame()
+    setTimeout(start, 1500)
     return () => {
       document.removeEventListener('keydown', jump)
       document.removeEventListener('click', jump)
