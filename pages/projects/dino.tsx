@@ -17,7 +17,8 @@ export default () => {
     return endGame ? endSentence : gameSentence
   }
 
-  function jump(e: KeyboardEvent | MouseEvent) {
+  function jump(e: any): void {
+    e.preventDefault()
     if (isJumping || isGameOver || e.ctrlKey) return
     if (e.key === ' ' || e.key === 'ArrowUp' || e.buttons === 0) {
       isJumping = true
@@ -92,8 +93,12 @@ export default () => {
   useEffect(() => {
     document.addEventListener('keydown', jump)
     document.addEventListener('click', jump)
-    // refreshGame()
     start()
+    // refreshGame()
+    return () => {
+      document.removeEventListener('keydown', jump)
+      document.removeEventListener('click', jump)
+    }
   }, [])
 
   return (
