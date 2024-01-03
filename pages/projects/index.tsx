@@ -21,6 +21,9 @@ export default () => {
           </Link>
         </li>
         <li className='customHover m-1'>
+          <Link href={'projects/matrix'}>Matrix</Link>
+        </li>
+        <li className='customHover m-1'>
           <Link href={'projects/memory'}>
             {isEN ? 'Memory Game' : 'Jogo da Memória'}
           </Link>
