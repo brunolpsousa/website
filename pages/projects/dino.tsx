@@ -6,10 +6,16 @@ import { useEffect, useState } from 'react'
 
 export default () => {
   const isEN = getLang()
+
   const [endGame, setEndGame] = useState(false)
+  let isGameOver = false
+
   const gravity = 0.9
   let isJumping = false
-  let isGameOver = false
+  let dinoPosition = 0
+
+  const intervals: number[] = []
+  const timeouts: number[] = []
 
   function gameTitle(): string {
     const gameSentence = isEN ? 'Dino Game' : 'Jogo do Dinossauro'
@@ -19,17 +25,19 @@ export default () => {
 
   function jump(e: KeyboardEvent | MouseEvent): void {
     if (isJumping || isGameOver || e.ctrlKey) return
-    e.preventDefault()
     if (
-      ('key' in e && (e.key === ' ' || e.key === 'ArrowUp')) ||
+      ('key' in e &&
+        (e.key === ' ' ||
+          e.key === 'ArrowUp' ||
+          e.key.toLowerCase() === 'w')) ||
       ('buttons' in e && e.buttons === 0)
     ) {
+      e.preventDefault()
       isJumping = true
       jumpAction()
     }
   }
 
-  let dinoPosition = 0
   function jumpAction(): void {
     const dino = document.querySelector('.dino') as HTMLElement
     let height = 0
@@ -59,20 +67,22 @@ export default () => {
     if (isGameOver) return
 
     const bugs = document.querySelector('.bugs') as HTMLElement
+    const newBug = document.createElement('div')
     const randomTime = Math.random() * 3000
-    let bugPosition = window.screen.width - 64
-    const bug = document.createElement('div')
+    let bugPosition = window.innerWidth - 64
 
-    bugs.appendChild(bug)
-    bug.classList.add('bug')
-    bug.style.left = bugPosition + 'px'
+    bugs.appendChild(newBug)
+    newBug.classList.add('bug')
+    newBug.style.left = bugPosition + 'px'
 
     const bugAttack = setInterval(function () {
+      intervals.push(bugAttack as unknown as number)
       bugPosition -= 10
-      bug.style.left = bugPosition + 'px'
+      newBug.style.left = bugPosition + 'px'
 
       if (bugPosition > 0 && bugPosition < 64 && dinoPosition < 64) {
-        clearInterval(bugAttack)
+        intervals.forEach((e) => clearInterval(e))
+        timeouts.forEach((e) => clearTimeout(e))
         isGameOver = true
         setEndGame(true)
 
@@ -81,11 +91,19 @@ export default () => {
         world?.style.setProperty('-webkit-animation', 'none', 'important')
       }
     }, 20)
-    setTimeout(start, randomTime)
+    const startTimeout = setTimeout(start, randomTime)
+    timeouts.push(startTimeout as unknown as number)
   }
 
   function refreshGame(): void {
     window.location.reload()
+    // const bugs = document.querySelector('.bugs')
+    // while (bugs?.firstChild) bugs.removeChild(bugs.firstChild)
+    // intervals.length = 0
+    // timeouts.length = 0
+    // isGameOver = false
+    // setEndGame(false)
+    // start()
   }
 
   useEffect(() => {
