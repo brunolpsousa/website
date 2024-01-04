@@ -109,27 +109,40 @@ const snake = () => {
   }
 
   window.addEventListener('keydown', (e: KeyboardEvent) => {
+    const left = ['arrowleft', 'a', 'h']
+    const up = ['arrowup', 'w', 'k']
+    const right = ['arrowright', 'd', 'l']
+    const down = ['arrowdown', 's', 'j']
+
     setTimeout(() => {
       if (
-        (e.key === 'ArrowLeft' || e.key.toLowerCase() === 'a') &&
+        left.some((l) => {
+          return e.key.toLowerCase() === l
+        }) &&
         snake.rotateX != 1
       ) {
         snake.rotateX = -1
         snake.rotateY = 0
       } else if (
-        (e.key === 'ArrowUp' || e.key.toLowerCase() === 'w') &&
+        up.some((u) => {
+          return e.key.toLowerCase() === u
+        }) &&
         snake.rotateY != 1
       ) {
         snake.rotateX = 0
         snake.rotateY = -1
       } else if (
-        (e.key === 'ArrowRight' || e.key.toLowerCase() === 'd') &&
+        right.some((r) => {
+          return e.key.toLowerCase() === r
+        }) &&
         snake.rotateX != -1
       ) {
         snake.rotateX = 1
         snake.rotateY = 0
       } else if (
-        (e.key === 'ArrowDown' || e.key.toLowerCase() === 's') &&
+        down.some((d) => {
+          return e.key.toLowerCase() === d
+        }) &&
         snake.rotateY != -1
       ) {
         snake.rotateX = 0
@@ -149,7 +162,7 @@ const snake = () => {
     constructor() {
       this.size = 16
       this.x = 0
-      this.y = canvas.height / 3
+      this.y = this.size * 5
       this.tail = [{ x: this.x, y: this.y }]
       this.rotateX = 1
       this.rotateY = 0
@@ -229,6 +242,7 @@ export default () => {
 
   return (
     <div className='flex flex-col items-center justify-center pb-12 m-auto w-full h-full'>
+      <h1 className='text-center leading-tight text-5xl mb-8'>Snake</h1>
       <canvas
         width='600'
         height='600'
