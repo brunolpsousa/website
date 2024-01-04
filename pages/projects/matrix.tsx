@@ -11,7 +11,7 @@ const matrix = () => {
   if (!ctx) return
 
   let cw = window.innerWidth
-  let ch = window.innerHeight
+  let ch = (window.innerHeight / 5) * 4
 
   canvas.width = cw
   canvas.height = ch
@@ -27,7 +27,7 @@ const matrix = () => {
     'resize',
     () => {
       cw = window.innerWidth
-      ch = window.innerHeight
+      ch = (window.innerHeight / 5) * 4
       canvas.width = cw
       canvas.height = ch
       maxColumns = cw / fontSize
@@ -102,11 +102,11 @@ export default () => {
 
   useEffect(() => {
     matrix()
-  })
+  }, [])
 
   return (
     <div className='flex flex-col items-center justify-center pb-12 m-auto w-full'>
-      <canvas className='w-full h-full' id='canvas'></canvas>
+      <canvas id='canvas'></canvas>
       <div className='flex flex-shrink my-12 space-x-12'>
         <Link href={'/projects'}>
           <button type='button' className='navBtn'>
