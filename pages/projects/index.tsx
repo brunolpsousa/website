@@ -11,22 +11,19 @@ export default () => {
       </h1>
       <ul className='text-2xl text-center p-16 m-3'>
         <li className='customHover m-1'>
-          <Link href={'projects/dino'}>
-            {isEN ? 'Dino Game' : 'Jogo do Dinossauro'}
-          </Link>
+          <Link href={'projects/dino'}>Dino</Link>
         </li>
         <li className='customHover m-1'>
-          <Link href={'projects/hangman'}>
-            {isEN ? 'Hangman' : 'Jogo da Forca'}
-          </Link>
+          <Link href={'projects/hangman'}>{isEN ? 'Hangman' : 'Forca'}</Link>
         </li>
         <li className='customHover m-1'>
           <Link href={'projects/matrix'}>Matrix</Link>
         </li>
         <li className='customHover m-1'>
-          <Link href={'projects/memory'}>
-            {isEN ? 'Memory Game' : 'Jogo da Memória'}
-          </Link>
+          <Link href={'projects/memory'}>{isEN ? 'Memory' : 'Memória'}</Link>
+        </li>
+        <li className='customHover m-1'>
+          <Link href={'projects/snake'}>Snake</Link>
         </li>
       </ul>
       <ul className='hover:underline customHover'>
