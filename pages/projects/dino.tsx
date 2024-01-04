@@ -18,7 +18,7 @@ export default () => {
   const timeouts: number[] = []
 
   function gameTitle(): string {
-    const gameSentence = isEN ? 'Dino Game' : 'Jogo do Dinossauro'
+    const gameSentence = 'Dino'
     const endSentence = isEN ? 'You lose!' : 'Você perdeu!'
     return endGame ? endSentence : gameSentence
   }
@@ -67,6 +67,8 @@ export default () => {
     if (isGameOver) return
 
     const bugs = document.querySelector('.bugs') as HTMLElement
+    if (!bugs) return
+
     const newBug = document.createElement('div')
     const randomTime = Math.random() * 3000
     let bugPosition = window.innerWidth - 64
@@ -76,6 +78,8 @@ export default () => {
     newBug.style.left = bugPosition + 'px'
 
     const bugAttack = setInterval(function () {
+      if (!newBug) return
+
       intervals.push(bugAttack as unknown as number)
       bugPosition -= 10
       newBug.style.left = bugPosition + 'px'
@@ -97,13 +101,6 @@ export default () => {
 
   function refreshGame(): void {
     window.location.reload()
-    // const bugs = document.querySelector('.bugs')
-    // while (bugs?.firstChild) bugs.removeChild(bugs.firstChild)
-    // intervals.length = 0
-    // timeouts.length = 0
-    // isGameOver = false
-    // setEndGame(false)
-    // start()
   }
 
   useEffect(() => {

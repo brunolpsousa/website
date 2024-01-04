@@ -11,6 +11,19 @@
   height: 300px;
 }
 
+@media only screen and (max-width: 680px) {
+  #world {
+    position: relative;
+    bottom: 0px;
+    background-image: url('/projects/dino/world.png');
+    background-repeat: repeat-x;
+    animation: sliderightSmall 600s infinite linear;
+    -webkit-animation: sliderightSmall 600s infinite linear;
+    width: 100%;
+    height: 300px;
+  }
+}
+
 .dino {
   position: absolute;
   width: 64px;
@@ -26,6 +39,24 @@
   height: 64px;
   background-image: url('/projects/dino/bug.png');
   bottom: 0px;
+}
+
+@keyframes sliderightSmall {
+  from {
+    background-position: 333333%;
+  }
+  to {
+    background-position: 0%;
+  }
+}
+
+@-webkit-keyframes sliderightSmall {
+  from {
+    background-position: 333333%;
+  }
+  to {
+    background-position: 0%;
+  }
 }
 
 @keyframes slideright {
