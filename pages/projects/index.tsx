@@ -23,6 +23,9 @@ export default () => {
           <Link href={'projects/memory'}>{isEN ? 'Memory' : 'Memória'}</Link>
         </li>
         <li className='customHover m-1'>
+          <Link href={'projects/pacman'}>Pacman</Link>
+        </li>
+        <li className='customHover m-1'>
           <Link href={'projects/snake'}>Snake</Link>
         </li>
       </ul>
