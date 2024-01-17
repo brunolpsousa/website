@@ -11,22 +11,16 @@ const snake = () => {
   let record = 0
 
   function gameLoop() {
-    setInterval(show, 1000 / gameSpeed)
-  }
-
-  function show() {
-    update()
-    draw()
+    setInterval(update, 1000 / gameSpeed)
   }
 
   function update() {
     if (!canvasContext) return
-    canvas.width = (window.innerWidth / 5) * 4
-    canvas.height = window.innerHeight / 2
     canvasContext.clearRect(0, 0, canvas.width, canvas.height)
     snake.move()
     eatApple()
     checkCollision()
+    draw()
   }
 
   function eatApple() {
@@ -107,6 +101,17 @@ const snake = () => {
     canvasContext.fillStyle = color
     canvasContext.fillRect(x, y, width, height)
   }
+
+  function adjustCanvasSize() {
+    const width = (window.innerWidth / 5) * 4
+    const height = window.innerHeight / 2
+    canvas.width = width - (width % snake.size)
+    canvas.height = height - (height % snake.size)
+  }
+
+  window.addEventListener('resize', () => {
+    adjustCanvasSize()
+  })
 
   window.addEventListener('keydown', (e: KeyboardEvent) => {
     const left = ['arrowleft', 'a', 'h']
@@ -212,6 +217,7 @@ const snake = () => {
 
   let snake = new Snake()
   let apple = new Apple()
+  adjustCanvasSize()
   gameLoop()
 }
 
