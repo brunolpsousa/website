@@ -424,7 +424,7 @@ const game = () => {
     imageHeight: number
     range: number
     randomTargetIndex: number
-    target: any
+    target: { x: number; y: number }
     currentFrame?: number
     frameCount?: number
 
@@ -749,38 +749,23 @@ const game = () => {
   gameLoop()
 
   window.addEventListener('keydown', (e: KeyboardEvent) => {
+    e.preventDefault()
+
     const left = ['arrowleft', 'a', 'h']
     const up = ['arrowup', 'w', 'k']
     const right = ['arrowright', 'd', 'l']
     const down = ['arrowdown', 's', 'j']
+    const key = e.key.toLowerCase()
 
-    setTimeout(() => {
-      if (
-        left.some((l) => {
-          return e.key.toLowerCase() === l
-        })
-      ) {
-        pacman.nextDirection = DIRECTION_LEFT
-      } else if (
-        up.some((u) => {
-          return e.key.toLowerCase() === u
-        })
-      ) {
-        pacman.nextDirection = DIRECTION_UP
-      } else if (
-        right.some((r) => {
-          return e.key.toLowerCase() === r
-        })
-      ) {
-        pacman.nextDirection = DIRECTION_RIGHT
-      } else if (
-        down.some((d) => {
-          return e.key.toLowerCase() === d
-        })
-      ) {
-        pacman.nextDirection = DIRECTION_BOTTOM
-      }
-    }, 1)
+    if (left.indexOf(key) > -1) {
+      pacman.nextDirection = DIRECTION_LEFT
+    } else if (up.indexOf(key) > -1) {
+      pacman.nextDirection = DIRECTION_UP
+    } else if (right.indexOf(key) > -1) {
+      pacman.nextDirection = DIRECTION_RIGHT
+    } else if (down.indexOf(key) > -1) {
+      pacman.nextDirection = DIRECTION_BOTTOM
+    }
   })
 }
 

@@ -114,28 +114,27 @@ const snake = () => {
   })
 
   window.addEventListener('keydown', (e: KeyboardEvent) => {
+    e.preventDefault()
+
     const left = ['arrowleft', 'a', 'h']
     const up = ['arrowup', 'w', 'k']
     const right = ['arrowright', 'd', 'l']
     const down = ['arrowdown', 's', 'j']
     const key = e.key.toLowerCase()
-    e.preventDefault()
 
-    setTimeout(() => {
-      if (left.indexOf(key) > -1 && snake.rotateX != 1) {
-        snake.rotateX = -1
-        snake.rotateY = 0
-      } else if (up.indexOf(key) > -1 && snake.rotateY != 1) {
-        snake.rotateX = 0
-        snake.rotateY = -1
-      } else if (right.indexOf(key) > -1 && snake.rotateX != -1) {
-        snake.rotateX = 1
-        snake.rotateY = 0
-      } else if (down.indexOf(key) > -1 && snake.rotateY != -1) {
-        snake.rotateX = 0
-        snake.rotateY = 1
-      }
-    }, 1)
+    if (left.indexOf(key) > -1 && snake.rotateX != 1) {
+      snake.rotateX = -1
+      snake.rotateY = 0
+    } else if (up.indexOf(key) > -1 && snake.rotateY != 1) {
+      snake.rotateX = 0
+      snake.rotateY = -1
+    } else if (right.indexOf(key) > -1 && snake.rotateX != -1) {
+      snake.rotateX = 1
+      snake.rotateY = 0
+    } else if (down.indexOf(key) > -1 && snake.rotateY != -1) {
+      snake.rotateX = 0
+      snake.rotateY = 1
+    }
   })
 
   class Snake {
