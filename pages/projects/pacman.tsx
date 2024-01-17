@@ -93,34 +93,29 @@ const game = () => {
     }
 
     checkCollisions() {
-      let isCollided = false
+      const xBlock = parseInt((this.x / oneBlockSize).toString())
+      const yBlock = parseInt((this.y / oneBlockSize).toString())
+      const xBlockP = parseInt((this.x / oneBlockSize + 0.9999).toString())
+      const yBlockP = parseInt((this.y / oneBlockSize + 0.9999).toString())
 
-      if (
-        map[parseInt(String(this.y / oneBlockSize))][
-          parseInt(String(this.x / oneBlockSize))
-        ] == 1 ||
-        map[parseInt(String(this.y / oneBlockSize + 0.9999))][
-          parseInt(String(this.x / oneBlockSize))
-        ] == 1 ||
-        map[parseInt(String(this.y / oneBlockSize))][
-          parseInt(String(this.x / oneBlockSize + 0.9999))
-        ] == 1 ||
-        map[parseInt(String(this.y / oneBlockSize + 0.9999))][
-          parseInt(String(this.x / oneBlockSize + 0.9999))
-        ] == 1
-      ) {
-        isCollided = true
-      }
-      return isCollided
+      return (
+        map[yBlock][xBlock] === 1 ||
+        map[yBlockP][xBlock] === 1 ||
+        map[yBlock][xBlockP] === 1 ||
+        map[yBlockP][xBlockP] === 1
+      )
     }
 
     checkGhostCollision(ghosts: Ghost[]) {
       for (let i = 0; i < ghosts.length; i++) {
-        let ghost = ghosts[i]
-        return (
-          ghost.getMapX() == this.getMapX() && ghost.getMapY() == this.getMapY()
+        const ghost = ghosts[i]
+        if (
+          ghost.getMapX() === this.getMapX() &&
+          ghost.getMapY() === this.getMapY()
         )
+          return true
       }
+      return false
     }
 
     changeDirectionIfPossible() {
@@ -205,8 +200,8 @@ const game = () => {
   const DIRECTION_LEFT = 2
   const DIRECTION_BOTTOM = 1
   let lives = 3
-  let ghostCount = 4
-  let ghostImageLocations = [
+  const ghostCount = 4
+  const ghostImageLocations = [
     { x: 0, y: 0 },
     { x: 176, y: 0 },
     { x: 0, y: 121 },
@@ -215,11 +210,12 @@ const game = () => {
 
   const fps = 30
   let pacman: Pacman
-  let oneBlockSize = 20
+  const oneBlockSize = 20
   let score = 0
-  let ghosts: Ghost[] = []
-  let wallSpaceWidth = oneBlockSize / 1.6
-  let wallOffset = (oneBlockSize - wallSpaceWidth) / 2
+  let foodCount = 0
+  const ghosts: Ghost[] = []
+  const wallSpaceWidth = oneBlockSize / 1.6
+  const wallOffset = (oneBlockSize - wallSpaceWidth) / 2
   const wallInnerColor = 'black'
 
   // we now create the map of the walls,
@@ -236,7 +232,7 @@ const game = () => {
     [1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1],
     [0, 0, 0, 0, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 0, 0, 0, 0],
     [1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1],
-    [2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2],
+    [1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 2, 2, 1, 2, 1, 2, 1, 1, 1, 1, 1],
     [0, 0, 0, 0, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 0, 0, 0, 0],
     [0, 0, 0, 0, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 0, 0, 0, 0],
@@ -250,6 +246,14 @@ const game = () => {
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   ]
+
+  for (let i = 0; i < map.length; i++) {
+    for (let j = 0; j < map[0].length; j++) {
+      if (map[i][j] === 2) {
+        foodCount++
+      }
+    }
+  }
 
   const randomTargetsForGhosts = [
     { x: 1 * oneBlockSize, y: 1 * oneBlockSize },
@@ -272,37 +276,56 @@ const game = () => {
   }
 
   const gameLoop = () => {
-    update()
-    draw()
-  }
-
-  setInterval(gameLoop, 1000 / fps)
-
-  const restartPacmanAndGhosts = () => {
-    createNewPacman()
-    createGhosts()
-  }
-
-  const onGhostCollision = () => {
-    lives--
-    restartPacmanAndGhosts()
-    if (lives == 0) {
-    }
-  }
-
-  const update = () => {
     pacman.moveProcess()
     pacman.eat()
     updateGhosts()
-    if (pacman.checkGhostCollision(ghosts)) {
-      onGhostCollision()
+    draw()
+    if (score >= foodCount) drawWin()
+    if (pacman.checkGhostCollision(ghosts)) onGhostCollision()
+  }
+
+  const gameLoopId = setInterval(gameLoop, 1000 / fps)
+
+  const onGhostCollision = () => {
+    lives--
+    if (lives) {
+      createNewPacman()
+      createGhosts()
+      return
     }
+    drawGameOver()
+  }
+
+  const gameOver = () => {
+    clearInterval(gameLoopId)
+  }
+
+  const drawWin = () => {
+    canvasContext.font = '40px Emulogic'
+    canvasContext.fillStyle = 'white'
+    canvasContext.fillText('Winner!', 150, 200)
+    gameOver()
+  }
+
+  const drawGameOver = () => {
+    canvasContext.font = '40px Emulogic'
+    canvasContext.fillStyle = 'white'
+    canvasContext.fillText('Game Over', 120, 200)
+
+    canvasContext.fillStyle = 'black'
+    canvasContext.fillRect(
+      350,
+      oneBlockSize * map.length + 2,
+      oneBlockSize,
+      oneBlockSize,
+    )
+    gameOver()
   }
 
   const drawFoods = () => {
     for (let i = 0; i < map.length; i++) {
       for (let j = 0; j < map[0].length; j++) {
-        if (map[i][j] == 2) {
+        if (map[i][j] === 2) {
           createRect(
             j * oneBlockSize + oneBlockSize / 3,
             i * oneBlockSize + oneBlockSize / 3,
@@ -315,7 +338,7 @@ const game = () => {
     }
   }
 
-  const drawRemainingLives = () => {
+  const drawLives = () => {
     canvasContext.font = '20px Emulogic'
     canvasContext.fillStyle = 'white'
     canvasContext.fillText('Lives: ', 220, oneBlockSize * (map.length + 1))
@@ -353,7 +376,7 @@ const game = () => {
     drawGhosts()
     pacman.draw()
     drawScore()
-    drawRemainingLives()
+    drawLives()
   }
 
   const drawWalls = () => {
@@ -523,32 +546,27 @@ const game = () => {
     }
 
     checkCollisions() {
-      let isCollided = false
-      if (
-        map[parseInt(String(this.y / oneBlockSize))][
-          parseInt(String(this.x / oneBlockSize))
-        ] == 1 ||
-        map[parseInt(String(this.y / oneBlockSize + 0.9999))][
-          parseInt(String(this.x / oneBlockSize))
-        ] == 1 ||
-        map[parseInt(String(this.y / oneBlockSize))][
-          parseInt(String(this.x / oneBlockSize + 0.9999))
-        ] == 1 ||
-        map[parseInt(String(this.y / oneBlockSize + 0.9999))][
-          parseInt(String(this.x / oneBlockSize + 0.9999))
-        ] == 1
-      ) {
-        isCollided = true
-      }
-      return isCollided
+      const xBlock = parseInt((this.x / oneBlockSize).toString())
+      const yBlock = parseInt((this.y / oneBlockSize).toString())
+      const xBlockP = parseInt((this.x / oneBlockSize + 0.9999).toString())
+      const yBlockP = parseInt((this.y / oneBlockSize + 0.9999).toString())
+
+      return (
+        map[yBlock][xBlock] === 1 ||
+        map[yBlockP][xBlock] === 1 ||
+        map[yBlock][xBlockP] === 1 ||
+        map[yBlockP][xBlockP] === 1
+      )
     }
 
     changeDirectionIfPossible() {
       let tempDirection = this.direction
+      const xTarget = parseInt((this.target.x / oneBlockSize).toString())
+      const yTarget = parseInt((this.target.y / oneBlockSize).toString())
       this.direction = this.calculateNewDirection(
         map,
-        parseInt(String(this.target.x / oneBlockSize)),
-        parseInt(String(this.target.y / oneBlockSize)),
+        xTarget,
+        yTarget,
       ) as number
       if (typeof this.direction == 'undefined') {
         this.direction = tempDirection
@@ -573,7 +591,6 @@ const game = () => {
       } else {
         this.moveBackwards()
       }
-      console.log(this.direction)
     }
 
     calculateNewDirection(map: number[][], destX: number, destY: number) {
@@ -622,16 +639,16 @@ const game = () => {
       poped: { x: number; y: number; moves: number[] },
       mp: number[][],
     ) {
-      let queue = []
-      let numOfRows = mp.length
-      let numOfColumns = mp[0].length
+      const queue = []
+      const numOfRows = mp.length
+      const numOfColumns = mp[0].length
 
       if (
         poped.x - 1 >= 0 &&
         poped.x - 1 < numOfRows &&
         mp[poped.y][poped.x - 1] != 1
       ) {
-        let tempMoves = poped.moves.slice()
+        const tempMoves = poped.moves.slice()
         tempMoves.push(DIRECTION_LEFT)
         queue.push({ x: poped.x - 1, y: poped.y, moves: tempMoves })
       }
@@ -640,7 +657,7 @@ const game = () => {
         poped.x + 1 < numOfRows &&
         mp[poped.y][poped.x + 1] != 1
       ) {
-        let tempMoves = poped.moves.slice()
+        const tempMoves = poped.moves.slice()
         tempMoves.push(DIRECTION_RIGHT)
         queue.push({ x: poped.x + 1, y: poped.y, moves: tempMoves })
       }
@@ -649,7 +666,7 @@ const game = () => {
         poped.y - 1 < numOfColumns &&
         mp[poped.y - 1][poped.x] != 1
       ) {
-        let tempMoves = poped.moves.slice()
+        const tempMoves = poped.moves.slice()
         tempMoves.push(DIRECTION_UP)
         queue.push({ x: poped.x, y: poped.y - 1, moves: tempMoves })
       }
@@ -658,7 +675,7 @@ const game = () => {
         poped.y + 1 < numOfColumns &&
         mp[poped.y + 1][poped.x] != 1
       ) {
-        let tempMoves = poped.moves.slice()
+        const tempMoves = poped.moves.slice()
         tempMoves.push(DIRECTION_BOTTOM)
         queue.push({ x: poped.x, y: poped.y + 1, moves: tempMoves })
       }
@@ -733,9 +750,9 @@ const game = () => {
   }
 
   const createGhosts = () => {
-    ghosts = []
-    for (let i = 0; i < ghostCount * 2; i++) {
-      let newGhost = new Ghost(
+    ghosts.length = 0
+    for (let i = 0; i < ghostCount; i++) {
+      const newGhost = new Ghost(
         9 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize,
         10 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize,
         oneBlockSize,
@@ -788,7 +805,7 @@ export default () => {
       <h1 className='text-center leading-tight text-5xl mb-8'>Pacman</h1>
       <canvas
         width='420'
-        height='490'
+        height='485'
         className='border-4 dark:border border-zinc-400 dark:border-zinc-600 '
         id='canvas'
       ></canvas>
