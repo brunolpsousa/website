@@ -412,6 +412,7 @@ const game = () => {
   }
 
   class Ghost {
+    DEBUG: boolean
     x: number
     y: number
     width: number
@@ -440,6 +441,7 @@ const game = () => {
       imageHeight: number,
       range: number,
     ) {
+      this.DEBUG = false
       this.x = x
       this.y = y
       this.width = width
@@ -483,7 +485,6 @@ const game = () => {
       this.moveForwards()
       if (this.checkCollisions()) {
         this.moveBackwards()
-        return
       }
     }
 
@@ -686,6 +687,13 @@ const game = () => {
         this.currentFrame == this.frameCount ? 1 : this.currentFrame + 1
     }
 
+    debugMode() {
+      if (this.DEBUG) {
+        canvasContext.strokeStyle = 'red'
+        canvasContext.stroke()
+      }
+    }
+
     draw() {
       canvasContext.save()
       canvasContext.drawImage(
@@ -701,7 +709,6 @@ const game = () => {
       )
       canvasContext.restore()
       canvasContext.beginPath()
-      canvasContext.strokeStyle = 'red'
       canvasContext.arc(
         this.x + oneBlockSize / 2,
         this.y + oneBlockSize / 2,
@@ -709,7 +716,7 @@ const game = () => {
         0,
         2 * Math.PI,
       )
-      canvasContext.stroke()
+      this.debugMode()
     }
   }
 
