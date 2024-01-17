@@ -113,38 +113,20 @@ const snake = () => {
     const up = ['arrowup', 'w', 'k']
     const right = ['arrowright', 'd', 'l']
     const down = ['arrowdown', 's', 'j']
+    const key = e.key.toLowerCase()
+    e.preventDefault()
 
     setTimeout(() => {
-      if (
-        left.some((l) => {
-          return e.key.toLowerCase() === l
-        }) &&
-        snake.rotateX != 1
-      ) {
+      if (left.indexOf(key) > -1 && snake.rotateX != 1) {
         snake.rotateX = -1
         snake.rotateY = 0
-      } else if (
-        up.some((u) => {
-          return e.key.toLowerCase() === u
-        }) &&
-        snake.rotateY != 1
-      ) {
+      } else if (up.indexOf(key) > -1 && snake.rotateY != 1) {
         snake.rotateX = 0
         snake.rotateY = -1
-      } else if (
-        right.some((r) => {
-          return e.key.toLowerCase() === r
-        }) &&
-        snake.rotateX != -1
-      ) {
+      } else if (right.indexOf(key) > -1 && snake.rotateX != -1) {
         snake.rotateX = 1
         snake.rotateY = 0
-      } else if (
-        down.some((d) => {
-          return e.key.toLowerCase() === d
-        }) &&
-        snake.rotateY != -1
-      ) {
+      } else if (down.indexOf(key) > -1 && snake.rotateY != -1) {
         snake.rotateX = 0
         snake.rotateY = 1
       }
