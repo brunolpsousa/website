@@ -796,6 +796,10 @@ const game = () => {
 export default () => {
   const isEN = getLang()
 
+  const refreshGame = () => {
+    window.location.reload()
+  }
+
   useEffect(() => {
     game()
   }, [])
@@ -829,6 +833,9 @@ export default () => {
             {isEN ? 'Return' : 'Voltar'}
           </button>
         </Link>
+        <button type='button' className='navBtn' onClick={refreshGame}>
+          {isEN ? 'Play' : 'Jogar'}
+        </button>
       </div>
     </div>
   )
