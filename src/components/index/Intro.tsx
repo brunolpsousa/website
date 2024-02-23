@@ -4,14 +4,14 @@ export default () => {
   const isEN = getLang()
   const en = (
     <>
-      Programmer and Analysis and Systems Development student. Looking for new
+      Programmer and Analysis and Systems Development student. Looking for
       challenges and continuous learning.
     </>
   )
   const pt = (
     <>
       Programador e estudante de Análise e Desenvolvimento de Sistemas. Em busca
-      de novos desafios e aprendizado contínuo.
+      de desafios e aprendizado contínuo.
     </>
   )
   return (
