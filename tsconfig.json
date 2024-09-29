@@ -23,6 +23,12 @@
     "strictNullChecks": true,
     "baseUrl": "./src/",
     "paths": {
+      "@app": ["app/."],
+      "@components": ["components/."],
+      "@data": ["data/."],
+      "@style": ["style/."],
+      "@utils": ["utils/."],
+      "@app/*": ["app/*"],
       "@components/*": ["components/*"],
       "@data/*": ["data/*"],
       "@style/*": ["style/*"],

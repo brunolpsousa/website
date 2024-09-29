@@ -1,18 +1,17 @@
-import getLang from '@utils/getLang'
-
-export default ({
+export default function TimelineItem({
   year,
   title,
   duration,
   details,
+  isEN,
 }: {
   year: string
   title: string
   duration: string[]
   details: string
-}) => {
-  const isEN = getLang()
-  function getDuration(duration: string[]): string {
+    isEN: boolean
+}) {
+  const getDuration = (duration: string[]): string => {
     const initialDate = new Date(duration[0])
     const endDate = duration[1] ? new Date(duration[1]) : new Date()
     const totalTime = Math.round(

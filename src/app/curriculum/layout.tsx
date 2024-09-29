@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={'flex flex-col items-center m-auto h-screen max-w-5xl w-11/12 font-sans ' + inter.className}>
-        <Navbar path='/'/>
+        <Navbar path='/curriculum' />
         <Layout >
           {children}
         </Layout>

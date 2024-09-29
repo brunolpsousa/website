@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   ],
   referrer: "origin-when-cross-origin",
   // themeColor: "#4285f4",
-  colorScheme: "dark",
+  // colorScheme: "dark",
   viewport: "width=device-width, initial-scale=1",
   creator: "Bruno Sousa",
   publisher: "Bruno Sousa",

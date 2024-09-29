@@ -1,4 +1,4 @@
-export default () => {
+export default function Footer () {
   return (
     <div className='text-center relative bottom-2 p-2'>
       <div className='container max-w-screen-lg mx-auto'>

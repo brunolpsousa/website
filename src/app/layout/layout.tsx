@@ -3,18 +3,18 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import { lightThemeIcon, darkThemeIcon } from '@data/icon'
-import Navbar from '@components/Navbar'
+import { lsParse } from '@utils/localStorageJsonParse'
 
-export default ({ children }: any) => {
+export default function Layout({ children }: { children: React.ReactNode }) {
   const [favicon, setFavicon] = useState(darkThemeIcon)
 
   useEffect(() => {
-    const colors = localStorage.colors?.length ? JSON.parse(localStorage.colors) : ''
+    const colors = lsParse(localStorage.colors)
     setFavicon(colors === 'dark' ? darkThemeIcon : lightThemeIcon)
 
     const mMedia = window.matchMedia('(prefers-color-scheme: dark)')
     mMedia.onchange = () => {
-      const theme = localStorage.theme?.length ? JSON.parse(localStorage.theme) : ''
+      const theme = lsParse(localStorage.theme)
       if (theme === 'auto') {
         return setFavicon(mMedia.matches ? darkThemeIcon : lightThemeIcon)
       }
@@ -28,7 +28,7 @@ export default ({ children }: any) => {
         <link rel='icon' type='image/svg+xml' href={favicon} />
       </Head>
       <main >
-        <Navbar path='/'/>
+        {/* <Navbar path={path} /> */}
         {children}
       </main>
 

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default () => {
+export const getLang = () => {
   // const [langEN, setLangEN] = useState(false);
   // useEffect(() => {
   //   const lang = window.localStorage.lang?.length

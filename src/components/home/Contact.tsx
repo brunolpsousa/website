@@ -1,6 +1,7 @@
 'use client'
+
 import { useState } from 'react'
-import getLang from '@utils/getLang'
+import {getLang} from '@utils/getLang'
 
 export default () => {
   const isEN = getLang()
