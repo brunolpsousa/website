@@ -1,24 +1,16 @@
-// import Link from 'next/link'
+import Link from 'next/link'
 import ButtonLang from './ButtonLang'
 import ButtonTheme from './ButtonTheme'
-// import getLang from '@utils/getLang'
-// import { useEffect } from 'react'
+import getLang from '@utils/getLang'
 
-export default () => {
-  // const isEN = getLang()
+export default (props: any) => {
+  const isEN = getLang()
 
-  // const navLinkHide = (currentPath: string) => {
-  //   const getNavLinks = document.querySelectorAll('.navItem')
-  //   for (const link of getNavLinks) {
-  //     link.id === currentPath
-  //       ? link.classList.add('hidden')
-  //       : link.classList.remove('hidden')
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   navLinkHide(window.location.pathname.split('/')[1])
-  // })
+  const navLinkHide = (currentPath: string) => {
+    if (props.path === currentPath) {
+      return 'hidden'
+    }
+  }
 
   return (
     <ul
@@ -28,16 +20,16 @@ export default () => {
       <li id='buttonTheme' className='navItem absolute left-0'>
         <ButtonTheme />
       </li>
-      {/* <li className='navItem'> */}
-      {/*   <Link href='/'>{isEN ? 'Home' : 'Início'}</Link> */}
-      {/* </li> */}
-      {/* <li id='projects' className='navItem'> */}
-      {/*   <Link href='/projects'>{isEN ? 'Projects' : 'Projetos'}</Link> */}
-      {/* </li> */}
-      {/* <li id='curriculum' className='navItem'> */}
-      {/*   <Link href='/curriculum'>{isEN ? 'Resume' : 'Currículo'}</Link> */}
-      {/* </li> */}
-      <li id='buttonLang' className='navItem hover:no-underline'>
+      <li className={navLinkHide('/')}>
+        <Link href='/'>{isEN ? 'Home' : 'Início'}</Link>
+      </li>
+      <li id='projects' className={navLinkHide('/projects')}>
+        <Link href='/projects'>{isEN ? 'Projects' : 'Projetos'}</Link>
+      </li>
+      <li id='curriculum' className={navLinkHide('/curriculum')}>
+        <Link href='/curriculum'>{isEN ? 'Resume' : 'Currículo'}</Link>
+      </li>
+      <li id='buttonLang' className={'navItem hover:no-underline ' + navLinkHide('/')}>
         <ButtonLang />
       </li>
     </ul>
