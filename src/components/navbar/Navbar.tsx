@@ -1,8 +1,8 @@
-import ButtonLang from "./buttonLang";
-import ButtonTheme from "./buttonTheme";
-import NavbarItems from "./navbarItems";
+import ButtonLang from './buttonLang';
+import ButtonTheme from './buttonTheme';
+import NavbarItems from './navbarItems';
 
-export default function Navbar ({path}: {path: string}) {
+export default function Navbar({ path }: { path: string }): JSX.Element {
   return (
     <ul
       id='navbar'
@@ -16,5 +16,5 @@ export default function Navbar ({path}: {path: string}) {
         <ButtonLang />
       </li>
     </ul>
-  )
+  );
 }

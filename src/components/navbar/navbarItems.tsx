@@ -1,19 +1,19 @@
-"use client"
+'use client';
 
-import Link from 'next/link'
-import {getLang} from '@utils/getLang'
+import { getLang } from '@utils/getLang';
+import Link from 'next/link';
 
-export default function NavbarItems ({path}: {path: string}) {
-  const isEN = getLang()
+export default function NavbarItems({ path }: { path: string }): JSX.Element {
+  const isEN = getLang();
 
   const navLinkHide = (currentPath: string) => {
     if (path === currentPath) {
-      return 'hidden'
+      return 'hidden';
     }
-  }
+  };
 
   return (
-    < >
+    <>
       <li className={`navItem ${navLinkHide('/')}`}>
         <Link href='/'>{isEN ? 'Home' : 'Início'}</Link>
       </li>
@@ -24,5 +24,5 @@ export default function NavbarItems ({path}: {path: string}) {
         <Link href='/curriculum'>{isEN ? 'Resume' : 'Currículo'}</Link>
       </li>
     </>
-  )
+  );
 }

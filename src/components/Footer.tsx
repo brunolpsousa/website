@@ -1,4 +1,4 @@
-export default function Footer () {
+export default function Footer(): JSX.Element {
   return (
     <div className='text-center relative bottom-2 p-2'>
       <div className='container max-w-screen-lg mx-auto'>
@@ -8,6 +8,7 @@ export default function Footer () {
               href='https://linkedin.com/in/brunolpsousa'
               target='_blank'
               className='bg-zinc-400 p-2 text-zinc-50 inline-flex items-center space-x-2 rounded-full'
+              rel='noreferrer'
             >
               <svg
                 className='w-5 h-5 fill-current'
@@ -24,6 +25,7 @@ export default function Footer () {
               href='https://github.com/brunolpsousa'
               target='_blank'
               className='bg-zinc-400 p-2 text-zinc-50 inline-flex items-center space-x-2 rounded-full'
+              rel='noreferrer'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -51,5 +53,5 @@ export default function Footer () {
         </p>
       </div>
     </div>
-  )
+  );
 }

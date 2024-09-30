@@ -23,4 +23,4 @@ export const cards = [
     name: 'github',
     img: '/projects/memory/github.png',
   },
-]
+];

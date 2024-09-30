@@ -1,23 +1,23 @@
-"use client"
+'use client';
 
-import { useState, useEffect } from 'react'
-import usePersistedState from '@utils/usePersistedState'
-import Router from 'next/router'
-import {sun, moon, auto} from '@data/buttonThemeIcons'
+import { auto, moon, sun } from '@data/buttonThemeIcons';
+import { usePersistedState } from '@utils/usePersistedState';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-export default function ButtonTheme () {
-  const [theme, setTheme] = usePersistedState<string>('theme', 'auto')
-  const [colors, setColors] = usePersistedState<string>('colors', 'light')
-  const [icon, setIcon] = useState<JSX.Element>(auto)
+export default function ButtonTheme(): JSX.Element {
+  const [theme, setTheme] = usePersistedState<string>('theme', 'auto');
+  const [colors, setColors] = usePersistedState<string>('colors', 'light');
+  const [icon, setIcon] = useState<JSX.Element>(auto);
 
   const setLight = () => {
-    document.documentElement.classList.remove('dark')
-    setColors('light')
-  }
+    document.documentElement.classList.remove('dark');
+    setColors('light');
+  };
   const setDark = () => {
-    document.documentElement.classList.add('dark')
-    setColors('dark')
-  }
+    document.documentElement.classList.add('dark');
+    setColors('dark');
+  };
 
   const toggleTheme = () => {
     setTheme(
@@ -26,31 +26,36 @@ export default function ButtonTheme () {
         : theme === 'auto' && colors === 'dark'
           ? 'light'
           : 'dark',
-    )
-    Router.replace(Router.asPath, undefined, { scroll: false })
-  }
+    );
+  };
 
   useEffect(() => {
-    const mMedia = window.matchMedia('(prefers-color-scheme: dark)').matches
-    ;(mMedia && theme === 'auto') || theme === 'dark' ? setDark() : setLight()
-    setIcon(theme === 'light' ? sun : theme === 'dark' ? moon : auto)
-  }, [theme])
+    const mMedia = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if ((mMedia && theme === 'auto') || theme === 'dark') {
+      setDark();
+    } else {
+      setLight();
+    }
+    setIcon(theme === 'light' ? sun : theme === 'dark' ? moon : auto);
+  }, [theme]);
 
   useEffect(() => {
-    const mMedia = window.matchMedia('(prefers-color-scheme: dark)')
+    const mMedia = window.matchMedia('(prefers-color-scheme: dark)');
     mMedia.onchange = () => {
       if (JSON.parse(localStorage.theme) === 'auto') {
-        mMedia.matches ? setDark() : setLight()
+        if (mMedia.matches) {
+          return setDark();
+        }
+        setLight();
       }
-    }
-  }, [])
+    };
+  }, []);
 
   return (
-    <button
-      onClick={toggleTheme}
-      className='p-2 bg-violet-300 dark:bg-yellow-200 text-lg text-white dark:text-zinc-700 rounded-md'
-    >
-      {icon}
-    </button>
-  )
+    <Link href={''} onClick={toggleTheme}>
+      <button className='p-2 bg-violet-300 dark:bg-yellow-200 text-lg text-white dark:text-zinc-700 rounded-md'>
+        {icon}
+      </button>
+    </Link>
+  );
 }

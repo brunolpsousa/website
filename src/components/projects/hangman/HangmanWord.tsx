@@ -1,10 +1,14 @@
 interface HangmanWordProps {
-  word: string
-  guessed: string[]
-  reveal: boolean
+  word: string;
+  guessed: string[];
+  reveal: boolean;
 }
 
-export default ({ word, guessed, reveal }: HangmanWordProps) => {
+export default function HangmanWord({
+  word,
+  guessed,
+  reveal,
+}: HangmanWordProps): JSX.Element {
   return (
     <div className='flex justify-center gap-2 text-4xl md:text-6xl font-bold uppercase m-12'>
       {word.split('').map((letter, index) => (
@@ -36,5 +40,5 @@ export default ({ word, guessed, reveal }: HangmanWordProps) => {
         </span>
       ))}
     </div>
-  )
+  );
 }

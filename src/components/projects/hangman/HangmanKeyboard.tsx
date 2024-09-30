@@ -1,13 +1,15 @@
 interface KeyboardProps {
-  addGuess: (key: string) => void
+  addGuess: (key: string) => void;
 }
 
-export default ({ addGuess }: KeyboardProps) => {
+export default function HangmanKeyboard({
+  addGuess,
+}: KeyboardProps): JSX.Element {
   const keys = [
     ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
     ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
     ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
-  ]
+  ];
 
   const mapKeys = (items: string[]) => {
     return items.map((key) => {
@@ -20,9 +22,9 @@ export default ({ addGuess }: KeyboardProps) => {
         >
           {key}
         </button>
-      )
-    })
-  }
+      );
+    });
+  };
 
   return (
     <div
@@ -33,5 +35,5 @@ export default ({ addGuess }: KeyboardProps) => {
       <span className='flex flex-shrink'>{mapKeys(keys[1])}</span>
       <span className='flex flex-shrink'>{mapKeys(keys[2])}</span>
     </div>
-  )
+  );
 }

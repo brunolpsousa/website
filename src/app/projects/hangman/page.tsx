@@ -1,79 +1,80 @@
-// Ref: https://youtu.be/ewppbL5Iz54 and https://youtu.be/KNH_-_esmaI
+'use client';
 
-import HangmanDraw from '@components/projects/hangman/HangmanDraw'
-import HangmanWord from '@components/projects/hangman/HangmanWord'
-import HangmanKeyboard from '@components/projects/hangman/HangmanKeyboard'
-import Link from 'next/link'
-import hangWords from '@data/hangmanWords'
-import getLang from '@utils/getLang'
-import { useCallback, useEffect, useState } from 'react'
-import usePersistedState from '@utils/usePersistedState'
+import HangmanDraw from '@components/projects/hangman/HangmanDraw';
+import HangmanKeyboard from '@components/projects/hangman/HangmanKeyboard';
+import HangmanWord from '@components/projects/hangman/HangmanWord';
+import { hangmanWords as hangWords } from '@data';
+import { getLang, usePersistedState } from '@utils';
+import Link from 'next/link';
+import { useCallback, useEffect, useState } from 'react';
 
-export default () => {
-  const isEN = getLang()
+export default function HangmanPage(): JSX.Element {
+  const isEN = getLang();
 
-  const [wordToGuess, setWordToGuess] = useState('')
-  const [wordToGuessNorm, setWordToGuessNorm] = useState('')
-  const [guessed, setGuessed] = useState<string[]>([])
-  const [guessedWords, setGuessedWords] = useState<string[]>([])
-  const mistakes = guessed.filter((letter) => !wordToGuessNorm.includes(letter))
+  const [wordToGuess, setWordToGuess] = useState('');
+  const [wordToGuessNorm, setWordToGuessNorm] = useState('');
+  const [guessed, setGuessed] = useState<string[]>([]);
+  const [guessedWords, setGuessedWords] = useState<string[]>([]);
+  const mistakes = guessed.filter(
+    (letter) => !wordToGuessNorm.includes(letter),
+  );
 
-  const [level, setLevel] = usePersistedState('hangLevel', 1)
-  const [currentLevel, setCurrentLevel] = useState(1)
+  const [level, setLevel] = usePersistedState('hangLevel', 1);
+  const [currentLevel, setCurrentLevel] = useState(1);
   const win =
     wordToGuessNorm &&
-    wordToGuessNorm.split('').every((letter) => guessed.includes(letter))
-  const lose = mistakes.length >= 6
+    wordToGuessNorm.split('').every((letter) => guessed.includes(letter));
+  const lose = mistakes.length >= 6;
 
   function gameTitle(): string {
-    const gameSentence = isEN ? 'Hangman' : 'Jogo da Forca'
-    const winSentence = isEN ? 'Congratulations!' : 'Parabéns!'
-    const loseSentence = isEN ? 'You lose!' : 'Você perdeu!'
-    return win ? winSentence : lose ? loseSentence : gameSentence
+    const gameSentence = isEN ? 'Hangman' : 'Jogo da Forca';
+    const winSentence = isEN ? 'Congratulations!' : 'Parabéns!';
+    const loseSentence = isEN ? 'You lose!' : 'Você perdeu!';
+    return win ? winSentence : lose ? loseSentence : gameSentence;
   }
 
   function checkResult(): void {
     if (win || lose) {
       if (win) {
-        setLevel(level + 1)
+        setLevel(level + 1);
       } else if (lose) {
-        level > 2 ? setLevel(level - 2) : setLevel(1)
+        setLevel(level > 2 ? level - 2 : 1);
       }
       document
         .querySelectorAll<HTMLElement>('.keys')
-        .forEach((e) => e.setAttribute('disabled', 'true'))
+        .forEach((e) => e.setAttribute('disabled', 'true'));
     }
   }
 
   function clearGame(): void {
     document
       .querySelectorAll<HTMLElement>('.keys')
-      .forEach((e) => e.removeAttribute('disabled'))
+      .forEach((e) => e.removeAttribute('disabled'));
 
-    const parts = document.querySelectorAll<HTMLElement>('.hang-parts')
-    for (let i = 0; i < parts.length; i++) {
-      parts[i].style.display = 'none'
+    const parts = document.querySelectorAll<HTMLElement>('.hang-parts');
+    for (const part of parts) {
+      part.style.display = 'none';
     }
 
     guessed.forEach((element) => {
-      const keys = document.getElementById(element)
-      keys?.classList.remove('opacity-30')
-    })
+      const keys = document.getElementById(element);
+      keys?.classList.remove('opacity-30');
+    });
   }
 
   function sortWord(): void {
-    const words = isEN ? hangWords.en : hangWords.pt
-    const specialChars = ['!', '-', '/', ' ']
+    const words = isEN ? hangWords.en : hangWords.pt;
+    const specialChars = ['!', '-', '/', ' '];
 
     function getSecret(word: string[]): string {
-      let initialSecret = 'you rock!'
+      let initialSecret = 'you rock!';
 
       for (let i = 0; i < 100; i++) {
         const localSecret =
-          word[Math.floor(Math.random() * word.length)].toLowerCase()
+          word[Math.floor(Math.random() * word.length)].toLowerCase();
 
         if (guessedWords.includes(localSecret)) {
-          continue
+          continue;
         }
 
         if (
@@ -81,74 +82,74 @@ export default () => {
           level <= 4 &&
           (localSecret.length < 4 || localSecret.length > 6)
         ) {
-          continue
+          continue;
         } else if (
           level > 4 &&
           level <= 8 &&
           (localSecret.length < 3 || localSecret.length > 8)
         ) {
-          continue
+          continue;
         }
 
-        return (initialSecret = localSecret)
+        return (initialSecret = localSecret);
       }
-      return initialSecret
+      return initialSecret;
     }
 
-    const secret = getSecret(words)
+    const secret = getSecret(words);
 
     if (guessedWords.length < 15) {
-      setGuessedWords((guessedWords) => [...guessedWords, secret])
+      setGuessedWords((guessedWords) => [...guessedWords, secret]);
     } else {
-      setGuessedWords([secret])
+      setGuessedWords([secret]);
     }
 
-    setWordToGuess(secret)
-    setWordToGuessNorm(secret.normalize('NFD').replace(/\p{Diacritic}/gu, ''))
+    setWordToGuess(secret);
+    setWordToGuessNorm(secret.normalize('NFD').replace(/\p{Diacritic}/gu, ''));
 
-    setGuessed([])
+    setGuessed([]);
     specialChars.forEach((element) => {
       if (secret.includes(element)) {
-        setGuessed((guessed) => [...guessed, element])
+        setGuessed((guessed) => [...guessed, element]);
       }
-    })
+    });
   }
 
   function refreshGame(): void {
-    clearGame()
-    setCurrentLevel(level)
-    sortWord()
+    clearGame();
+    setCurrentLevel(level);
+    sortWord();
   }
 
   const addGuess = useCallback(
     (letter: string) => {
-      if (guessed.includes(letter) || lose || win) return
+      if (guessed.includes(letter) || lose || win) return;
 
-      const button = document.getElementById(letter)
-      button?.classList.add('opacity-30')
-      button?.setAttribute('disabled', 'true')
+      const button = document.getElementById(letter);
+      button?.classList.add('opacity-30');
+      button?.setAttribute('disabled', 'true');
 
-      setGuessed((guessed) => [...guessed, letter])
+      setGuessed((guessed) => [...guessed, letter]);
     },
     [guessed],
-  )
+  );
 
   useEffect(() => {
-    refreshGame()
-  }, [isEN])
+    refreshGame();
+  }, [isEN]);
 
   useEffect(() => {
-    checkResult()
+    checkResult();
     const handler = (e: KeyboardEvent) => {
-      if (e.ctrlKey) return
-      const letter = e.key.toLowerCase()
-      if (!letter.match(/^[a-z]$/)) return
-      e.preventDefault()
-      addGuess(letter)
-    }
-    document.addEventListener('keydown', handler)
-    return () => document.removeEventListener('keydown', handler)
-  }, [guessed])
+      if (e.ctrlKey) return;
+      const letter = e.key.toLowerCase();
+      if (!letter.match(/^[a-z]$/)) return;
+      e.preventDefault();
+      addGuess(letter);
+    };
+    document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, [guessed]);
 
   return (
     <div className='flex flex-col items-center justify-center pb-12 m-auto w-full'>
@@ -171,5 +172,5 @@ export default () => {
         </button>
       </div>
     </div>
-  )
+  );
 }

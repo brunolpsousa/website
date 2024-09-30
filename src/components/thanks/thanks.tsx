@@ -1,18 +1,24 @@
-"use client"
+'use client';
 
-import Link from 'next/link'
-import { getLang } from '@utils/getLang'
+import { getLang } from '@utils/getLang';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
-export default () => {
-  const isEN = getLang()
+export default function Thanks(): JSX.Element {
+  const router = useRouter();
+  const isEN = getLang();
 
-  const returnToHome: Function = () => {
+  useEffect(() => {
     const interval = setInterval(() => {
-      document?.getElementById('ReturnButton-Thx')?.click()
-      clearInterval(interval)
-    }, 7000)
-    window.onbeforeunload = () => { if (interval) clearInterval(interval)}
-  }
+      router.push('/');
+      clearInterval(interval);
+    }, 7000);
+
+    window.onbeforeunload = () => {
+      if (interval) clearInterval(interval);
+    };
+  }, []);
 
   return (
     <>
@@ -21,10 +27,10 @@ export default () => {
       </h1>
       <p className='text-2xl mb-3'>{isEN ? 'Thank you!' : 'Obrigado!'}</p>
       <Link href={'/'}>
-        <button id='ReturnButton-Thx' type='button' className='navBtn my-12' onLoad={returnToHome()}>
+        <button id='ReturnButton-Thx' type='button' className='navBtn my-12'>
           {isEN ? 'Return' : 'Voltar'}
         </button>
       </Link>
     </>
-  )
+  );
 }

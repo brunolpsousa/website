@@ -1,9 +1,9 @@
-import ThanksClient from '@components/thanks/thanks'
+import Thanks from '@components/thanks/thanks';
 
-export default () => {
+export default function ThanksPage(): JSX.Element {
   return (
-    <div className='flex flex-col items-center justify-center text-center m-auto w-full' >
-      <ThanksClient/>
+    <div className='flex flex-col items-center justify-center text-center m-auto w-full'>
+      <Thanks />
     </div>
-  )
+  );
 }

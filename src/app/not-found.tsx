@@ -1,12 +1,10 @@
-import NotFoundClient from "@components/notFound/notFound"
+import NotFound from '@components/notFound/notFound';
 
-export default function NotFound () {
+export default function NotFoundPage(): JSX.Element {
   return (
-    <div
-      className='flex flex-col items-center justify-center text-center m-auto w-full'
-    >
+    <div className='flex flex-col items-center justify-center text-center m-auto w-full'>
       <h1 className='text-5xl mb-3 font-medium'>Oops!</h1>
-      <NotFoundClient/>
+      <NotFound />
     </div>
-  )
+  );
 }

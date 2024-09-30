@@ -1,98 +1,101 @@
-// Ref: https://github.com/adrianoviana/jogo-da-memoria-simples
+'use client';
 
-import Link from 'next/link'
-import getLang from '@utils/getLang'
-import { cards as deck } from '@data/memoryCards'
-import { useEffect, useState } from 'react'
+import { cards as deck } from '@data/memoryCards';
+import { getLang } from '@utils/getLang';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-export default () => {
-  const isEN = getLang()
-  const cardsChosen: string[] = []
-  const cardsChosenId: number[] = []
-  const pairsFound: string[][] = []
-  const [endGame, setEndGame] = useState(false)
+export default function MemoryPage(): JSX.Element {
+  const isEN = getLang();
+  const cardsChosen: string[] = [];
+  const cardsChosenId: number[] = [];
+  const pairsFound: string[][] = [];
+  const [endGame, setEndGame] = useState(false);
 
-  const cardDeck = deck.flatMap((i) => [i, i])
-  cardDeck.sort(() => 0.5 - Math.random())
+  const cardDeck = deck.flatMap((i) => [i, i]);
+  cardDeck.sort(() => 0.5 - Math.random());
 
   function gameTitle(): string {
-    const gameSentence = isEN ? 'Memory Game' : 'Jogo da Memória'
-    const endSentence = isEN ? 'Congratulations!' : 'Parabéns!'
-    return endGame ? endSentence : gameSentence
+    const gameSentence = isEN ? 'Memory Game' : 'Jogo da Memória';
+    const endSentence = isEN ? 'Congratulations!' : 'Parabéns!';
+    return endGame ? endSentence : gameSentence;
   }
 
   function createBoard(): void {
-    const board = document.querySelector('.board')
+    const board = document.querySelector('.board');
     for (let i = 0; i < cardDeck.length; i++) {
-      const card = document.createElement('img')
-      card.setAttribute('src', '/projects/memory/board.png')
-      card.setAttribute('data-id', i.toString())
-      card.addEventListener('click', flipCard)
-      board?.appendChild(card)
+      const card = document.createElement('img');
+      card.setAttribute('src', '/projects/memory/board.png');
+      card.setAttribute('data-id', i.toString());
+      card.addEventListener('click', flipCard);
+      board?.appendChild(card);
     }
   }
 
   function checkForMatch(): void {
-    const resultView = document.querySelector('#result')!
-    const cards = document.querySelectorAll('img')
-    const optionOneId = cardsChosenId[0]
-    const optionTwoId = cardsChosenId[1]
+    const resultView = document.querySelector('#result');
+    const cards = document.querySelectorAll('img');
+    const optionOneId = cardsChosenId[0];
+    const optionTwoId = cardsChosenId[1];
 
-    for (let i = 0; i < cards.length; i++) {
-      if (cards[i].getAttribute('src') === '/projects/memory/board.png')
-        cards[i].addEventListener('click', flipCard)
+    for (const card of cards) {
+      if (card.getAttribute('src') === '/projects/memory/board.png')
+        card.addEventListener('click', flipCard);
     }
 
     if (optionOneId === optionTwoId) {
-      cards[optionOneId].setAttribute('src', '/projects/memory/board.png')
-      cards[optionTwoId].setAttribute('src', '/projects/memory/board.png')
+      cards[optionOneId].setAttribute('src', '/projects/memory/board.png');
+      cards[optionTwoId].setAttribute('src', '/projects/memory/board.png');
     } else if (cardsChosen[0] === cardsChosen[1]) {
-      cards[optionOneId].setAttribute('src', '/projects/memory/check.png')
-      cards[optionTwoId].setAttribute('src', '/projects/memory/check.png')
-      cards[optionOneId].removeEventListener('click', flipCard)
-      cards[optionTwoId].removeEventListener('click', flipCard)
-      pairsFound.push(cardsChosen)
+      cards[optionOneId].setAttribute('src', '/projects/memory/check.png');
+      cards[optionTwoId].setAttribute('src', '/projects/memory/check.png');
+      cards[optionOneId].removeEventListener('click', flipCard);
+      cards[optionTwoId].removeEventListener('click', flipCard);
+      pairsFound.push(cardsChosen);
     } else {
-      cards[optionOneId].setAttribute('src', '/projects/memory/board.png')
-      cards[optionTwoId].setAttribute('src', '/projects/memory/board.png')
+      cards[optionOneId].setAttribute('src', '/projects/memory/board.png');
+      cards[optionTwoId].setAttribute('src', '/projects/memory/board.png');
     }
 
-    cardsChosen.length = 0
-    cardsChosenId.length = 0
-    resultView.textContent = '' + pairsFound.length
-    setEndGame(pairsFound.length === cards.length / 2)
+    cardsChosen.length = 0;
+    cardsChosenId.length = 0;
+    if (resultView) resultView.textContent = '' + pairsFound.length;
+    setEndGame(pairsFound.length === cards.length / 2);
   }
 
   function flipCard(this: HTMLElement): void {
-    const cardId = Number(this.getAttribute('data-id'))
-    cardsChosen.push(cardDeck[cardId].name)
-    cardsChosenId.push(cardId)
-    this.setAttribute('src', cardDeck[cardId].img)
+    const cardId = Number(this.getAttribute('data-id'));
+    cardsChosen.push(cardDeck[cardId].name);
+    cardsChosenId.push(cardId);
+    this.setAttribute('src', cardDeck[cardId].img);
 
     if (cardsChosen.length === 2) {
-      const cards = document.querySelectorAll('img')
-      for (let i = 0; i < cards.length; i++) {
-        if (cards[i].getAttribute('src') === '/projects/memory/board.png')
-          cards[i].removeEventListener('click', flipCard)
+      const cards = document.querySelectorAll('img');
+      for (const card of cards) {
+        if (card.getAttribute('src') === '/projects/memory/board.png')
+          card.removeEventListener('click', flipCard);
       }
-      setTimeout(checkForMatch, 500)
+      setTimeout(checkForMatch, 500);
     }
   }
 
   function refreshGame(): void {
-    document.querySelector('#result')!.textContent = '0'
-    pairsFound.length = 0
+    const result = document.querySelector('#result');
+    if (result) {
+      result.textContent = '0';
+      pairsFound.length = 0;
 
-    const board = document.querySelector('.board')
-    while (board?.firstChild) board?.removeChild(board.firstChild)
+      const board = document.querySelector('.board');
+      while (board?.firstChild) board?.removeChild(board.firstChild);
 
-    setEndGame(false)
-    createBoard()
+      setEndGame(false);
+      createBoard();
+    }
   }
 
   useEffect(() => {
-    refreshGame()
-  }, [isEN])
+    refreshGame();
+  }, [isEN]);
 
   return (
     <div className='flex flex-col items-center justify-center pb-12 m-auto w-full'>
@@ -113,5 +116,5 @@ export default () => {
         </button>
       </div>
     </div>
-  )
+  );
 }

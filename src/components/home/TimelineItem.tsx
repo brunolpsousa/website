@@ -5,37 +5,37 @@ export default function TimelineItem({
   details,
   isEN,
 }: {
-  year: string
-  title: string
-  duration: string[]
-  details: string
-    isEN: boolean
-}) {
+  year: string;
+  title: string;
+  duration: string[];
+  details: string;
+  isEN: boolean;
+}): JSX.Element {
   const getDuration = (duration: string[]): string => {
-    const initialDate = new Date(duration[0])
-    const endDate = duration[1] ? new Date(duration[1]) : new Date()
+    const initialDate = new Date(duration[0]);
+    const endDate = duration[1] ? new Date(duration[1]) : new Date();
     const totalTime = Math.round(
       (endDate.valueOf() - initialDate.valueOf()) / 1000 / 60 / 60 / 24 / 30,
-    )
+    );
 
     if (totalTime < 2) {
-      return isEN ? 'now' : 'agora'
+      return isEN ? 'now' : 'agora';
     }
 
-    const year = totalTime > 11 ? Math.floor(totalTime / 12) : null
-    const month = totalTime % 12
+    const year = totalTime > 11 ? Math.floor(totalTime / 12) : null;
+    const month = totalTime % 12;
 
-    let result = ''
+    let result = '';
 
     if (year) {
-      result = year.toString()
-      result += isEN ? 'y ' : 'a '
+      result = year.toString();
+      result += isEN ? 'y ' : 'a ';
     }
     if (month > 1) {
-      result += `${month}m`
+      result += `${month}m`;
     }
-    return result
-  }
+    return result;
+  };
   return (
     <ol className='flex flex-col md:flex-row relative border-l border-zinc-300 dark:border-zinc-500'>
       <li className='mb-8 ml-4'>
@@ -52,5 +52,5 @@ export default function TimelineItem({
         <p className='my-2 text-base font-normal'>{details}</p>
       </li>
     </ol>
-  )
+  );
 }

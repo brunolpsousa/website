@@ -1,4 +1,4 @@
-export default {
+export const hangmanWords = {
   pt: [
     'Algoritmo',
     'Análise',
@@ -161,4 +161,4 @@ export default {
     'XML',
     'Zero-Day',
   ],
-}
+};

@@ -1,13 +1,15 @@
-import Link from 'next/link'
-import { getLang} from '@utils/getLang'
+'use client';
 
-export default function Curriculum () {
-  const isEN = getLang()
+import { getLang } from '@utils/getLang';
+import Link from 'next/link';
+
+export default function Curriculum(): JSX.Element {
+  const isEN = getLang();
   const cv_link = () => {
     return isEN
       ? 'https://drive.google.com/file/d/1XU3SmuO14j4ZuXaP1usDowxqArbSXisQ/'
-      : 'https://drive.google.com/file/d/1OkEk3ztGypFpPrNSehem41ENgm5HpaA-/'
-  }
+      : 'https://drive.google.com/file/d/1OkEk3ztGypFpPrNSehem41ENgm5HpaA-/';
+  };
   return (
     <>
       <iframe
@@ -22,11 +24,11 @@ export default function Curriculum () {
           </button>
         </Link>
         <button id='Download' type='button' className='navBtn'>
-          <a href={cv_link() + 'view'} target='_blank'>
+          <a href={cv_link() + 'view'} target='_blank' rel='noreferrer'>
             Download
           </a>
         </button>
       </div>
     </>
-  )
+  );
 }

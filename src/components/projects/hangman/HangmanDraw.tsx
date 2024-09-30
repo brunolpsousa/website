@@ -1,13 +1,15 @@
 interface HangmanDrawProps {
-  mistakes: number
+  mistakes: number;
 }
 
-export default ({ mistakes }: HangmanDrawProps) => {
-  const draw: Function = () => {
+export default function HangmanDraw({
+  mistakes,
+}: HangmanDrawProps): JSX.Element {
+  const draw = () => {
     if (typeof document !== 'undefined') {
-      const parts = document?.querySelectorAll<HTMLElement>('.hang-parts')!
+      const parts = document?.querySelectorAll<HTMLElement>('.hang-parts');
       for (let i = 0; i < mistakes; i++) {
-        parts[i].style.display = 'block'
+        parts[i].style.display = 'block';
       }
     }
     return (
@@ -35,7 +37,7 @@ export default ({ mistakes }: HangmanDrawProps) => {
         <line x1='140' y1='150' x2='120' y2='180' className='hang-parts' />
         <line x1='140' y1='150' x2='160' y2='180' className='hang-parts' />
       </svg>
-    )
-  }
-  return <>{draw()}</>
+    );
+  };
+  return <>{draw()}</>;
 }

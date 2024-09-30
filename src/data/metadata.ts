@@ -1,54 +1,54 @@
-import { lightThemeIcon } from "@data/icon";
-import type { Metadata } from "next";
+import { lightThemeIcon } from '@data';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Bruno Sousa",
-  description: "Personal Website",
+  title: 'Bruno Sousa',
+  description: 'Personal Website',
 
   // Basic metadata
-  applicationName: "Bruno Sousa",
-  authors: [{ name: "Bruno Sousa", url: "https://brunolpsousa.github.com" }],
-  generator: "Next.js",
+  applicationName: 'Bruno Sousa',
+  authors: [{ name: 'Bruno Sousa', url: 'https://brunolpsousa.github.com' }],
+  generator: 'Next.js',
   keywords: [
-    "portfolio",
-    "next.js",
-    "react",
-    "javascript",
-    "typescript",
-    "node.js",
+    'portfolio',
+    'next.js',
+    'react',
+    'javascript',
+    'typescript',
+    'node.js',
   ],
-  referrer: "origin-when-cross-origin",
+  referrer: 'origin-when-cross-origin',
   // themeColor: "#4285f4",
   // colorScheme: "dark",
-  viewport: "width=device-width, initial-scale=1",
-  creator: "Bruno Sousa",
-  publisher: "Bruno Sousa",
+  viewport: 'width=device-width, initial-scale=1',
+  creator: 'Bruno Sousa',
+  publisher: 'Bruno Sousa',
 
   // Open Graph metadata
   openGraph: {
-    title: "Bruno Sousa",
-    description: "Personal Website",
-    url: "https://brunolpsousa.vercel.app",
-    siteName: "Bruno Sousa",
+    title: 'Bruno Sousa',
+    description: 'Personal Website',
+    url: 'https://brunolpsousa.vercel.app',
+    siteName: 'Bruno Sousa',
     images: [
       {
-        url: "https://brunolpsousa.vercel.app/assets/share_link.png",
+        url: 'https://brunolpsousa.vercel.app/assets/share_link.png',
         width: 1200, // This is the recommended size in pixels
         height: 630,
-        alt: "Bruno Sousa",
+        alt: 'Bruno Sousa',
       },
     ],
-    locale: "en_US",
-    type: "website",
+    locale: 'en_US',
+    type: 'website',
   },
 
   // Twitter metadata
   twitter: {
-    card: "summary_large_image",
-    title: "Bruno Sousa",
-    description: "Personal Website",
-    creator: "@brunolpsousa",
-    images: ["https://brunolpsousa.vercel.app/assets/share_link.png"],
+    card: 'summary_large_image',
+    title: 'Bruno Sousa',
+    description: 'Personal Website',
+    creator: '@brunolpsousa',
+    images: ['https://brunolpsousa.vercel.app/assets/share_link.png'],
   },
 
   // Verification for search engines
@@ -63,10 +63,10 @@ export const metadata: Metadata = {
 
   // Alternate languages
   alternates: {
-    canonical: "https://brunolpsousa.vercel.app",
+    canonical: 'https://brunolpsousa.vercel.app',
     languages: {
-      "en-US": "https://brunolpsousa.vercel.app/en-US",
-      "pt-BR": "https://brunolpsousa.vercel.app/pt-BR",
+      'en-US': 'https://brunolpsousa.vercel.app/en-US',
+      'pt-BR': 'https://brunolpsousa.vercel.app/pt-BR',
     },
   },
 
@@ -89,8 +89,8 @@ export const metadata: Metadata = {
   // App-specific metadata
   appleWebApp: {
     capable: true,
-    title: "Bruno Sousa",
-    statusBarStyle: "black-translucent",
+    title: 'Bruno Sousa',
+    statusBarStyle: 'black-translucent',
   },
 
   // Robots directives
@@ -102,9 +102,9 @@ export const metadata: Metadata = {
       index: true,
       follow: true,
       noimageindex: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
 
