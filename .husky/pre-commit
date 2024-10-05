@@ -1,2 +1,2 @@
-npm run format;
-npm run lint;
+npm run format || { npm run format:fix; echo -e '\n\e[31mFormat code before commit!\e[93m'; exit 1; }
+npm run lint || { npm run lint:fix; echo -e '\n\e[31mRun lint before commit!\e[93m'; exit 1; }
