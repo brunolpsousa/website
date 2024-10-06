@@ -17,7 +17,7 @@ export default function Curriculum(): JSX.Element {
         src={cv_link() + 'preview'}
         className='h-full w-full'
       />
-      <div className='flex flex-shrink my-12 space-x-12'>
+      <div className='my-12 flex flex-shrink space-x-12'>
         <Link href={'/'}>
           <button type='button' className='navBtn'>
             {isEN ? 'Return' : 'Voltar'}

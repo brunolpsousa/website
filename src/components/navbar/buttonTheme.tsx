@@ -53,7 +53,7 @@ export default function ButtonTheme(): JSX.Element {
 
   return (
     <Link href={''} onClick={toggleTheme}>
-      <button className='p-2 bg-violet-300 dark:bg-yellow-200 text-lg text-white dark:text-zinc-700 rounded-md'>
+      <button className='rounded-md bg-violet-300 p-2 text-lg text-white dark:bg-yellow-200 dark:text-zinc-700'>
         {icon}
       </button>
     </Link>

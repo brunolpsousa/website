@@ -6,7 +6,7 @@ export default function Navbar({ path }: { path: string }): JSX.Element {
   return (
     <ul
       id='navbar'
-      className='font-medium flex flex-row place-content-end items-center relative mb-8 pb-8 top-2 w-full'
+      className='relative top-2 mb-8 flex w-full flex-row place-content-end items-center pb-8 font-medium'
     >
       <li id='buttonTheme' className='navItem absolute left-0'>
         <ButtonTheme />

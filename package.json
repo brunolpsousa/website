@@ -14,7 +14,12 @@
   "prettier": {
     "singleQuote": true,
     "jsxSingleQuote": true,
-    "endOfLine": "lf"
+    "printWidth": 80,
+    "tabWidth": 2,
+    "endOfLine": "lf",
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ]
   },
   "dependencies": {
     "next": "^14.2.13",
@@ -30,12 +35,14 @@
     "autoprefixer": "^10.4.20",
     "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-custom": "file:config/eslint",
     "eslint-plugin-react": "^7.37.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^15.9.0",
     "husky": "^9.1.6",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.8",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.6.2",
     "typescript-eslint": "^8.7.0"

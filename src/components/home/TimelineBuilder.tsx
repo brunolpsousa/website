@@ -24,7 +24,7 @@ export default function TimelineBuiler(): JSX.Element {
   };
   return (
     <>
-      <h1 className='text-2xl font-medium mb-5'>
+      <h1 className='mb-5 text-2xl font-medium'>
         {isEN ? 'Timeline' : 'Linha do tempo'}
       </h1>
       {timemap()}

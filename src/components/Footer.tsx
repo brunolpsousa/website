@@ -1,17 +1,17 @@
 export default function Footer(): JSX.Element {
   return (
-    <div className='text-center relative bottom-2 p-2'>
-      <div className='container max-w-screen-lg mx-auto'>
+    <div className='relative bottom-2 p-2 text-center'>
+      <div className='container mx-auto max-w-screen-lg'>
         <div>
           <div className='flex flex-wrap justify-center gap-2'>
             <a
               href='https://linkedin.com/in/brunolpsousa'
               target='_blank'
-              className='bg-zinc-400 p-2 text-zinc-50 inline-flex items-center space-x-2 rounded-full'
+              className='inline-flex items-center space-x-2 rounded-full bg-zinc-400 p-2 text-zinc-50'
               rel='noreferrer'
             >
               <svg
-                className='w-5 h-5 fill-current'
+                className='h-5 w-5 fill-current'
                 role='img'
                 viewBox='0 0 256 256'
                 xmlns='http://www.w3.org/2000/svg'
@@ -24,7 +24,7 @@ export default function Footer(): JSX.Element {
             <a
               href='https://github.com/brunolpsousa'
               target='_blank'
-              className='bg-zinc-400 p-2 text-zinc-50 inline-flex items-center space-x-2 rounded-full'
+              className='inline-flex items-center space-x-2 rounded-full bg-zinc-400 p-2 text-zinc-50'
               rel='noreferrer'
             >
               <svg
@@ -48,7 +48,7 @@ export default function Footer(): JSX.Element {
             </a>
           </div>
         </div>
-        <p className='text-sm mt-2 opacity-50 dark:opacity-70'>
+        <p className='mt-2 text-sm opacity-50 dark:opacity-70'>
           &copy; {new Date().getFullYear()} Bruno Sousa
         </p>
       </div>

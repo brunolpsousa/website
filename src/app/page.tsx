@@ -7,7 +7,7 @@ export default function Home(): JSX.Element {
   return (
     <>
       <Navbar path='/' />
-      <div className='flex flex-col items-center justify-center pb-12 m-auto w-full'>
+      <div className='m-auto flex w-full flex-col items-center justify-center pb-12'>
         <Intro />
         <Timeline />
         <Contact />

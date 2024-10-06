@@ -18,7 +18,7 @@ export default function HangmanKeyboard({
           id={key}
           key={key}
           onClick={() => addGuess(key)}
-          className='keys p-1 mx-1 md:p-2 w-7 md:w-10 bg-zinc-800 dark:bg-zinc-100 text-2xl text-white dark:text-zinc-700 rounded-md'
+          className='keys mx-1 w-7 rounded-md bg-zinc-800 p-1 text-2xl text-white dark:bg-zinc-100 dark:text-zinc-700 md:w-10 md:p-2'
         >
           {key}
         </button>
@@ -29,7 +29,7 @@ export default function HangmanKeyboard({
   return (
     <div
       id='keyboard'
-      className='flex flex-col gap-3 place-items-center justify-items-center select-none'
+      className='flex select-none flex-col place-items-center justify-items-center gap-3'
     >
       <span className='flex flex-shrink'>{mapKeys(keys[0])}</span>
       <span className='flex flex-shrink'>{mapKeys(keys[1])}</span>

@@ -57,15 +57,15 @@ export default function Contact(): JSX.Element {
   };
 
   return (
-    <div className='flex flex-col pb-12 w-full'>
-      <div className='flex justify-center items-center'>
+    <div className='flex w-full flex-col pb-12'>
+      <div className='flex items-center justify-center'>
         <form
           action='https://api.staticforms.xyz/submit'
           method='POST'
-          className='flex flex-col w-full md:w-7/12'
-          onSubmit={handleSubmit}
+          className='flex w-full flex-col md:w-7/12'
+          onSubmit={(e) => void handleSubmit(e)}
         >
-          <h1 className='text-2xl font-medium mb-5'>
+          <h1 className='mb-5 text-2xl font-medium'>
             {isEN ? 'Contact' : 'Contato'}
           </h1>
           <input
@@ -75,7 +75,7 @@ export default function Contact(): JSX.Element {
             placeholder={isEN ? 'Name' : 'Nome'}
             required
             onChange={handleChange}
-            className='p-2 bg-transparent border-2 border-zinc-300 dark:border-zinc-500 rounded-md focus:outline-none'
+            className='rounded-md border-2 border-zinc-300 bg-transparent p-2 focus:outline-none dark:border-zinc-500'
           />
           <input
             type='email'
@@ -83,13 +83,13 @@ export default function Contact(): JSX.Element {
             placeholder='E-mail'
             required
             onChange={handleChange}
-            className='my-2 p-2 bg-transparent border-2 border-zinc-300 dark:border-zinc-500 rounded-md focus:outline-none'
+            className='my-2 rounded-md border-2 border-zinc-300 bg-transparent p-2 focus:outline-none dark:border-zinc-500'
           />
           <input
             type='text'
             name='honeypot'
             onChange={handleChange}
-            className='hidden !imporant'
+            className='!imporant hidden'
           />
           <textarea
             name='message'
@@ -97,7 +97,7 @@ export default function Contact(): JSX.Element {
             rows={8}
             required
             onChange={handleChange}
-            className='p-2 mb-4 bg-transparent border-2 border-zinc-300 dark:border-zinc-500 rounded-md focus:outline-none'
+            className='mb-4 rounded-md border-2 border-zinc-300 bg-transparent p-2 focus:outline-none dark:border-zinc-500'
           />
           <button type='submit' className='navBtn place-self-end'>
             {isEN ? 'Send' : 'Enviar'}

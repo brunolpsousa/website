@@ -114,15 +114,15 @@ export default function DinoPage(): JSX.Element {
   }, []);
 
   return (
-    <div className='flex flex-col items-center justify-center pb-12 m-auto w-full'>
-      <h1 className='text-center leading-tight text-5xl mb-8'>{gameTitle()}</h1>
-      <div className='w-screen h-full'>
+    <div className='m-auto flex w-full flex-col items-center justify-center pb-12'>
+      <h1 className='mb-8 text-center text-5xl leading-tight'>{gameTitle()}</h1>
+      <div className='h-full w-screen'>
         <div id='world'>
           <div className='dino'></div>
           <div className='bugs'></div>
         </div>
       </div>
-      <div className='flex flex-shrink my-12 space-x-12'>
+      <div className='my-12 flex flex-shrink space-x-12'>
         <Link href={'/projects'}>
           <button type='button' className='navBtn'>
             {isEN ? 'Return' : 'Voltar'}

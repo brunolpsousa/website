@@ -22,7 +22,7 @@ export default function NotFound(): JSX.Element {
 
   return (
     <>
-      <p className='text-2xl mb-3'>
+      <p className='mb-3 text-2xl'>
         {isEN
           ? 'Could not load this page'
           : 'Não foi possível carregar esta página'}

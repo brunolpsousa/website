@@ -10,10 +10,10 @@ export default function HangmanWord({
   reveal,
 }: HangmanWordProps): JSX.Element {
   return (
-    <div className='flex justify-center gap-2 text-4xl md:text-6xl font-bold uppercase m-12'>
+    <div className='m-12 flex justify-center gap-2 text-4xl font-bold uppercase md:text-6xl'>
       {word.split('').map((letter, index) => (
         <span
-          className='text-center border-b-black dark:border-b-white border-b-4 w-8 md:w-16'
+          className='w-8 border-b-4 border-b-black text-center dark:border-b-white md:w-16'
           style={{
             visibility: letter === ' ' ? 'hidden' : 'visible',
           }}

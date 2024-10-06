@@ -37,11 +37,11 @@ export default function TimelineItem({
     return result;
   };
   return (
-    <ol className='flex flex-col md:flex-row relative border-l border-zinc-300 dark:border-zinc-500'>
+    <ol className='relative flex flex-col border-l border-zinc-300 dark:border-zinc-500 md:flex-row'>
       <li className='mb-8 ml-4'>
-        <div className='absolute w-3 h-3 rounded-full mt-1.5 -left-1.5 border border-zinc-300 bg-zinc-300 dark:border-zinc-500 dark:bg-zinc-500' />
-        <div className='flex flex-wrap gap-4 flex-row items-center justify-start text-xs md:text-sm'>
-          <span className='inline-block px-1.5 py-1 font-medium select-none text-zinc-100 dark:text-zinc-800 bg-zinc-600 dark:bg-zinc-200 rounded-md'>
+        <div className='absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-zinc-300 bg-zinc-300 dark:border-zinc-500 dark:bg-zinc-500' />
+        <div className='flex flex-row flex-wrap items-center justify-start gap-4 text-xs md:text-sm'>
+          <span className='inline-block select-none rounded-md bg-zinc-600 px-1.5 py-1 font-medium text-zinc-100 dark:bg-zinc-200 dark:text-zinc-800'>
             {year}
           </span>
           <h3 className='text-lg font-semibold'>{title}</h3>

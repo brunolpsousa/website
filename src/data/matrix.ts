@@ -1,3 +1,4 @@
+/* eslint-disable custom/non-ascii */
 export const arabic = 'ضصثقفغعهخحجشسيبلاتنمكةءظطذدزروى'.split('');
 export const numbers = '01234567890123456789'.split('');
 export const chinese =

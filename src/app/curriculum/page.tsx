@@ -5,7 +5,7 @@ export default function CurriculumPage(): JSX.Element {
   return (
     <>
       <Navbar path='/curriculum' />
-      <div className='flex flex-col items-center justify-center m-auto h-full w-full'>
+      <div className='m-auto flex h-full w-full flex-col items-center justify-center'>
         <Curriculum />
       </div>
     </>

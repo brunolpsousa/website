@@ -10,11 +10,11 @@ export default function ProjectsPage(): JSX.Element {
   return (
     <>
       <Navbar path='/projects' />
-      <div className='flex flex-col items-center justify-center pb-12 m-auto'>
-        <h1 className='text-5xl mb-3 font-medium'>
+      <div className='m-auto flex flex-col items-center justify-center pb-12'>
+        <h1 className='mb-3 text-5xl font-medium'>
           {isEN ? 'Projects' : 'Projetos'}
         </h1>
-        <ul className='text-2xl text-center p-16 m-3'>
+        <ul className='m-3 p-16 text-center text-2xl'>
           <li className='customHover m-1'>
             <Link href={'projects/dino'}>Dino</Link>
           </li>
@@ -34,7 +34,7 @@ export default function ProjectsPage(): JSX.Element {
             <Link href={'projects/snake'}>Snake</Link>
           </li>
         </ul>
-        <ul className='hover:underline customHover'>
+        <ul className='customHover hover:underline'>
           <Link
             className='extLink'
             href={'https://github.com/brunolpsousa'}

@@ -106,9 +106,9 @@ export default function MatrixPage(): JSX.Element {
   }, []);
 
   return (
-    <div className='flex flex-col items-center justify-center pb-12 m-auto w-full'>
+    <div className='m-auto flex w-full flex-col items-center justify-center pb-12'>
       <canvas id='canvas'></canvas>
-      <div className='flex flex-shrink my-12 space-x-12'>
+      <div className='my-12 flex flex-shrink space-x-12'>
         <Link href={'/projects'}>
           <button type='button' className='navBtn'>
             {isEN ? 'Return' : 'Voltar'}

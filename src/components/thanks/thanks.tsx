@@ -22,10 +22,10 @@ export default function Thanks(): JSX.Element {
 
   return (
     <>
-      <h1 className='text-3xl mb-3 font-medium'>
+      <h1 className='mb-3 text-3xl font-medium'>
         {isEN ? 'Message sent successfully' : 'Mensagem enviada com sucesso'}
       </h1>
-      <p className='text-2xl mb-3'>{isEN ? 'Thank you!' : 'Obrigado!'}</p>
+      <p className='mb-3 text-2xl'>{isEN ? 'Thank you!' : 'Obrigado!'}</p>
       <Link href={'/'}>
         <button id='ReturnButton-Thx' type='button' className='navBtn my-12'>
           {isEN ? 'Return' : 'Voltar'}
