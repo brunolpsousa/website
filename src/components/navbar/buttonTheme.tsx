@@ -14,6 +14,7 @@ export default function ButtonTheme(): JSX.Element {
     document.documentElement.classList.remove('dark');
     setColors('light');
   };
+
   const setDark = () => {
     document.documentElement.classList.add('dark');
     setColors('dark');

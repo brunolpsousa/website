@@ -1,11 +1,12 @@
 'use client';
+
 import { usePersistedState } from '@utils';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function ButtonLang(): JSX.Element {
-  const [isEN, setIsEN] = usePersistedState('lang', '');
-  const [icon, setIcon] = useState('pt');
+  const [isEN, setIsEN] = usePersistedState<string>('lang', '');
+  const [icon, setIcon] = useState<string>('pt');
 
   const handleLangSwitch = () => {
     const str = isEN === 'pt' ? 'en' : 'pt';
