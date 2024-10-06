@@ -1,15 +1,16 @@
 'use client';
 
+import { LangContext } from '@components/langContextProvider/LangContextProvider';
 import HangmanDraw from '@components/projects/hangman/HangmanDraw';
 import HangmanKeyboard from '@components/projects/hangman/HangmanKeyboard';
 import HangmanWord from '@components/projects/hangman/HangmanWord';
 import { hangmanWords as hangWords } from '@data';
-import { getLang, usePersistedState } from '@utils';
+import { usePersistedState } from '@utils';
 import Link from 'next/link';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 
 export default function HangmanPage(): JSX.Element {
-  const isEN = getLang();
+  const isEN = useContext(LangContext);
 
   const [wordToGuess, setWordToGuess] = useState('');
   const [wordToGuessNorm, setWordToGuessNorm] = useState('');

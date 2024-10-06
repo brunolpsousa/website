@@ -1,10 +1,11 @@
 'use client';
 
-import { getLang } from '@utils/getLang';
+import { LangContext } from '@components/langContextProvider/LangContextProvider';
 import Link from 'next/link';
+import { useContext } from 'react';
 
 export default function Curriculum(): JSX.Element {
-  const isEN = getLang();
+  const isEN = useContext(LangContext);
   const cv_link = () => {
     return isEN
       ? 'https://drive.google.com/file/d/1XU3SmuO14j4ZuXaP1usDowxqArbSXisQ/'

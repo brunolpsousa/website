@@ -1,10 +1,10 @@
 'use client';
 
-import { getLang } from '@utils/getLang';
-import { useState } from 'react';
+import { LangContext } from '@components/langContextProvider/LangContextProvider';
+import { useContext, useState } from 'react';
 
 export default function Contact(): JSX.Element {
-  const isEN = getLang();
+  const isEN = useContext(LangContext);
   const [contact, setContact] = useState({
     name: '',
     email: '',

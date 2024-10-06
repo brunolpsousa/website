@@ -1,5 +1,6 @@
 'use client';
 
+import LangContext from '@components/langContextProvider/LangContextProvider';
 import { darkThemeIcon, lightThemeIcon } from '@data';
 import { lsParse } from '@utils';
 import Head from 'next/head';
@@ -24,14 +25,14 @@ export default function Layout({
       }
       setFavicon(theme === 'dark' ? darkThemeIcon : lightThemeIcon);
     };
-  });
+  }, []);
 
   return (
     <>
       <Head>
         <link rel='icon' type='image/svg+xml' href={favicon} />
       </Head>
-      {children}
+      <LangContext>{children}</LangContext>
     </>
   );
 }

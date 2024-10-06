@@ -1,8 +1,8 @@
 'use client';
 
-import { getLang } from '@utils/getLang';
+import { LangContext } from '@components/langContextProvider/LangContextProvider';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 
 const game = () => {
   class Pacman {
@@ -795,7 +795,7 @@ const game = () => {
 };
 
 export default function PacmanPage(): JSX.Element {
-  const isEN = getLang();
+  const isEN = useContext(LangContext);
 
   const refreshGame = () => {
     window.location.reload();

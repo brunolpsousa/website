@@ -1,11 +1,12 @@
 'use client';
 
+import { LangContext } from '@components/langContextProvider/LangContextProvider';
 import Navbar from '@components/navbar/Navbar';
-import { getLang } from '@utils/getLang';
 import Link from 'next/link';
+import { useContext } from 'react';
 
 export default function ProjectsPage(): JSX.Element {
-  const isEN = getLang();
+  const isEN = useContext(LangContext);
 
   return (
     <>

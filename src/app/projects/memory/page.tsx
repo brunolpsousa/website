@@ -1,12 +1,12 @@
 'use client';
 
+import { LangContext } from '@components/langContextProvider/LangContextProvider';
 import { cards as deck } from '@data/memoryCards';
-import { getLang } from '@utils/getLang';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 export default function MemoryPage(): JSX.Element {
-  const isEN = getLang();
+  const isEN = useContext(LangContext);
   const cardsChosen: string[] = [];
   const cardsChosenId: number[] = [];
   const pairsFound: string[][] = [];

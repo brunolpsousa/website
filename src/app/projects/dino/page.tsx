@@ -1,11 +1,11 @@
 'use client';
 
-import { getLang } from '@utils/getLang';
+import { LangContext } from '@components/langContextProvider/LangContextProvider';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 export default function DinoPage(): JSX.Element {
-  const isEN = getLang();
+  const isEN = useContext(LangContext);
 
   const [endGame, setEndGame] = useState(false);
   let isGameOver = false;

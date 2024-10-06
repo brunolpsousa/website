@@ -18,6 +18,7 @@ export function usePersistedState<T>(
   });
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(value));
+    window.dispatchEvent(new Event('storage'));
   }, [key, value]);
   return [value, setValue];
 }

@@ -1,10 +1,11 @@
 'use client';
 
-import { getLang } from '@utils/getLang';
+import { LangContext } from '@components/langContextProvider/LangContextProvider';
 import Link from 'next/link';
+import { useContext } from 'react';
 
 export default function NavbarItems({ path }: { path: string }): JSX.Element {
-  const isEN = getLang();
+  const isEN = useContext(LangContext);
 
   const navLinkHide = (currentPath: string) => {
     if (path === currentPath) {

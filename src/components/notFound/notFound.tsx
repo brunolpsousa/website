@@ -1,13 +1,13 @@
 'use client';
 
-import { getLang } from '@utils/getLang';
+import { LangContext } from '@components/langContextProvider/LangContextProvider';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 
 export default function NotFound(): JSX.Element {
   const router = useRouter();
-  const isEN = getLang();
+  const isEN = useContext(LangContext);
 
   useEffect(() => {
     const interval = setInterval(() => {

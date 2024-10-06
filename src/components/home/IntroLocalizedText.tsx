@@ -1,9 +1,10 @@
 'use client';
 
-import { getLang } from '@utils/getLang';
+import { LangContext } from '@components/langContextProvider/LangContextProvider';
+import { useContext } from 'react';
 
 export default function IntroLocalizedText(): JSX.Element {
-  const isEN = getLang();
+  const isEN = useContext(LangContext);
   const en = (
     <>
       Programmer and Analysis and Systems Development student. Looking for

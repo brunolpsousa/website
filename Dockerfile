@@ -8,7 +8,7 @@ USER node
 WORKDIR /app
 
 # Copy the package.json and package-lock.json files
-COPY --chown=node:node package*.json .
+COPY --chown=node:node package*.json* .
 
 # Config NPM
 RUN npm config set audit=false fund=false progress=off install-strategy=shallow

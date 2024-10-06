@@ -1,8 +1,8 @@
 'use client';
 
-import { getLang } from '@utils/getLang';
+import { LangContext } from '@components/langContextProvider/LangContextProvider';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 
 const snake = () => {
   const canvas = document.getElementById('canvas') as HTMLCanvasElement;
@@ -220,7 +220,7 @@ const snake = () => {
 };
 
 export default function SnakePage(): JSX.Element {
-  const isEN = getLang();
+  const isEN = useContext(LangContext);
 
   useEffect(() => {
     snake();

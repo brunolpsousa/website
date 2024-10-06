@@ -1,9 +1,9 @@
 'use client';
 
+import { LangContext } from '@components/langContextProvider/LangContextProvider';
 import { all as charArr } from '@data/matrix';
-import { getLang } from '@utils/getLang';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 
 const matrix = () => {
   const canvas = document.getElementById('canvas') as HTMLCanvasElement;
@@ -99,7 +99,7 @@ const matrix = () => {
 };
 
 export default function MatrixPage(): JSX.Element {
-  const isEN = getLang();
+  const isEN = useContext(LangContext);
 
   useEffect(() => {
     matrix();

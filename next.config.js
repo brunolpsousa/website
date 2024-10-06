@@ -5,25 +5,25 @@
  **/
 const nextConfig = {
   output: 'export',
-  async redirects() {
-    return [
-      {
-        source: '/curriculo',
-        destination: '/curriculum',
-        permanent: true,
-      },
-      {
-        source: '/resume',
-        destination: '/curriculum',
-        permanent: true,
-      },
-      {
-        source: '/cv',
-        destination: '/curriculum',
-        permanent: true,
-      },
-    ]
-  },
-}
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/curriculo',
+  //       destination: '/curriculum',
+  //       permanent: true,
+  //     },
+  //     {
+  //       source: '/resume',
+  //       destination: '/curriculum',
+  //       permanent: true,
+  //     },
+  //     {
+  //       source: '/cv',
+  //       destination: '/curriculum',
+  //       permanent: true,
+  //     },
+  //   ]
+  // },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

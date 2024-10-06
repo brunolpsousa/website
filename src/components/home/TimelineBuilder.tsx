@@ -1,12 +1,13 @@
 'use client';
 
+import { LangContext } from '@components/langContextProvider/LangContextProvider';
 import { timeline } from '@data/timeline';
-import { getLang } from '@utils/getLang';
+import { useContext } from 'react';
 
 import TimelineItem from './TimelineItem';
 
 export default function TimelineBuiler(): JSX.Element {
-  const isEN = getLang();
+  const isEN = useContext(LangContext);
 
   const timemap = () => {
     const timelang = isEN ? timeline.en : timeline.pt;
