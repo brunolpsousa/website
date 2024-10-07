@@ -1,6 +1,6 @@
 'use client';
 
-import { LangContext } from '@components/langContextProvider/LangContextProvider';
+import { LangContext } from '@components/context/LangContextProvider';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useContext, useEffect } from 'react';
@@ -16,7 +16,9 @@ export default function Thanks(): JSX.Element {
     }, 7000);
 
     window.onbeforeunload = () => {
-      if (interval) clearInterval(interval);
+      if (interval) {
+        clearInterval(interval);
+      }
     };
   }, []);
 

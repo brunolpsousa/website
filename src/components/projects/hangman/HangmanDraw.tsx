@@ -1,3 +1,5 @@
+'use client';
+
 interface HangmanDrawProps {
   mistakes: number;
 }
@@ -6,11 +8,9 @@ export default function HangmanDraw({
   mistakes,
 }: HangmanDrawProps): JSX.Element {
   const draw = () => {
-    if (typeof document !== 'undefined') {
-      const parts = document?.querySelectorAll<HTMLElement>('.hang-parts');
-      for (let i = 0; i < mistakes; i++) {
-        parts[i].style.display = 'block';
-      }
+    const parts = document?.querySelectorAll<HTMLElement>('.hang-parts');
+    for (let i = 0; i < mistakes; i++) {
+      parts[i].style.display = 'block';
     }
     return (
       <svg

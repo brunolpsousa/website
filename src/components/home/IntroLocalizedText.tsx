@@ -1,6 +1,6 @@
 'use client';
 
-import { LangContext } from '@components/langContextProvider/LangContextProvider';
+import { LangContext } from '@components/context/LangContextProvider';
 import { useContext } from 'react';
 
 export default function IntroLocalizedText(): JSX.Element {

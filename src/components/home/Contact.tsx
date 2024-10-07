@@ -1,6 +1,6 @@
 'use client';
 
-import { LangContext } from '@components/langContextProvider/LangContextProvider';
+import { LangContext } from '@components/context/LangContextProvider';
 import { useContext, useState } from 'react';
 
 export default function Contact(): JSX.Element {
@@ -65,7 +65,7 @@ export default function Contact(): JSX.Element {
           className='flex w-full flex-col md:w-7/12'
           onSubmit={(e) => void handleSubmit(e)}
         >
-          <h1 className='mb-5 text-2xl font-medium'>
+          <h1 className='m-auto mb-3 flex flex-col pb-12 text-5xl font-medium'>
             {isEN ? 'Contact' : 'Contato'}
           </h1>
           <input

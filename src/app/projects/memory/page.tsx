@@ -1,6 +1,6 @@
 'use client';
 
-import { LangContext } from '@components/langContextProvider/LangContextProvider';
+import { LangContext } from '@components/context/LangContextProvider';
 import { cards as deck } from '@data/memoryCards';
 import Link from 'next/link';
 import { useContext, useEffect, useState } from 'react';

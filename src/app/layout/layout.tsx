@@ -1,6 +1,6 @@
 'use client';
 
-import LangContext from '@components/langContextProvider/LangContextProvider';
+import LangContext from '@components/context/LangContextProvider';
 import { darkThemeIcon, lightThemeIcon } from '@data';
 import { lsParse } from '@utils';
 import Head from 'next/head';

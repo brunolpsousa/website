@@ -1,7 +1,6 @@
 'use client';
 
-import { LangContext } from '@components/langContextProvider/LangContextProvider';
-import Navbar from '@components/navbar/Navbar';
+import { LangContext } from '@components/context/LangContextProvider';
 import Link from 'next/link';
 import { useContext } from 'react';
 
@@ -10,27 +9,26 @@ export default function ProjectsPage(): JSX.Element {
 
   return (
     <>
-      <Navbar path='/projects' />
       <div className='m-auto flex flex-col items-center justify-center pb-12'>
         <h1 className='mb-3 text-5xl font-medium'>
           {isEN ? 'Projects' : 'Projetos'}
         </h1>
         <ul className='m-3 p-16 text-center text-2xl'>
-          <li className='customHover m-1'>
-            <Link href={'projects/dino'}>Dino</Link>
-          </li>
+          {/* <li className='customHover m-1'> */}
+          {/*   <Link href={'projects/dino'}>Dino</Link> */}
+          {/* </li> */}
           <li className='customHover m-1'>
             <Link href={'projects/hangman'}>{isEN ? 'Hangman' : 'Forca'}</Link>
           </li>
           <li className='customHover m-1'>
             <Link href={'projects/matrix'}>Matrix</Link>
           </li>
-          <li className='customHover m-1'>
-            <Link href={'projects/memory'}>{isEN ? 'Memory' : 'Memória'}</Link>
-          </li>
-          <li className='customHover m-1'>
-            <Link href={'projects/pacman'}>Pacman</Link>
-          </li>
+          {/* <li className='customHover m-1'> */}
+          {/*   <Link href={'projects/memory'}>{isEN ? 'Memory' : 'Memória'}</Link> */}
+          {/* </li> */}
+          {/* <li className='customHover m-1'> */}
+          {/*   <Link href={'projects/pacman'}>Pacman</Link> */}
+          {/* </li> */}
           <li className='customHover m-1'>
             <Link href={'projects/snake'}>Snake</Link>
           </li>
