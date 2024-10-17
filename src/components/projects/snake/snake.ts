@@ -20,12 +20,12 @@ export class Snake {
 
     if (this.rotateX == 1) {
       newRect = {
-        x: this.tail[this.tail.length - 1].x + this.size / 2,
+        x: Math.floor(this.tail[this.tail.length - 1].x + this.size / 2),
         y: this.tail[this.tail.length - 1].y,
       };
     } else if (this.rotateX == -1) {
       newRect = {
-        x: this.tail[this.tail.length - 1].x - this.size / 2,
+        x: Math.floor(this.tail[this.tail.length - 1].x - this.size / 2),
         y: this.tail[this.tail.length - 1].y,
       };
     }
@@ -33,12 +33,12 @@ export class Snake {
     if (this.rotateY == 1) {
       newRect = {
         x: this.tail[this.tail.length - 1].x,
-        y: this.tail[this.tail.length - 1].y + this.size / 2,
+        y: Math.floor(this.tail[this.tail.length - 1].y + this.size / 2),
       };
     } else if (this.rotateY == -1) {
       newRect = {
         x: this.tail[this.tail.length - 1].x,
-        y: this.tail[this.tail.length - 1].y - this.size / 2,
+        y: Math.floor(this.tail[this.tail.length - 1].y - this.size / 2),
       };
     }
 

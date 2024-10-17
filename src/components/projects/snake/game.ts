@@ -4,8 +4,9 @@ import { Snake } from './snake';
 export class SnakeGame {
   private canvas: HTMLCanvasElement;
   private canvasContext: CanvasRenderingContext2D | null;
-  private gameSpeed: number;
   private record: number;
+  private gameSpeed: number;
+  private direction: { x: number; y: number } = { x: 1, y: 0 };
 
   private snake: Snake;
   private apple: Apple;
@@ -46,35 +47,9 @@ export class SnakeGame {
     this.instance = undefined;
   }
 
-  start(): void {
-    window.addEventListener('resize', () => {
-      this.adjustCanvasSize();
-      return window.removeEventListener('resize', this.adjustCanvasSize);
-    });
-
-    window.addEventListener('keydown', (e: KeyboardEvent) => {
-      e.preventDefault();
-
-      const left = ['arrowleft', 'a', 'h'];
-      const up = ['arrowup', 'w', 'k'];
-      const right = ['arrowright', 'd', 'l'];
-      const down = ['arrowdown', 's', 'j'];
-      const key = e.key.toLowerCase();
-
-      if (left.indexOf(key) > -1 && this.snake.rotateX != 1) {
-        this.snake.rotateX = -1;
-        this.snake.rotateY = 0;
-      } else if (up.indexOf(key) > -1 && this.snake.rotateY != 1) {
-        this.snake.rotateX = 0;
-        this.snake.rotateY = -1;
-      } else if (right.indexOf(key) > -1 && this.snake.rotateX != -1) {
-        this.snake.rotateX = 1;
-        this.snake.rotateY = 0;
-      } else if (down.indexOf(key) > -1 && this.snake.rotateY != -1) {
-        this.snake.rotateX = 0;
-        this.snake.rotateY = 1;
-      }
-    });
+  start(): () => void {
+    window.addEventListener('resize', this.adjustCanvasSize);
+    window.addEventListener('keydown', this.keyAction);
 
     this.adjustCanvasSize();
     const loop = this.gameLoop();
@@ -85,7 +60,38 @@ export class SnakeGame {
       }
     };
 
-    return window.removeEventListener('keydown', (e) => e.preventDefault);
+    return () => {
+      window.removeEventListener('resize', this.adjustCanvasSize);
+      window.removeEventListener('keydown', this.keyAction);
+    };
+  }
+
+  private keyAction = (e: KeyboardEvent) => {
+    e.preventDefault();
+
+    const left = ['arrowleft', 'a', 'h'];
+    const up = ['arrowup', 'w', 'k'];
+    const right = ['arrowright', 'd', 'l'];
+    const down = ['arrowdown', 's', 'j'];
+    const key = e.key.toLowerCase();
+
+    if (left.indexOf(key) > -1 && this.snake.rotateX != 1) {
+      this.setDirection(-1, 0);
+    } else if (up.indexOf(key) > -1 && this.snake.rotateY != 1) {
+      this.setDirection(0, -1);
+    } else if (right.indexOf(key) > -1 && this.snake.rotateX != -1) {
+      this.setDirection(1, 0);
+    } else if (down.indexOf(key) > -1 && this.snake.rotateY != -1) {
+      this.setDirection(0, 1);
+    }
+  };
+
+  private setDirection(x?: number, y?: number): void {
+    if (!(typeof x === 'number' && typeof y === 'number')) {
+      this.direction = { x: 1, y: 0 };
+      return;
+    }
+    this.direction = { x: x as number, y: y as number };
   }
 
   private gameLoop(): NodeJS.Timeout {
@@ -98,27 +104,37 @@ export class SnakeGame {
     this.snake.move();
     this.eatApple();
     this.checkCollision();
+    this.snake.rotateX = this.direction.x;
+    this.snake.rotateY = this.direction.y;
     this.draw();
   }
 
   private eatApple(): void {
     if (
-      this.snake.tail[this.snake.tail.length - 1].x == this.apple.x &&
-      this.snake.tail[this.snake.tail.length - 1].y == this.apple.y
+      this.snake.tail[this.snake.tail.length - 1].x >=
+        this.apple.x - this.snake.size / 2 &&
+      this.snake.tail[this.snake.tail.length - 1].x <=
+        this.apple.x + this.snake.size / 2 &&
+      this.snake.tail[this.snake.tail.length - 1].y >=
+        this.apple.y - this.snake.size / 2 &&
+      this.snake.tail[this.snake.tail.length - 1].y <=
+        this.apple.y + this.snake.size / 2
     ) {
       this.snake.tail[this.snake.tail.length] = {
-        x: this.apple.x,
-        y: this.apple.y,
+        x: this.snake.tail[this.snake.tail.length - 1].x,
+        y: this.snake.tail[this.snake.tail.length - 1].y,
       };
       this.apple = new Apple(this.canvas, this.snake);
     }
 
-    if (this.apple.x > this.canvas.width || this.apple.y > this.canvas.height)
+    if (this.apple.x > this.canvas.width || this.apple.y > this.canvas.height) {
       this.apple = new Apple(this.canvas, this.snake);
+    }
   }
 
   private gameOver(): void {
     this.record = Math.max(this.record, this.snake.tail.length - 1);
+    this.setDirection();
     this.snake = new Snake();
   }
 
@@ -196,8 +212,8 @@ export class SnakeGame {
   }
 
   private adjustCanvasSize(): void {
-    const width = (window.innerWidth / 5) * 4;
-    const height = window.innerHeight / 2;
+    const width = Math.floor((window.innerWidth / 5) * 4);
+    const height = Math.floor(window.innerHeight / 2);
     this.canvas.width = width - (width % this.snake.size);
     this.canvas.height = height - (height % this.snake.size);
   }
