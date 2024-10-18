@@ -2,7 +2,7 @@ import '@style/global.css';
 
 import Layout from '@app/layout/layout';
 import Footer from '@components/Footer';
-import { metadata as appMetadata } from '@data';
+import { darkThemeIcon, metadata as appMetadata } from '@data';
 import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
@@ -17,6 +17,14 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang='en'>
+      <head>
+        <link
+          id='favicon'
+          rel='icon'
+          type='image/svg+xml'
+          href={darkThemeIcon}
+        />
+      </head>
       <body
         className={`m-auto flex h-screen w-11/12 max-w-5xl flex-col items-center font-sans ${inter.className}`}
       >
