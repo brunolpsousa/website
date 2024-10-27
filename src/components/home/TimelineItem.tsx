@@ -8,7 +8,7 @@ export default function TimelineItem({
   year: string;
   title: string;
   duration: string[];
-  details: string;
+  details: string[];
   isEN: boolean;
 }): JSX.Element {
   const getDuration = (duration: string[]): string => {
@@ -36,6 +36,7 @@ export default function TimelineItem({
     }
     return result;
   };
+
   return (
     <ol className='relative flex flex-col border-l border-zinc-300 dark:border-zinc-500 md:flex-row'>
       <li className='mb-8 ml-4'>
@@ -49,7 +50,11 @@ export default function TimelineItem({
             {getDuration(duration)}
           </p>
         </div>
-        <p className='my-2 text-base font-normal'>{details}</p>
+        {details.map((d) => (
+          <p key={details.indexOf(d)} className='my-2 text-base font-normal'>
+            {d}
+          </p>
+        ))}
       </li>
     </ol>
   );

@@ -21,12 +21,12 @@ export default function NavbarItems({ path }: { path: string }): JSX.Element {
       <li id='projects' className={`navItem ${hideNavLink('/projects')}`}>
         <Link href='/projects'>{isEN ? 'Projects' : 'Projetos'}</Link>
       </li>
-      <li id='curriculum' className={`navItem ${hideNavLink('/curriculum')}`}>
-        <Link href='/curriculum'>{isEN ? 'Resume' : 'Currículo'}</Link>
-      </li>
-      <li id='contact' className={`navItem ${hideNavLink('/contact')}`}>
-        <Link href='/contact'>{isEN ? 'Contact' : 'Contato'}</Link>
-      </li>
+      {/* <li id='curriculum' className={`navItem ${hideNavLink('/curriculum')}`}> */}
+      {/*   <Link href='/curriculum'>{isEN ? 'Resume' : 'Currículo'}</Link> */}
+      {/* </li> */}
+      {/* <li id='contact' className={`navItem ${hideNavLink('/contact')}`}> */}
+      {/*   <Link href='/contact'>{isEN ? 'Contact' : 'Contato'}</Link> */}
+      {/* </li> */}
     </>
   );
 }

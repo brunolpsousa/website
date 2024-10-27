@@ -39,7 +39,7 @@ export default function HangmanPage(): JSX.Element {
       if (win) {
         setLevel(level + 1);
       } else if (lose) {
-        setLevel(level > 2 ? level - 2 : 1);
+        setLevel(level ? level - 1 : 1);
       }
       document
         .querySelectorAll<HTMLElement>('.keys')

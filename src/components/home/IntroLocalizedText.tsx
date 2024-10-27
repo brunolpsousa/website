@@ -7,14 +7,18 @@ export default function IntroLocalizedText(): JSX.Element {
   const isEN = useContext(LangContext);
   const en = (
     <>
-      Programmer and Analysis and Systems Development student. Looking for
-      challenges and continuous learning.
+      Backend Programmer{' '}
+      <a href='https://compass.uol' target='_blank' rel='noreferrer'>
+        @Compass.UOL
+      </a>
     </>
   );
   const pt = (
     <>
-      Programador e estudante de Análise e Desenvolvimento de Sistemas. Em busca
-      de desafios e aprendizado contínuo.
+      Programador backend{' '}
+      <a href='https://compass.uol' target='_blank' rel='noreferrer'>
+        @Compass.UOL
+      </a>
     </>
   );
   return isEN ? en : pt;
