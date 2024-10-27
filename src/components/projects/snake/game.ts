@@ -2,21 +2,25 @@ import { Apple } from './apple';
 import { Snake } from './snake';
 
 export class SnakeGame {
+  private static instance: SnakeGame | undefined;
+  private static loop: ReturnType<typeof setInterval> | undefined;
+
   private canvas: HTMLCanvasElement;
   private canvasContext: CanvasRenderingContext2D | null;
-  private record: number;
   private gameSpeed: number;
-  private direction: { x: number; y: number } = { x: 1, y: 0 };
+  private direction: { x: number; y: number };
+
+  private record: number;
 
   private snake: Snake;
   private apple: Apple;
-
-  private static instance: SnakeGame | undefined;
 
   constructor(canvas: HTMLCanvasElement, gameSpeed?: number, record?: number) {
     this.canvas = canvas;
     this.canvasContext = this.canvas?.getContext('2d');
     this.gameSpeed = gameSpeed || 15;
+    this.direction = { x: 1, y: 0 };
+
     this.record = record || 0;
 
     this.snake = new Snake();
@@ -45,6 +49,7 @@ export class SnakeGame {
 
   static destroy(): void {
     this.instance = undefined;
+    clearInterval(SnakeGame.loop);
   }
 
   start(): () => void {
@@ -52,13 +57,7 @@ export class SnakeGame {
     window.addEventListener('keydown', this.keyAction);
 
     this.adjustCanvasSize();
-    const loop = this.gameLoop();
-
-    window.onbeforeunload = () => {
-      if (loop) {
-        clearInterval(loop);
-      }
-    };
+    SnakeGame.loop = this.gameLoop();
 
     return () => {
       window.removeEventListener('resize', this.adjustCanvasSize);

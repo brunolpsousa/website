@@ -11,7 +11,7 @@ export const timeline = {
     },
     {
       year: '2023',
-      title: 'Back-end Journey (Node.js) - AWS Cloud Context - Compass UOL',
+      title: 'Back-end Journey (Node.js) - AWS Cloud Context - Compass.UOL',
       duration: ['2023/7/3', '2023/11/29'],
       details: [
         'O objetivo do estágio foi aprofundar os conhecimentos em AWS e Node.js; JavaScript, TypeScript, Express, MongoDB e Mongoose; criação de APIs, autenticação, e SSR; AWS Well-Architected Framework; método ágil Scrum e boas práticas de versionamento.',
